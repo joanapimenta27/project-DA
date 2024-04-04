@@ -1,3 +1,5 @@
+// Original code by Gonçalo Leão
+// Updated by DA 2023/2024 Team
 
 #ifndef DA_TP_CLASSES_GRAPH
 #define DA_TP_CLASSES_GRAPH

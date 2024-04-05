@@ -52,6 +52,10 @@ Management::Management(int dataSet) : reservoirs_(std::make_unique<std::unordere
     }
 }
 
+const std::unordered_map<std::string, City> &Management::getCities(){
+    return *cities_;
+}
+
 Reservoir Management::getReservoirByCode(const std::string &code){
     auto it = reservoirs_->find(code);
     if (it == reservoirs_->end()) return {};
@@ -116,15 +120,8 @@ Graph<std::string> maxFlow(Graph<std::string> g){
                 v=e->getDest();
             }
         }
-
-        return max_flow;
-
     }
-
-
-
-
-
+    return max_flow;
 }
 
 

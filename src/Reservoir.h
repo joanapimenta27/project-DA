@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <unordered_map>
 
 class Reservoir {
 private:

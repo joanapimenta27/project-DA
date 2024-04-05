@@ -11,11 +11,142 @@ void Interface::refreshDirectories() {
     directories.emplace_back(L"Choose DataSet");
     directories.emplace_back(L"Choose DataSet > Portugal DataSet");
     directories.emplace_back(L"Choose DataSet > Madeira DataSet");
+    directories.emplace_back(L"");
+    directories.emplace_back(L"Basic Service Metrics");
+    directories.emplace_back(L"Basic Service Metrics > Max Amount of Water");
+    directories.emplace_back(L"Basic Service Metrics > Max Amount of Water > Total");
+    directories.emplace_back(L"Basic Service Metrics > Max Amount of Water > " + converter.from_bytes(city_analised));
 }
 
 void Interface::stackClear(std::stack<int> &s){
     while (!s.empty()){
         s.pop();
+    }
+}
+
+std::wstring Interface::smooth_string(const std::wstring& w){
+    std::wstring sw;
+    for (wchar_t c : w) {
+        if (!iswspace(c)) {
+            c = std::tolower(c);
+            switch (c) {
+                case L'á':
+                case L'à':
+                case L'â':
+                case L'ä':
+                case L'ã':
+                case L'Á':
+                case L'À':
+                case L'Ã':
+                case L'Â':
+                case L'Ä':
+                    sw += L'a';
+                    break;
+                case L'é':
+                case L'è':
+                case L'ê':
+                case L'ë':
+                case L'ẽ':
+                case L'Ë':
+                case L'É':
+                case L'È':
+                case L'Ê':
+                case L'Ẽ':
+                    sw += L'e';
+                    break;
+                case L'í':
+                case L'ì':
+                case L'î':
+                case L'ï':
+                case L'ĩ':
+                case L'Í':
+                case L'Ì':
+                case L'Î':
+                case L'Ĩ':
+                case L'Ï':
+                    sw += L'i';
+                    break;
+                case L'ó':
+                case L'ò':
+                case L'ô':
+                case L'ö':
+                case L'õ':
+                case L'Ó':
+                case L'Ò':
+                case L'Õ':
+                case L'Ô':
+                case L'Ö':
+                    sw += L'o';
+                    break;
+                case L'ú':
+                case L'ù':
+                case L'û':
+                case L'ü':
+                case L'ũ':
+                case L'Ú':
+                case L'Ù':
+                case L'Ũ':
+                case L'Û':
+                case L'Ü':
+                    sw += L'u';
+                    break;
+                case L'ç':
+                    sw += L'c';
+                default:
+                    if (!ispunct(c)) {
+                        sw += c;
+                    }
+            }
+        }
+    }
+    return sw;
+}
+
+void Interface::initializeTable(){
+    switch(locationWithTable[location]){
+        case 0:
+            filteredWstringPairsVector = citiesStringMap;
+            break;
+    }
+}
+
+std::unordered_map<std::string, std::string> Interface::stringifyUMStringClass(const std::unordered_map<std::string, City>& um){
+    std::unordered_map<std::string, std::string> res;
+    for (auto p : um){
+        res[p.second.getName()] = p.first;
+    }
+    return res;
+}
+
+std::unordered_map<std::string, std::string> Interface::filterCitySearch(const std::unordered_map<std::string, std::string>& um){
+    std::unordered_map<std::string, std::string> res;
+    if (write.empty() || write == write_default){
+        res = citiesStringMap;
+    }
+    for (const auto& p : um){
+        if (smooth_string(converter.from_bytes(p.first)).substr(0, smooth_string(write).size()) == smooth_string(write)){
+            res[p.first] = p.second;
+        }
+        if (smooth_string(converter.from_bytes(p.second)).substr(0, smooth_string(write).size()) == smooth_string(write)){
+            res[p.first] = p.second;
+        }
+    }
+    return res;
+}
+
+void Interface::writeOptionDefaulterCity(){
+    if (!write.empty() && write != write_default) {
+        options[location][0] = L"Searching for: " + bold + write + end_effect;
+    } else {
+        options[location][0] = L"Search for a City";
+    }
+    if (selected == 0 && write.empty() && !table_mode){
+        options[location][0] = underline + bold + red + L"Search for a City -> " + end_effect + L"  " + italic + write_default + end_italic;
+        write_mode = true;
+    }
+    else if (selected == 0 && !table_mode){
+        options[location][0] = underline + bold + red + L"Search for a City -> " + end_effect + L"  " + write;
+        write_mode = true;
     }
 }
 
@@ -49,6 +180,33 @@ void Interface::inputResponseInWriteMode(wchar_t user_in){
         }
         write += user_in;
     }
+    if (user_in == 32 && write != write_default) {
+        write += L" ";
+    }
+    if ((user_in == 8 || user_in == 127) && write != write_default) {
+        if (!write.empty()) {
+            write.pop_back();
+        }
+    }
+    if (write.empty()) {
+        write = write_default;
+    }
+    if (write.size() > capOfWrite[location] && write != write_default) {
+        write.pop_back();
+    }
+    if (locationOfCitySearch[location]){
+        filteredWstringPairsVector = filterCitySearch(citiesStringMap);
+        page = 0;
+    }
+}
+
+void Interface::tableModeCleaner(std::unordered_map<std::string, std::string> um){
+    write = write_default;
+    selected_in_page = 0;
+    selected = 0;
+    page = 0;
+    table_mode = !table_mode;
+    filteredWstringPairsVector = um;
 }
 
 void Interface::inputer(){
@@ -87,7 +245,7 @@ void Interface::basicInputResponse(unsigned int user_in) {
         if (user_in == 'n'){
             page ++;
             selected_in_page = 0;
-            if (page > filteredWstringVector.size()/elements_per_page) {
+            if (page > filteredWstringPairsVector.size()/elements_per_page) {
                 page--;
             }
         }
@@ -112,8 +270,8 @@ void Interface::basicInputResponse(unsigned int user_in) {
     else{
         if (user_in == 'A') {
             if (selected_in_page > 0) { selected_in_page -= 1; }
-            else if (page == filteredWstringVector.size()/elements_per_page){
-                selected_in_page = filteredWstringVector.size()%elements_per_page - 1;
+            else if (page == filteredWstringPairsVector.size()/elements_per_page){
+                selected_in_page = filteredWstringPairsVector.size()%elements_per_page - 1;
             }
             else {
                 selected_in_page = elements_per_page - 1;
@@ -121,8 +279,8 @@ void Interface::basicInputResponse(unsigned int user_in) {
         }
         if (user_in == 'B') {
             selected_in_page ++;
-            if (page == filteredWstringVector.size()/elements_per_page){
-                if (selected_in_page > filteredWstringVector.size()%elements_per_page - 1){
+            if (page == filteredWstringPairsVector.size()/elements_per_page){
+                if (selected_in_page > filteredWstringPairsVector.size()%elements_per_page - 1){
                     selected_in_page = 0;
                 }
             }
@@ -152,14 +310,14 @@ void Interface::basicInputResponse(unsigned int user_in) {
                         break;
                 }
                 break;
-            case 1:
+            case 1:    //Credits
                 switch (selected){
                     case 0:
                         break;
                     case 1:
                         enterInputHandler(0, 0, false, true, false);
                 }
-            case 2:
+            case 2:  //Choose DataSet none
                 switch (selected){
                     case 0:
                         selected_dataSet = L"big";
@@ -174,9 +332,12 @@ void Interface::basicInputResponse(unsigned int user_in) {
                         break;
                 }
                 break;
-            case 3:
+            case 3: // Choose DataSet big
                 switch (selected){
                     case 0:
+                        selected_dataSet = L"none";
+                        is_done = false;
+                        enterInputHandler(2, 0, false, false, false);
                         break;
                     case 1:
                         selected_dataSet = L"small";
@@ -188,7 +349,7 @@ void Interface::basicInputResponse(unsigned int user_in) {
                         break;
                 }
                 break;
-            case 4:
+            case 4:    //Choose dataSet small
                 switch (selected){
                     case 0:
                         selected_dataSet = L"big";
@@ -196,15 +357,19 @@ void Interface::basicInputResponse(unsigned int user_in) {
                         enterInputHandler(3, 0, false, false, false);
                         break;
                     case 1:
+                        selected_dataSet = L"none";
+                        is_done = false;
+                        enterInputHandler(2, 1, false, false, false);
                         break;
                     case 2:
                         enterInputHandler(0, 0, false, false, true);
                         break;
                 }
                 break;
-            case 5:
+            case 5:   //M Main Menu2
                 switch (selected){
                     case 0:
+                        enterInputHandler(6, 0, false, false, false);
                         break;
                     case 1:
                         break;
@@ -218,6 +383,67 @@ void Interface::basicInputResponse(unsigned int user_in) {
                         break;
                     case 3:
                         location = -1;
+                }
+                break;
+            case 6:    // Basic Service Metrics
+                switch (selected){
+                    case 0:
+                        enterInputHandler(7, 0, false, false, false);
+                        initializeTable();
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        enterInputHandler(0, 0, false, false, true);
+                        break;
+                }
+                break;
+            case 7:
+                if (!table_mode) {
+                    switch (selected) {
+                        case 0:
+                            break;
+                        case 1:
+                            enterInputHandler(8, 0, false, false, false);
+                            break;
+                        case 2:
+                            enterInputHandler(0, 0, true, false, false);
+                            break;
+                        case 3:
+                            enterInputHandler(0, 0, false, false, true);
+                            break;
+                    }
+                    break;
+                }
+                else{
+                    auto it = filteredWstringPairsVector.begin();
+                    std::advance(it, page * elements_per_page + selected_in_page);
+                    city_analised = it->first;
+                    city_analised_code = it->second;
+                    enterInputHandler(9, 0, false, false, false);
+                    tableModeCleaner(citiesStringMap);
+                }
+                break;
+            case 8:
+                switch (selected){
+                    case 0:
+                        enterInputHandler(0, 1, true, false, false);
+                        break;
+                    case 1:
+                        enterInputHandler(0, 0, false, false, true);
+                        break;
+                }
+                break;
+            case 9:
+                switch (selected){
+                    case 0:
+                        enterInputHandler(0, 0, true, false, false);
+                        break;
+                    case 1:
+                        enterInputHandler(0, 0, false, false, true);
+                        break;
                 }
                 break;
         }
@@ -266,6 +492,7 @@ void Interface::run(){
             case 3:
                 if(!is_done) {
                     man = std::make_shared<Management>(1);
+                    citiesStringMap = stringifyUMStringClass(man->getCities());
                     is_done = true;
                 }
 
@@ -278,6 +505,7 @@ void Interface::run(){
             case 4:
                 if(!is_done) {
                     man = std::make_shared<Management>(0);
+                    citiesStringMap = stringifyUMStringClass(man->getCities());
                     is_done = true;
                 }
 
@@ -290,6 +518,38 @@ void Interface::run(){
             case 5:
                 printBoldTitle(waterSupplyManagement);
                 printOptions(options[location], selected, table_mode);
+                printHelper(helpers, {0});
+                inputer();
+                break;
+
+            case 6:
+                printDirectory(directory);
+                printOptions(options[location], selected, table_mode);
+                printHelper(helpers, {0});
+                inputer();
+                break;
+
+            case 7:
+                writeOptionDefaulterCity();
+                printDirectory(directory);
+                printOptions(options[location], selected, table_mode);
+                printDoubleTable(filteredWstringPairsVector, page, elements_per_page, selected_in_page, table_mode);
+                printHelper(helpers, {1, 2});
+                inputer();
+                break;
+
+            case 8:
+                printDirectory(directory);
+                printOptions(options[location], selected, table_mode);
+                printMonoInfo(bold + L"Waiting for Function" + end_effect);
+                printHelper(helpers, {0});
+                inputer();
+                break;
+
+            case 9:
+                printDirectory(directory);
+                printOptions(options[location], selected, table_mode);
+                printMonoInfo(bold + L"Waiting for Function" + end_effect);
                 printHelper(helpers, {0});
                 inputer();
                 break;

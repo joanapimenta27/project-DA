@@ -33,6 +33,8 @@ public:
     Station getStationByCode(const std::string &code);
 
     City getCityByCode(const std::string &code);
+
+    const std::unordered_map<std::string, City> &getCities();
 };
 
 

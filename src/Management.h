@@ -35,6 +35,10 @@ public:
     City getCityByCode(const std::string &code);
 
     const std::unordered_map<std::string, City> &getCities();
+
+    std::vector<std::pair<std::string, int>> checkWaterNeeds();
+
+    std::vector<std::pair<std::string, std::vector<std::pair<std::string, int>>>> checkWaterNeedsWithFailures();
 };
 
 

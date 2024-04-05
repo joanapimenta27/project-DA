@@ -1,6 +1,4 @@
-//
-// Created by master on 02-04-2024.
-//
+
 
 #ifndef PROJECT_DA_MANAGEMENT_H
 #define PROJECT_DA_MANAGEMENT_H
@@ -12,6 +10,8 @@
 #include <cmath>
 #include <unordered_map>
 #include <variant>
+#include <climits>
+#include "utils.h"
 #include "FileReader.h"
 #include "Reservoir.h"
 #include "Station.h"

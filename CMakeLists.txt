@@ -20,4 +20,6 @@ add_executable(project_DA
         src/FileReader.cpp
         src/FileReader.h
         src/Management.h
-        src/Management.cpp)
+        src/Management.cpp
+        src/utils.cpp
+        src/utils.h)

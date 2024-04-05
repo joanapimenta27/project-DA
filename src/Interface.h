@@ -50,19 +50,34 @@ private:
     bool table_mode = false;
     bool is_done = false;
 
+    std::string city_analised;
+    std::string city_analised_code;
+
     std::wstring directory;
     std::vector<std::wstring> directories;
     std::wstring write;
     std::wstring write_default =  italic + L"  You can write here  " + end_italic;
-    std::wstring selected_dataSet;
+    std::wstring selected_dataSet = L"none";
 
     std::stack<int> earlier_locations;
 
-    std::vector<int> locationHasTable = {0};
-
     std::vector<std::wstring> filteredWstringVector;
+    std::unordered_map<std::string, std::string> filteredWstringPairsVector;
+    std::unordered_map<std::string, std::string> citiesStringMap;
+    std::unordered_map<int, int> locationHasTable = {
+            {7, 1}
+    };
+    std::unordered_map<int, int> capOfWrite = {
+            {7, 30}
+    };
+    std::unordered_map<int, int> locationOfCitySearch = {
+            {7, 1}
+    };
+    std::unordered_map<int, int> locationWithTable = {
+            {7, 0}
+    };
 
-    std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+    std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
 
     std::vector<std::vector<std::wstring>> options{
             {
@@ -82,18 +97,38 @@ private:
             {
                 L"Portugal DataSet " + bold + blue + L" <- ACTIVE" + end_effect,
                 L"Madeira DataSet",
-                L"Main Menu"
+                L"Proceed"
             },
             {
                 L"Portugal DataSet",
                 L"Madeira DataSet " + bold + blue + L" <- ACTIVE" + end_effect,
+                L"Proceed"
+            },
+            {
+                L"Basic Service Metrics",
+                L"Reliability and Sensitivity to Failures",
+                L"Choose DataSet",
+                L"Quit"
+            },
+            {
+                L"Max Amount of Water",
+                L"Dummy1",
+                L"Dummy2",
                 L"Main Menu"
             },
             {
-                L"Dummy1",
-                L"Dummy2",
-                L"Choose DataSet",
-                L"Quit"
+                L"Search for a City",
+                L"Total",
+                L"Back",
+                L"Main Menu"
+            },
+            {
+                L"Back",
+                L"Main Menu"
+            },
+            {
+                L"Back",
+                L"Main Menu"
             }
     };
 
@@ -127,6 +162,21 @@ private:
     static void stackClear(std::stack<int> &s);
 
     void enterInputHandler(int loc, unsigned long sel, bool back, bool main_menu, bool main_menu2);
+
+    void writeOptionDefaulterCity();
+
+    std::unordered_map<std::string, std::string> filterCitySearch(const std::unordered_map<std::string, std::string> &um);
+
+    static std::unordered_map<std::string, std::string>
+
+    stringifyUMStringClass(const std::unordered_map<std::string, City> &um);
+
+    static std::wstring smooth_string(const std::wstring &w);
+
+    void initializeTable();
+
+
+    void tableModeCleaner(std::unordered_map<std::string, std::string> um);
 };
 
 #endif //PROJECT_DA_INTERFACE_H

@@ -52,6 +52,10 @@ Management::Management(int dataSet) : reservoirs_(std::make_unique<std::unordere
     }
 }
 
+const std::unordered_map<std::string, City> &Management::getCities(){
+    return *cities_;
+}
+
 Reservoir Management::getReservoirByCode(const std::string &code){
     auto it = reservoirs_->find(code);
     if (it == reservoirs_->end()) return {};

@@ -4,6 +4,10 @@
 #include <iostream>
 #include <vector>
 #include <sys/ioctl.h>
+#include <locale>
+#include <codecvt>
+
+std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
 
 //----------------- COLOR SCHEMES --------------------//
 std::wstring bg_light_red = L"\x1b[101m";
@@ -65,6 +69,18 @@ std::vector<std::vector<std::wstring>> loadingDataAnimation = {
 };
 
 int frame = 0;
+
+int getPunct(const std::string& s){
+    int count = 0;
+    int count2 = 0;
+    for (char c : s) {
+        if (!((64 < c && c < 123) || c == 32)) {
+            count++;
+            count2++;
+        }
+    }
+    return count - count2/2;
+}
 
 int getTerminalWidth() {
     struct winsize w{};
@@ -131,6 +147,50 @@ void printHelper(std::vector<std::wstring> helpers, const std::vector<int>& sele
     for (int selection : selections){
         std::wcout << italic << helpers[selection] << end_italic << std::endl;
     }
+}
+
+void printMonoInfo(const std::wstring& wstr){
+    std::wstring wigly_underline;
+    std::wcout << L"\n\n\n" << std::endl;
+    std::wcout << centerUp(L"-> "  + wstr +  L" <-") << std::endl;
+    for (wchar_t c : wstr){
+        wigly_underline.push_back(L'~');
+    }
+    for (int i = 0; i < 6; i++){
+        wigly_underline.push_back(L'~');
+    }
+    std::wcout << centerUp(red + wigly_underline + end_effect) << std::endl;
+}
+
+void printDoubleTable(const std::unordered_map<std::string, std::string>& wstring_list, int page, int elements_per_page, unsigned long selected_in_page, bool table_mode){
+    std::wcout << L"\n\n " << bold << std::wstring(40, L'-') << end_effect << L"\n";
+    int count = 0;
+    int count_for_selected = 0;
+    for (const auto& wstr : wstring_list){
+        if (count >= page * elements_per_page && count < page * elements_per_page + elements_per_page){
+            if (count_for_selected == selected_in_page && table_mode){
+                std::wcout << L"| " << bg_light_red << italic << underline << bold
+                           << converter.from_bytes(wstr.first) << std::wstring(30 - wstr.first.size() + getPunct(wstr.first), L' ')
+                           << end_italic << bg_light_red << underline << L"| " << italic << converter.from_bytes(wstr.second)
+                           << std::wstring(6 - wstr.second.size(), L' ')
+                           << end_italic << end_bg << end_effect << L" |" << std::endl;
+            }
+            else{
+                std::wcout << L"| " << converter.from_bytes(wstr.first) << std::wstring(30 - wstr.first.size() + getPunct(wstr.first), L' ')
+                << L"| " << converter.from_bytes(wstr.second) << std::wstring(6 - wstr.second.size(), L' ')
+                << L" |" << std::endl;
+            }
+            count_for_selected ++;
+        }
+        count ++;
+    }
+    if (wstring_list.empty()){std::wcout << L"|" << italic << L"  No results " << std::wstring(27, L' ') << end_effect << L"|" << std::endl;}
+    std::wcout << L"|" << bold << std::wstring(40, L'-') << end_effect << L"|\n";
+    std::wcout << L"|" << italic << L" <('p')" << std::wstring(26, L' ') << L"('n')> " << end_italic << L"|" << std::endl;
+    std::wcout << L"|" << std::wstring(38 - std::to_string(page + 1).size() - std::to_string(wstring_list.size()/elements_per_page + 1).size(), ' ')
+               << bold << page + 1 << L"/" << wstring_list.size()/elements_per_page + 1 << end_effect << L" |" << std::endl;
+    std::wcout << L' ' << bold << std::wstring(40, L'-') << end_effect << std::endl;
+    std::wcout << italic << L"\n Total Number : " << end_italic << bold<< wstring_list.size() << end_effect << std::endl;
 }
 
 #endif //AED_PROJ_2_PRINTER_H

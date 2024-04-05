@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.27"
+						"string" : "3.26.4"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "project_DA::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-project_DA-Debug-14bfe787595f6208d24a.json",
+					"jsonFile" : "target-project_DA-Debug-5011b8745812d9e4877d.json",
 					"name" : "project_DA",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/master/Documentos/Hencker/2 SEMESTRE/DA/project-DA/cmake-build-debug",
-		"source" : "/home/master/Documentos/Hencker/2 SEMESTRE/DA/project-DA"
+		"build" : "/home/joana/Documents/project-DA/cmake-build-debug",
+		"source" : "/home/joana/Documents/project-DA"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 6
+		"minor" : 5
 	}
 }

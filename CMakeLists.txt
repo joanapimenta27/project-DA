@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.26.4)
 project(project_DA)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -20,4 +20,6 @@ add_executable(project_DA
         src/FileReader.cpp
         src/FileReader.h
         src/Management.h
-        src/Management.cpp)
+        src/Management.cpp
+        src/utils.cpp
+        src/utils.h)

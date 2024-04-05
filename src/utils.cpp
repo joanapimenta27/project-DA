@@ -25,7 +25,7 @@ bool augmentationPathFinder(Graph<std::string> *g ,Vertex<std::string> *source,V
 
         for(Edge<std::string> *e: f->getAdj()){
 
-            visitAndTest(q,e,e->getDest(),e->getWeight()-e->getFlow());
+            visitAndTest(q,e,e->getDest(),e->getWeight() - e->getFlow());
 
         }
         for(Edge<std::string> *e: f->getIncoming()){

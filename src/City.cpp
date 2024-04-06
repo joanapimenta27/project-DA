@@ -8,7 +8,7 @@ City::City(const std::string &name, const std::string &id, const std::string &co
     population_ = population;
 }
 
-std::string City::getName() {
+std::string City::getName() const {
     return name_;
 }
 

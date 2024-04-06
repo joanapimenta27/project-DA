@@ -42,12 +42,14 @@ Management::Management(int dataSet) : reservoirs_(std::make_unique<std::unordere
     for (const std::vector<std::string> &line : pipesData.getData()){
         std::string pointA = line.at(0);
         std::string pointB = line.at(1);
+        double capacity = std::stod(line.at(2));
+        int direction = std::stoi(line.at(3));
 
-        if (std::stoi(line.at(3))){
-            waterNetwork_->addEdge(pointA, pointB, std::stoi(line.at(2)));
+        if (direction){
+            waterNetwork_->addEdge(pointA, pointB, capacity);
         }
         else{
-            waterNetwork_->addBidirectionalEdge(pointA, pointB, std::stoi(line.at(2)));
+            waterNetwork_->addBidirectionalEdge(pointA, pointB, capacity);
         }
     }
 }
@@ -136,6 +138,61 @@ double Management::maxFlow(const Graph<std::string>& g, std::string code){
         res+=e->getFlow();
     }
     return res;
+}
+
+
+std::vector<std::vector<std::string>> Management::checkWaterNeeds() {
+    std::vector<std::vector<std::string>> result;
+    for (const auto& city : *cities_) {
+        float waterNeeded = city.second.getDemand();
+        double waterDelivered = 0;
+        for (const auto& edge : waterNetwork_->findVertex(city.first)->getAdj()) {
+            waterDelivered += edge->getWeight();
+        }
+        if (waterDelivered < waterNeeded) {
+
+            std::vector<std::string> v;
+            v.emplace_back(city.first);
+            v.emplace_back(std::to_string(waterNeeded - waterDelivered));
+            v.emplace_back(city.second.getName());
+            v.emplace_back(std::to_string(waterNeeded));
+            result.emplace_back(v);
+
+        }
+    }
+    return result;
+}
+
+//3.3
+//Sometimes, pipeline failures can occur. For each city, determine which pipelines, if
+//ruptured, i.e., with a null flow capacity, would make it impossible to deliver the desired amount of water
+//to a given city. For each examined pipeline, list the affected cities displaying their codes and water
+//supply in deficit.
+
+std::vector<std::pair<std::string, std::vector<std::pair<std::string, int>>>> Management::checkWaterNeedsWithFailures() {
+    std::vector<std::pair<std::string, std::vector<std::pair<std::string, int>>>> result;
+    for (const auto& city : *cities_) {
+        int waterNeeded = city.second.getDemand();
+        int waterDelivered = 0;
+        for (const auto& edge : waterNetwork_->findVertex(city.first)->getAdj()) {
+            waterDelivered += edge->getWeight();
+        }
+        if (waterDelivered < waterNeeded) {
+            std::vector<std::pair<std::string, int>> affectedCities;
+            for (const auto& edge : waterNetwork_->findVertex(city.first)->getAdj()) {
+                if (edge->getWeight() > 0) {  // Check for pipelines currently carrying water
+                    waterDelivered -= edge->getWeight();  // Simulate failure by subtracting the pipeline's flow capacity
+                    if (waterDelivered < waterNeeded) {
+                        affectedCities.emplace_back(edge->getDest()->getInfo(), waterNeeded - waterDelivered);
+                    }
+                    waterDelivered += edge->getWeight();  // Restore waterDelivered for the next iteration
+                }
+            }
+            result.emplace_back(city.first, affectedCities);
+
+        }
+    }
+    return result;
 }
 
 

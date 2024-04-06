@@ -16,6 +16,7 @@ void Interface::refreshDirectories() {
     directories.emplace_back(L"Basic Service Metrics > Max Amount of Water");
     directories.emplace_back(L"Basic Service Metrics > Max Amount of Water > Total");
     directories.emplace_back(L"Basic Service Metrics > Max Amount of Water > " + converter.from_bytes(city_analised));
+    directories.emplace_back(L"Basic Service Metrics > Cities in Deficit");
 }
 
 void Interface::stackClear(std::stack<int> &s){
@@ -392,6 +393,7 @@ void Interface::basicInputResponse(unsigned int user_in) {
                         initializeTable();
                         break;
                     case 1:
+                        enterInputHandler(10, 0, false, false, false);
                         break;
                     case 2:
                         break;
@@ -550,6 +552,14 @@ void Interface::run(){
                 printDirectory(directory);
                 printOptions(options[location], selected, table_mode);
                 printMonoInfo(bold + L"Waiting for Function" + end_effect);
+                printHelper(helpers, {0});
+                inputer();
+                break;
+
+            case 10:
+                printDirectory(directory);
+                printOptions(options[location], selected, table_mode);
+                printListCodeValue(man->checkWaterNeeds());
                 printHelper(helpers, {0});
                 inputer();
                 break;

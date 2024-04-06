@@ -1,9 +1,0 @@
-<<<<<<< HEAD
-/home/joana/Documents/project-DA/cmake-build-debug/CMakeFiles/project_DA.dir
-/home/joana/Documents/project-DA/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/joana/Documents/project-DA/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-=======
-C:/MCBPS/FEUP/2 ano/DA/project-DA/cmake-build-debug/CMakeFiles/project_DA.dir
-C:/MCBPS/FEUP/2 ano/DA/project-DA/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/MCBPS/FEUP/2 ano/DA/project-DA/cmake-build-debug/CMakeFiles/rebuild_cache.dir
->>>>>>> 6b5ce23e594e6238daca4524f328087d201bd439

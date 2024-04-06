@@ -91,10 +91,19 @@ double Management::maxFlow(const Graph<std::string>& g, std::string code){
 
     for(Vertex<std::string> *v : max_flow.getVertexSet()){
         if(v->getInfo().substr(0,1)=="R"){
-            source->addEdge(v,INT_MAX);
+            for(const auto& r:*reservoirs_){
+                if(r.first == v->getInfo()){
+                    source->addEdge(v,r.second.getMaxDelivery());
+                }
+            }
+
         }
         if(v->getInfo().substr(0,1)=="C"){
-            v->addEdge(sink,INT_MAX);
+            for(const auto& c:*cities_){
+                if(c.first == v->getInfo()){
+                    v->addEdge(sink,c.second.getDemand());
+                }
+            }
         }
 
     }
@@ -103,6 +112,7 @@ double Management::maxFlow(const Graph<std::string>& g, std::string code){
         for(Edge<std::string> *e:v->getAdj()){
             e->setFlow(0);
         }
+
     }
 
     while(augmentationPathFinder(&max_flow,source,sink)){
@@ -119,13 +129,13 @@ double Management::maxFlow(const Graph<std::string>& g, std::string code){
                 v=e->getDest();
             }
         }
-
         for(Vertex<std::string> *v=sink; v!=source;){
             Edge<std::string> *e=v->getPath();
             double flow=e->getFlow();
             if(v==e->getDest()){
                 e->setFlow(flow+mini);
                 v=e->getOrig();
+
             }
             else{
                 e->setFlow(flow-mini);
@@ -133,8 +143,9 @@ double Management::maxFlow(const Graph<std::string>& g, std::string code){
             }
         }
     }
+
     double res=0;
-    for(Edge<std::string> *e: max_flow.findVertex(code)->getAdj()){
+    for(Edge<std::string> *e: max_flow.findVertex(code)->getIncoming()){
         res+=e->getFlow();
     }
     return res;

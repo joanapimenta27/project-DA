@@ -543,7 +543,7 @@ void Interface::run(){
             case 8:
                 printDirectory(directory);
                 printOptions(options[location], selected, table_mode);
-                printMonoInfo(bold + converter.from_bytes(std::to_string(man->maxFlow(*man->getWaterNetwork(),"source") ))+ end_effect);
+                printMonoInfo(bold + converter.from_bytes(std::to_string(man->maxFlow(*man->getWaterNetwork(),"sink") ))+ end_effect);
                 printHelper(helpers, {0});
                 inputer();
                 break;

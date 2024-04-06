@@ -39,13 +39,14 @@ public:
 
     const std::unordered_map<std::string, City> &getCities();
 
+    std::vector<std::vector<std::string>> checkWaterNeeds();
 
     double maxFlow(const Graph<std::string>& g, std::string code);
 
     const std::unique_ptr<Graph<std::string>> &getWaterNetwork() const;
 
-
     std::vector<std::pair<std::string, std::vector<std::pair<std::string, int>>>> checkWaterNeedsWithFailures();
+
 
 };
 

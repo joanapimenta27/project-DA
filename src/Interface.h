@@ -112,7 +112,7 @@ private:
             },
             {
                 L"Max Amount of Water",
-                L"Dummy1",
+                L"Cities in Deficit",
                 L"Dummy2",
                 L"Main Menu"
             },
@@ -129,6 +129,10 @@ private:
             {
                 L"Back",
                 L"Main Menu"
+            },
+            {
+                    L"Back",
+                    L"Main Menu"
             }
     };
 

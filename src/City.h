@@ -9,8 +9,8 @@ private:
     std::string name_;
     std::string id_;
     std::string code_;
-    float demand_{};
-    int population_{};
+    float demand_;
+    int population_;
 
 public:
     City();
@@ -18,7 +18,7 @@ public:
     City(const std::string &name, const std::string &id, const std::string &code, float demand,
          int population);
 
-    std::string getName();
+    std::string getName() const;
 
     std::string getId();
 

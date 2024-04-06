@@ -42,18 +42,24 @@ Management::Management(int dataSet) : reservoirs_(std::make_unique<std::unordere
     for (const std::vector<std::string> &line : pipesData.getData()){
         std::string pointA = line.at(0);
         std::string pointB = line.at(1);
+        double capacity = std::stod(line.at(2));
+        int direction = std::stoi(line.at(3));
 
-        if (std::stoi(line.at(3))){
-            waterNetwork_->addEdge(pointA, pointB, std::stoi(line.at(2)));
+        if (direction){
+            waterNetwork_->addEdge(pointA, pointB, capacity);
         }
         else{
-            waterNetwork_->addBidirectionalEdge(pointA, pointB, std::stoi(line.at(2)));
+            waterNetwork_->addBidirectionalEdge(pointA, pointB, capacity);
         }
     }
 }
 
 const std::unordered_map<std::string, City> &Management::getCities(){
     return *cities_;
+}
+
+const std::unique_ptr<Graph<std::string>> &Management::getWaterNetwork() const {
+    return waterNetwork_;
 }
 
 Reservoir Management::getReservoirByCode(const std::string &code){
@@ -122,6 +128,26 @@ Graph<std::string> maxFlow(Graph<std::string> g){
         }
     }
     return max_flow;
+}
+
+std::vector<std::vector<std::string>> Management::checkWaterNeeds() {
+    std::vector<std::vector<std::string>> result;
+    for (const auto& city : *cities_) {
+        float waterNeeded = city.second.getDemand();
+        double waterDelivered = 0;
+        for (const auto& edge : waterNetwork_->findVertex(city.first)->getAdj()) {
+            waterDelivered += edge->getWeight();
+        }
+        if (waterDelivered < waterNeeded) {
+            std::vector<std::string> v;
+            v.emplace_back(city.first);
+            v.emplace_back(std::to_string(waterNeeded - waterDelivered));
+            v.emplace_back(city.second.getName());
+            v.emplace_back(std::to_string(waterNeeded));
+            result.emplace_back(v);
+        }
+    }
+    return result;
 }
 
 

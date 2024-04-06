@@ -35,6 +35,10 @@ public:
     City getCityByCode(const std::string &code);
 
     const std::unordered_map<std::string, City> &getCities();
+
+    std::vector<std::vector<std::string>> checkWaterNeeds();
+
+    const std::unique_ptr<Graph<std::string>> &getWaterNetwork() const;
 };
 
 

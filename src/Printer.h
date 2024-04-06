@@ -6,6 +6,7 @@
 #include <sys/ioctl.h>
 #include <locale>
 #include <codecvt>
+#include "Management.h"
 
 std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
 
@@ -87,9 +88,18 @@ int getTerminalWidth() {
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
     return w.ws_col;
 }
+
 std::wstring centerUp(const std::wstring& txtToCenter){
     if (getTerminalWidth() / 2 - txtToCenter.size() / 2 > 0){
         return std::wstring(getTerminalWidth() / 2 - txtToCenter.size() / 2, L' ') + txtToCenter;
+
+    }
+    return txtToCenter;
+}
+
+std::wstring centerUpAndLineUp(const std::wstring& txtToCenter, int lineUp){
+    if (getTerminalWidth() / 2 - lineUp > 0){
+        return std::wstring(getTerminalWidth() / 2 - lineUp, L' ') + txtToCenter;
 
     }
     return txtToCenter;
@@ -160,6 +170,31 @@ void printMonoInfo(const std::wstring& wstr){
         wigly_underline.push_back(L'~');
     }
     std::wcout << centerUp(red + wigly_underline + end_effect) << std::endl;
+}
+
+void printListCodeValue(const std::vector<std::vector<std::string>>& info){
+    std::wstring wigly_underline;
+    std::wcout << L"\n\n\n" << std::endl;
+    std::wstring topper = L"The Cities that cannot be supplied by the desired water level are :";
+    std::wcout << bold << centerUp(topper) << end_effect << std::endl;
+    for (wchar_t c : topper){
+        wigly_underline.push_back(L'~');
+    }
+
+    std::wcout << L"     " << centerUp(red + wigly_underline + end_effect) << L"\n" << std::endl;
+
+    for (const auto& p : info){
+        std::wstring wstr = L"->" + underline + converter.from_bytes(p[2]);
+        wstr.append(L", with the code " + underline + converter.from_bytes(p[0]));
+        wstr.append(end_effect);
+        wstr.append(L" has a demand of " + underline + converter.from_bytes(std::to_string(std::stoi(p[1]) - std::stoi(p[3]))));
+        wstr.append(end_effect);
+        wstr.append(L", but only is delivered " + underline + converter.from_bytes(p[3]));
+        wstr.append(end_effect);
+        wstr.append(L" which causes a deficit of " + underline + converter.from_bytes(p[1]));
+        wstr.append(end_effect);
+        std::wcout << centerUpAndLineUp(wstr, 40) << std::endl;
+    }
 }
 
 void printDoubleTable(const std::unordered_map<std::string, std::string>& wstring_list, int page, int elements_per_page, unsigned long selected_in_page, bool table_mode){

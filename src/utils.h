@@ -12,6 +12,7 @@
 #include "City.h"
 #include "../data_structures/Graph.h"
 
+void visitAndTest(std::queue<Vertex<std::string>*> &q,Edge<std::string> *e,Vertex<std::string> *d, double spare);
 bool augmentationPathFinder(Graph<std::string> *g ,Vertex<std::string> *source,Vertex<std::string> *sink);
 
 #endif //PROJECT_DA_UTILS_H

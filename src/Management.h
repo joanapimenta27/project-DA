@@ -11,6 +11,8 @@
 #include <unordered_map>
 #include <variant>
 #include <climits>
+#include <codecvt>
+#include <locale>
 #include "utils.h"
 #include "FileReader.h"
 #include "Reservoir.h"
@@ -24,6 +26,7 @@ private:
     std::unique_ptr<std::unordered_map<std::string, Station>> stations_;
     std::unique_ptr<std::unordered_map<std::string, City>> cities_;
     std::unique_ptr<Graph<std::string>> waterNetwork_;
+    std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
 
 public:
     Management(int dataSet);
@@ -36,12 +39,14 @@ public:
 
     const std::unordered_map<std::string, City> &getCities();
 
-
     std::vector<std::vector<std::string>> checkWaterNeeds();
+
+    double maxFlow(const Graph<std::string>& g, std::string code);
 
     const std::unique_ptr<Graph<std::string>> &getWaterNetwork() const;
 
     std::vector<std::pair<std::string, std::vector<std::pair<std::string, int>>>> checkWaterNeedsWithFailures();
+
 
 };
 

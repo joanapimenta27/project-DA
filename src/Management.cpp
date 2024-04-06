@@ -80,32 +80,48 @@ City Management::getCityByCode(const std::string &code){
     return it->second;
 }
 
-Graph<std::string> maxFlow(Graph<std::string> g){
+
+double Management::maxFlow(const Graph<std::string>& g, std::string code){
     Graph<std::string> max_flow=g;
+
     max_flow.addVertex("sink");
     max_flow.addVertex("source");
+    Vertex<std::string> *source=max_flow.findVertex("source");
+    Vertex<std::string> *sink=max_flow.findVertex("sink");
+
     for(Vertex<std::string> *v : max_flow.getVertexSet()){
         if(v->getInfo().substr(0,1)=="R"){
-            max_flow.findVertex("source")->addEdge(v,INT_MAX);
+            for(const auto& r:*reservoirs_){
+                if(r.first == v->getInfo()){
+                    source->addEdge(v,r.second.getMaxDelivery());
+                }
+            }
+
         }
         if(v->getInfo().substr(0,1)=="C"){
-            v->addEdge(max_flow.findVertex("sink"),INT_MAX);
+            for(const auto& c:*cities_){
+                if(c.first == v->getInfo()){
+                    v->addEdge(sink,c.second.getDemand());
+                }
+            }
         }
+
     }
 
     for(Vertex<std::string> *v:max_flow.getVertexSet()){
         for(Edge<std::string> *e:v->getAdj()){
             e->setFlow(0);
         }
+
     }
 
-    while(augmentationPathFinder(&max_flow,max_flow.findVertex("source"),max_flow.findVertex("sink"))){
+    while(augmentationPathFinder(&max_flow,source,sink)){
         double mini=INF;
 
-        for(Vertex<std::string> *v=max_flow.findVertex("sink"); v!=max_flow.findVertex("source");){
+        for(Vertex<std::string> *v=sink; v!=source;){
             Edge<std::string> *e=v->getPath();
             if(v==e->getDest()){
-                mini=std::min(mini,e->getWeight()-e->getFlow());
+                mini=std::min(mini,e->getWeight() - e->getFlow());
                 v=e->getOrig();
             }
             else{
@@ -113,13 +129,13 @@ Graph<std::string> maxFlow(Graph<std::string> g){
                 v=e->getDest();
             }
         }
-
-        for(Vertex<std::string> *v=max_flow.findVertex("sink"); v!=max_flow.findVertex("source");){
+        for(Vertex<std::string> *v=sink; v!=source;){
             Edge<std::string> *e=v->getPath();
             double flow=e->getFlow();
             if(v==e->getDest()){
                 e->setFlow(flow+mini);
                 v=e->getOrig();
+
             }
             else{
                 e->setFlow(flow-mini);
@@ -127,7 +143,12 @@ Graph<std::string> maxFlow(Graph<std::string> g){
             }
         }
     }
-    return max_flow;
+
+    double res=0;
+    for(Edge<std::string> *e: max_flow.findVertex(code)->getIncoming()){
+        res+=e->getFlow();
+    }
+    return res;
 }
 
 

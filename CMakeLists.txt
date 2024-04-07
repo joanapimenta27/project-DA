@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(src)
 
 add_executable(project_DA
-        data_structures/Graph.h
+        src/Graph.h
         src/main.cpp
         src/Interface.cpp
         src/Interface.h

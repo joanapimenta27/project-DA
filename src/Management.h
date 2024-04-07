@@ -19,7 +19,7 @@
 #include "Reservoir.h"
 #include "Station.h"
 #include "City.h"
-#include "../data_structures/Graph.h"
+#include "Graph.h"
 
 
 struct pair_hash {

@@ -1,0 +1,379 @@
+\doxysection{Interface Class Reference}
+\hypertarget{class_interface}{}\label{class_interface}\index{Interface@{Interface}}
+
+
+Class representing the user interface.  
+
+
+
+
+{\ttfamily \#include $<$Interface.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_interface_a4406d74c75bdfe150bf72be1f1cda8b1}\label{class_interface_a4406d74c75bdfe150bf72be1f1cda8b1} 
+{\bfseries Interface} ()
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_interface}{Interface} class. \end{DoxyCompactList}\item 
+\Hypertarget{class_interface_a090a950300a463d91f8f361d3b333906}\label{class_interface_a090a950300a463d91f8f361d3b333906} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries run} ()
+\begin{DoxyCompactList}\small\item\em Function to start running the interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_interface_a88d726637e232bccdc2a3db877bd40f1}\label{class_interface_a88d726637e232bccdc2a3db877bd40f1} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries inputer} ()
+\item 
+\Hypertarget{class_interface_a25daa6a666f15e5a3de8d80386b7d054}\label{class_interface_a25daa6a666f15e5a3de8d80386b7d054} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries basic\+Input\+Response} (\mbox{\hyperlink{class_edge}{unsigned}} \mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_edge}{user\+\_\+in}})
+\item 
+\Hypertarget{class_interface_ae573b275b340d366b36a883f8b7664e0}\label{class_interface_ae573b275b340d366b36a883f8b7664e0} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries input\+Response\+In\+Write\+Mode} (\mbox{\hyperlink{class_edge}{wchar\+\_\+t}} \mbox{\hyperlink{class_edge}{user\+\_\+in}})
+\item 
+\Hypertarget{class_interface_aee754c0d176dde13ad8bc0119ce99f17}\label{class_interface_aee754c0d176dde13ad8bc0119ce99f17} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries refresh\+Directories} ()
+\item 
+\Hypertarget{class_interface_aa91e71a984e2420a9a19be39753f7732}\label{class_interface_aa91e71a984e2420a9a19be39753f7732} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries enter\+Input\+Handler} (\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_edge}{loc}}, \mbox{\hyperlink{class_edge}{unsigned}} \mbox{\hyperlink{class_edge}{long}} \mbox{\hyperlink{class_edge}{sel}}, \mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_edge}{back}}, \mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_edge}{main\+\_\+menu}}, \mbox{\hyperlink{class_edge}{bool}} \mbox{\hyperlink{class_edge}{main\+\_\+menu2}})
+\item 
+\Hypertarget{class_interface_ab95d9b8775b7c502a5bfb0222c4b54fc}\label{class_interface_ab95d9b8775b7c502a5bfb0222c4b54fc} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries write\+Option\+Defaulter\+City} ()
+\item 
+\Hypertarget{class_interface_ae09847305f64653a0708e79f63938449}\label{class_interface_ae09847305f64653a0708e79f63938449} 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries filter\+City\+Search} (\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \&\mbox{\hyperlink{class_edge}{um}})
+\item 
+\Hypertarget{class_interface_a6a2a2c53e5896312672b23fca042f224}\label{class_interface_a6a2a2c53e5896312672b23fca042f224} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries initialize\+Table} ()
+\item 
+\Hypertarget{class_interface_a8266b0aadc4214eec76c38a3bdedbc78}\label{class_interface_a8266b0aadc4214eec76c38a3bdedbc78} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries table\+Mode\+Cleaner} (std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{class_edge}{um}})
+\item 
+\Hypertarget{class_interface_ad0c843d56da7d050a99131d3245fb949}\label{class_interface_ad0c843d56da7d050a99131d3245fb949} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries write\+Option\+Defaulter\+Reservoir} ()
+\item 
+\Hypertarget{class_interface_ac2b355671c2c641f7494e98e6c210feb}\label{class_interface_ac2b355671c2c641f7494e98e6c210feb} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries filter\+Reservoir\+Search} (\mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::wstring $>$ \&\mbox{\hyperlink{class_edge}{um}})
+\item 
+\Hypertarget{class_interface_af4924cd910ce5b04e1aee3abe2926d00}\label{class_interface_af4924cd910ce5b04e1aee3abe2926d00} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries table\+Mode\+Cleaner2} (std\+::vector$<$ std\+::wstring $>$ \mbox{\hyperlink{class_edge}{um}})
+\item 
+\Hypertarget{class_interface_a0ceb8301e9744552cb2bacd4d941ebeb}\label{class_interface_a0ceb8301e9744552cb2bacd4d941ebeb} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries write\+Option\+Defaulter\+Station} ()
+\item 
+\Hypertarget{class_interface_a8db6161a74d970afad11a7a76c719df1}\label{class_interface_a8db6161a74d970afad11a7a76c719df1} 
+\mbox{\hyperlink{class_edge}{void}} {\bfseries write\+Option\+Defaulter\+Pipe} ()
+\item 
+\Hypertarget{class_interface_acfdbabb71269c8c9627f373629562802}\label{class_interface_acfdbabb71269c8c9627f373629562802} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries get\+Code\+Pipes} (\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \&\mbox{\hyperlink{class_edge}{um}})
+\item 
+\Hypertarget{class_interface_ab01e77430332eeb89d5f4d3033d6f1eb}\label{class_interface_ab01e77430332eeb89d5f4d3033d6f1eb} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries filter\+Station\+Search} (\mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::wstring $>$ \&\mbox{\hyperlink{class_edge}{um}})
+\item 
+\Hypertarget{class_interface_aa346a64b5baafbb38f0e37e70c98682f}\label{class_interface_aa346a64b5baafbb38f0e37e70c98682f} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries filter\+Pipe\+Search} (\mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::wstring $>$ \&\mbox{\hyperlink{class_edge}{um}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_interface_ae50545e45220f45d692a126d4dd1b99c}\label{class_interface_ae50545e45220f45d692a126d4dd1b99c} 
+\mbox{\hyperlink{class_edge}{static}} \mbox{\hyperlink{class_edge}{void}} {\bfseries stack\+Clear} (std\+::stack$<$ \mbox{\hyperlink{class_edge}{int}} $>$ \&\mbox{\hyperlink{class_edge}{s}})
+\item 
+\Hypertarget{class_interface_ab4b184374ae4b20ce767830fada3d5ca}\label{class_interface_ab4b184374ae4b20ce767830fada3d5ca} 
+\mbox{\hyperlink{class_edge}{static}} std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries stringify\+UMString\+Class} (\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_city}{City}} $>$ \&\mbox{\hyperlink{class_edge}{um}})
+\item 
+\Hypertarget{class_interface_a5242b31e17e05bce0810784719339d89}\label{class_interface_a5242b31e17e05bce0810784719339d89} 
+\mbox{\hyperlink{class_edge}{static}} std\+::wstring {\bfseries smooth\+\_\+string} (\mbox{\hyperlink{class_edge}{const}} std\+::wstring \&\mbox{\hyperlink{class_edge}{w}})
+\item 
+\Hypertarget{class_interface_ae93b90f6646a37e3fe74b38f1f512f80}\label{class_interface_ae93b90f6646a37e3fe74b38f1f512f80} 
+\mbox{\hyperlink{class_edge}{static}} std\+::vector$<$ std\+::wstring $>$ {\bfseries get\+Code\+Vector} (\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_reservoir}{Reservoir}} $>$ \&\mbox{\hyperlink{class_edge}{um}})
+\item 
+\Hypertarget{class_interface_af4fab6540a59d3f9829b902ea246cce3}\label{class_interface_af4fab6540a59d3f9829b902ea246cce3} 
+\mbox{\hyperlink{class_edge}{static}} std\+::vector$<$ std\+::wstring $>$ {\bfseries get\+Code\+Station} (\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_station}{Station}} $>$ \&\mbox{\hyperlink{class_edge}{um}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_interface_abd19aa0746241d1d7d70e94b7591c682}\label{class_interface_abd19aa0746241d1d7d70e94b7591c682} 
+std\+::wstring {\bfseries bg\+\_\+light\+\_\+red} = L"{}\textbackslash{}x1b\mbox{[}101\mbox{\hyperlink{class_edge}{m"{}}}
+\item 
+\Hypertarget{class_interface_ac74b5aa0d42c30ad6832a4793f24f0dd}\label{class_interface_ac74b5aa0d42c30ad6832a4793f24f0dd} 
+std\+::wstring {\bfseries end\+\_\+bg} = L"{}\textbackslash{}x1b\mbox{[}0m"{}
+\item 
+\Hypertarget{class_interface_a3a940ee4ade5ec87cad3ccc7409aa589}\label{class_interface_a3a940ee4ade5ec87cad3ccc7409aa589} 
+std\+::wstring {\bfseries italic} = L"{}\textbackslash{}x1b\mbox{[}3\mbox{\hyperlink{class_edge}{m"{}}}
+\item 
+\Hypertarget{class_interface_a21efcdb047981fa1d015a1d57d4946b7}\label{class_interface_a21efcdb047981fa1d015a1d57d4946b7} 
+std\+::wstring {\bfseries end\+\_\+italic} = L"{}\textbackslash{}x1b\mbox{[}0m"{}
+\item 
+\Hypertarget{class_interface_aba4112d3c1db879c1f3db8bd9641c0dd}\label{class_interface_aba4112d3c1db879c1f3db8bd9641c0dd} 
+std\+::wstring {\bfseries red} = L"{}\textbackslash{}033\mbox{[}31\mbox{\hyperlink{class_edge}{m"{}}}
+\item 
+\Hypertarget{class_interface_a42e8c06d109ad89650b79e012f6989e1}\label{class_interface_a42e8c06d109ad89650b79e012f6989e1} 
+std\+::wstring {\bfseries blue} = L"{}\textbackslash{}033\mbox{[}34\mbox{\hyperlink{class_edge}{m"{}}}
+\item 
+\Hypertarget{class_interface_aaa06aa21032d43cd78512a02d6b9b396}\label{class_interface_aaa06aa21032d43cd78512a02d6b9b396} 
+std\+::wstring {\bfseries bold} = L"{}\textbackslash{}033\mbox{[}1\mbox{\hyperlink{class_edge}{m"{}}}
+\item 
+\Hypertarget{class_interface_a9855664f6d70184d22b719b759e803da}\label{class_interface_a9855664f6d70184d22b719b759e803da} 
+std\+::wstring {\bfseries underline} = L"{}\textbackslash{}033\mbox{[}4\mbox{\hyperlink{class_edge}{m"{}}}
+\item 
+\Hypertarget{class_interface_a55f4050f6fc924b871efc0ff807fc452}\label{class_interface_a55f4050f6fc924b871efc0ff807fc452} 
+std\+::wstring {\bfseries end\+\_\+effect} = L"{}\textbackslash{}033\mbox{[}0m"{}
+\item 
+\Hypertarget{class_interface_a70bb32837bdaff6d557b18b39dd942a8}\label{class_interface_a70bb32837bdaff6d557b18b39dd942a8} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_management}{Management}} $>$ {\bfseries man}
+\item 
+\Hypertarget{class_interface_a06e19cfcc04d3829aed2b6aaa7673dc8}\label{class_interface_a06e19cfcc04d3829aed2b6aaa7673dc8} 
+std\+::thread {\bfseries man\+Thread}
+\item 
+\Hypertarget{class_interface_a84c2466fdd29ca2a53b80ac42423a7e3}\label{class_interface_a84c2466fdd29ca2a53b80ac42423a7e3} 
+\mbox{\hyperlink{class_edge}{int}} {\bfseries location} = 0
+\item 
+\Hypertarget{class_interface_ad82e6cbdd00e185b2419d080a1a93319}\label{class_interface_ad82e6cbdd00e185b2419d080a1a93319} 
+\mbox{\hyperlink{class_edge}{int}} {\bfseries page} = 0
+\item 
+\Hypertarget{class_interface_add0e5c0c352fa459dcb0816ebf7a011d}\label{class_interface_add0e5c0c352fa459dcb0816ebf7a011d} 
+\mbox{\hyperlink{class_edge}{int}} {\bfseries elements\+\_\+per\+\_\+page} = 10
+\item 
+\Hypertarget{class_interface_ab0c7e9ee733e42ba4e31e70552782008}\label{class_interface_ab0c7e9ee733e42ba4e31e70552782008} 
+\mbox{\hyperlink{class_edge}{unsigned}} \mbox{\hyperlink{class_edge}{long}} {\bfseries selected} = 0
+\item 
+\Hypertarget{class_interface_a4872dd5ff5b9d83e3faa660bba17748a}\label{class_interface_a4872dd5ff5b9d83e3faa660bba17748a} 
+\mbox{\hyperlink{class_edge}{unsigned}} \mbox{\hyperlink{class_edge}{long}} {\bfseries selected\+\_\+in\+\_\+page} = 0
+\item 
+\Hypertarget{class_interface_a1f70a7de3ab5e9fa39e93cceaf294e3c}\label{class_interface_a1f70a7de3ab5e9fa39e93cceaf294e3c} 
+\mbox{\hyperlink{class_edge}{unsigned}} \mbox{\hyperlink{class_edge}{int}} {\bfseries user\+\_\+input} = 0
+\item 
+\Hypertarget{class_interface_aa37ee11c829cb1eac6dc637688415080}\label{class_interface_aa37ee11c829cb1eac6dc637688415080} 
+\mbox{\hyperlink{class_edge}{bool}} {\bfseries write\+\_\+mode} = \mbox{\hyperlink{class_edge}{false}}
+\item 
+\Hypertarget{class_interface_a73c97405651c1c8a9d26b5f12c8f5bd1}\label{class_interface_a73c97405651c1c8a9d26b5f12c8f5bd1} 
+\mbox{\hyperlink{class_edge}{bool}} {\bfseries table\+\_\+mode} = \mbox{\hyperlink{class_edge}{false}}
+\item 
+\Hypertarget{class_interface_a0b15a0728a20d763b61165fd4c54a7fa}\label{class_interface_a0b15a0728a20d763b61165fd4c54a7fa} 
+\mbox{\hyperlink{class_edge}{bool}} {\bfseries is\+\_\+done} = \mbox{\hyperlink{class_edge}{false}}
+\item 
+\Hypertarget{class_interface_aecf5e11618c2d9e9fb7baf4262c3bab9}\label{class_interface_aecf5e11618c2d9e9fb7baf4262c3bab9} 
+std\+::string {\bfseries city\+\_\+analised}
+\item 
+\Hypertarget{class_interface_acbeccbd271a9eaa6275568eb46ff3176}\label{class_interface_acbeccbd271a9eaa6275568eb46ff3176} 
+std\+::string {\bfseries city\+\_\+analised\+\_\+code}
+\item 
+\Hypertarget{class_interface_a09a6f38e03afef946f13a97004e81667}\label{class_interface_a09a6f38e03afef946f13a97004e81667} 
+std\+::wstring {\bfseries reservoir\+\_\+analised\+\_\+code}
+\item 
+\Hypertarget{class_interface_a6721538ebcad5faaccec67c63c66d3d1}\label{class_interface_a6721538ebcad5faaccec67c63c66d3d1} 
+std\+::wstring {\bfseries directory}
+\item 
+\Hypertarget{class_interface_ad925a886c55c6e10743b72714a79de74}\label{class_interface_ad925a886c55c6e10743b72714a79de74} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries directories}
+\item 
+\Hypertarget{class_interface_a1345468c1c50678f5cee36dd237dffe1}\label{class_interface_a1345468c1c50678f5cee36dd237dffe1} 
+std\+::wstring {\bfseries write}
+\item 
+\Hypertarget{class_interface_afa8a9ec0d737b0fcbd48288cecf9bd98}\label{class_interface_afa8a9ec0d737b0fcbd48288cecf9bd98} 
+std\+::wstring {\bfseries write\+\_\+default} = italic + \mbox{\hyperlink{class_edge}{L"{}}} \mbox{\hyperlink{class_edge}{You}} \mbox{\hyperlink{class_edge}{can}} write \mbox{\hyperlink{class_edge}{here}} "{} + end\+\_\+italic
+\item 
+\Hypertarget{class_interface_a9195fc9140fab3a5b8567be45e5f8a8e}\label{class_interface_a9195fc9140fab3a5b8567be45e5f8a8e} 
+std\+::wstring {\bfseries selected\+\_\+data\+Set} = \mbox{\hyperlink{class_edge}{L"{}none"{}}}
+\item 
+\Hypertarget{class_interface_adcc0a3287606627679aba87641acc4dd}\label{class_interface_adcc0a3287606627679aba87641acc4dd} 
+std\+::stack$<$ \mbox{\hyperlink{class_edge}{int}} $>$ {\bfseries earlier\+\_\+locations}
+\item 
+\Hypertarget{class_interface_a098b6cb6a05ae855b22c9ef557c66fd0}\label{class_interface_a098b6cb6a05ae855b22c9ef557c66fd0} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries filtered\+String\+Vector}
+\item 
+\Hypertarget{class_interface_a094340cc22d3424a9f6ce3b15e715750}\label{class_interface_a094340cc22d3424a9f6ce3b15e715750} 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries filtered\+Wstring\+Pairs\+Vector}
+\item 
+\Hypertarget{class_interface_afa97c190c6955b1492ec5be257c6f1bc}\label{class_interface_afa97c190c6955b1492ec5be257c6f1bc} 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries cities\+String\+Map}
+\item 
+\Hypertarget{class_interface_a1e182aedcad6c8c0c332b56fd829e460}\label{class_interface_a1e182aedcad6c8c0c332b56fd829e460} 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries cities\+Water\+Delivered\+Map}
+\item 
+\Hypertarget{class_interface_ae042a759438b6de49fe21f7287f10f6e}\label{class_interface_ae042a759438b6de49fe21f7287f10f6e} 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries cities\+Water\+Delivered\+Map\+With\+Changes}
+\item 
+\Hypertarget{class_interface_aa1c61abc19cf153e23b08b8064f8f1a7}\label{class_interface_aa1c61abc19cf153e23b08b8064f8f1a7} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries reservoir\+Code\+Vector}
+\item 
+\Hypertarget{class_interface_a499b2a4fee88006b50fc9d93b03b7cbb}\label{class_interface_a499b2a4fee88006b50fc9d93b03b7cbb} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries station\+Code\+Vector}
+\item 
+\Hypertarget{class_interface_a5e5f3568071f2c3388fc659c1eac3d21}\label{class_interface_a5e5f3568071f2c3388fc659c1eac3d21} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries pipe\+Code\+Vector}
+\item 
+\Hypertarget{class_interface_af18dac22f36f0e17b013c2349cee618f}\label{class_interface_af18dac22f36f0e17b013c2349cee618f} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries selected\+Reservoir\+Code}
+\item 
+\Hypertarget{class_interface_a9e94bf62abcc8a504f31d1de99d05934}\label{class_interface_a9e94bf62abcc8a504f31d1de99d05934} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries selected\+Pumping\+Code}
+\item 
+\Hypertarget{class_interface_a7c2691aade95f49a8cd580e385af3351}\label{class_interface_a7c2691aade95f49a8cd580e385af3351} 
+std\+::vector$<$ std\+::wstring $>$ {\bfseries selected\+Pipe\+Code}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}} $>$ \mbox{\hyperlink{class_interface_aa98f79172188a1dbb7873754344c28e8}{location\+Has\+Table}}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}} $>$ \mbox{\hyperlink{class_interface_abfe7e9084d99a00b26d388c4268c1b55}{cap\+Of\+Write}}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}} $>$ \mbox{\hyperlink{class_interface_ab0d38dd5313c94c5c1e4058cfd4699be}{location\+Of\+City\+Search}}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}} $>$ \mbox{\hyperlink{class_interface_acad1b466d576eb9729c5aef1ccc40888}{location\+Of\+Reservoir\+Search}}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}} $>$ \mbox{\hyperlink{class_interface_a511889cbf69a18dc479e2b4003cd4cdc}{location\+Of\+Station\+Search}}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}} $>$ \mbox{\hyperlink{class_interface_a81643a3856a85aec96a829bf01bf8b6e}{location\+Of\+Pipe\+Search}}
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}} $>$ \mbox{\hyperlink{class_interface_a9c8b26c0cdd5353ea30c36e1e01fd511}{location\+With\+Table}}
+\item 
+\Hypertarget{class_interface_a2d925fdf86e86677b82273c3bd4b2445}\label{class_interface_a2d925fdf86e86677b82273c3bd4b2445} 
+std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ {\bfseries water\+\_\+needs}
+\item 
+\Hypertarget{class_interface_aaf529d5dfcc3f6d671e446e592c71354}\label{class_interface_aaf529d5dfcc3f6d671e446e592c71354} 
+std\+::vector$<$ std\+::vector$<$ std\+::wstring $>$ $>$ {\bfseries options}
+\item 
+std\+::vector$<$ std\+::wstring $>$ \mbox{\hyperlink{class_interface_a09a01d38974c264bbdd734cba9113eb9}{helpers}}
+\item 
+std\+::vector$<$ std\+::wstring $>$ \mbox{\hyperlink{class_interface_a0cb4cc2eacafa8c4969d55d9be4f14a3}{water\+Supply\+Management}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing the user interface. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_interface_abfe7e9084d99a00b26d388c4268c1b55}\label{class_interface_abfe7e9084d99a00b26d388c4268c1b55} 
+\index{Interface@{Interface}!capOfWrite@{capOfWrite}}
+\index{capOfWrite@{capOfWrite}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{capOfWrite}{capOfWrite}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$\mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}}$>$ Interface\+::cap\+Of\+Write\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{7,\ 30\},\ \{12,\ 4\},\ \{14,\ 5\},\ \{16,\ 10\}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_interface_a09a01d38974c264bbdd734cba9113eb9}\label{class_interface_a09a01d38974c264bbdd734cba9113eb9} 
+\index{Interface@{Interface}!helpers@{helpers}}
+\index{helpers@{helpers}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{helpers}{helpers}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::wstring$>$ Interface\+::helpers\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ You\ can\ use\ 'up\ arrow',\ 'down\ arrow',\ and\ 'ENTER'\ to\ select\ the\ options"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ You\ can\ use\ 'tab'\ to\ change\ to\ the\ table,\ and\ 'ENTER'\ to\ select\ one"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ You\ can\ use\ 'n'\ and\ 'p'\ to\ go\ to\ the\ next\ and\ previous\ page\ of\ the\ table\ respectively"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ Choose\ your\ DataSet"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ You\ selected\ Portugal\ DataSet"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ You\ selected\ Madeira\ DataSet"{}}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_interface_aa98f79172188a1dbb7873754344c28e8}\label{class_interface_aa98f79172188a1dbb7873754344c28e8} 
+\index{Interface@{Interface}!locationHasTable@{locationHasTable}}
+\index{locationHasTable@{locationHasTable}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{locationHasTable}{locationHasTable}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$\mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}}$>$ Interface\+::location\+Has\+Table\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{7,\ 1\},\ \{12,\ 1\},\ \{14,\ 1\},\ \{16,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_interface_ab0d38dd5313c94c5c1e4058cfd4699be}\label{class_interface_ab0d38dd5313c94c5c1e4058cfd4699be} 
+\index{Interface@{Interface}!locationOfCitySearch@{locationOfCitySearch}}
+\index{locationOfCitySearch@{locationOfCitySearch}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{locationOfCitySearch}{locationOfCitySearch}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$\mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}}$>$ Interface\+::location\+Of\+City\+Search\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{7,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_interface_a81643a3856a85aec96a829bf01bf8b6e}\label{class_interface_a81643a3856a85aec96a829bf01bf8b6e} 
+\index{Interface@{Interface}!locationOfPipeSearch@{locationOfPipeSearch}}
+\index{locationOfPipeSearch@{locationOfPipeSearch}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{locationOfPipeSearch}{locationOfPipeSearch}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$\mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}}$>$ Interface\+::location\+Of\+Pipe\+Search\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{16,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_interface_acad1b466d576eb9729c5aef1ccc40888}\label{class_interface_acad1b466d576eb9729c5aef1ccc40888} 
+\index{Interface@{Interface}!locationOfReservoirSearch@{locationOfReservoirSearch}}
+\index{locationOfReservoirSearch@{locationOfReservoirSearch}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{locationOfReservoirSearch}{locationOfReservoirSearch}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$\mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}}$>$ Interface\+::location\+Of\+Reservoir\+Search\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{12,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_interface_a511889cbf69a18dc479e2b4003cd4cdc}\label{class_interface_a511889cbf69a18dc479e2b4003cd4cdc} 
+\index{Interface@{Interface}!locationOfStationSearch@{locationOfStationSearch}}
+\index{locationOfStationSearch@{locationOfStationSearch}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{locationOfStationSearch}{locationOfStationSearch}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$\mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}}$>$ Interface\+::location\+Of\+Station\+Search\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{14,\ 1\}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_interface_a9c8b26c0cdd5353ea30c36e1e01fd511}\label{class_interface_a9c8b26c0cdd5353ea30c36e1e01fd511} 
+\index{Interface@{Interface}!locationWithTable@{locationWithTable}}
+\index{locationWithTable@{locationWithTable}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{locationWithTable}{locationWithTable}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$\mbox{\hyperlink{class_edge}{int}}, \mbox{\hyperlink{class_edge}{int}}$>$ Interface\+::location\+With\+Table\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{7,\ 0\},\ \{12,\ 1\},\ \{14,\ 2\},\ \{16,\ 3\}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_interface_a0cb4cc2eacafa8c4969d55d9be4f14a3}\label{class_interface_a0cb4cc2eacafa8c4969d55d9be4f14a3} 
+\index{Interface@{Interface}!waterSupplyManagement@{waterSupplyManagement}}
+\index{waterSupplyManagement@{waterSupplyManagement}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{waterSupplyManagement}{waterSupplyManagement}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::wstring$>$ Interface\+::water\+Supply\+Management\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ "{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ ██\ \ \ \ \ ██\ \ █████\ \ ████████\ ███████\ ██████\ \ \ \ \ \ ███████\ ██\ \ \ \ ██\ ██████\ \ ██████\ \ ██\ \ \ \ \ ██\ \ \ \ ██\ \ \ \ \ ███\ \ \ \ ███\ \ █████\ \ ███\ \ \ \ ██\ \ █████\ \ \ ██████\ \ ███████\ ███\ \ \ \ ███\ ███████\ ███\ \ \ \ ██\ ████████\ \ \ |"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ ██\ \ \ \ \ ██\ ██\ \ \ ██\ \ \ \ ██\ \ \ \ ██\ \ \ \ \ \ ██\ \ \ ██\ \ \ \ \ ██\ \ \ \ \ \ ██\ \ \ \ ██\ ██\ \ \ ██\ ██\ \ \ ██\ ██\ \ \ \ \ \ ██\ \ ██\ \ \ \ \ \ ████\ \ ████\ ██\ \ \ ██\ ████\ \ \ ██\ ██\ \ \ ██\ ██\ \ \ \ \ \ \ ██\ \ \ \ \ \ ████\ \ ████\ ██\ \ \ \ \ \ ████\ \ \ ██\ \ \ \ ██\ \ \ \ \ \ |"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ ██\ \ █\ \ ██\ ███████\ \ \ \ ██\ \ \ \ █████\ \ \ ██████\ \ \ \ \ \ ███████\ ██\ \ \ \ ██\ ██████\ \ ██████\ \ ██\ \ \ \ \ \ \ ████\ \ \ \ \ \ \ ██\ ████\ ██\ ███████\ ██\ ██\ \ ██\ ███████\ ██\ \ \ ███\ █████\ \ \ ██\ ████\ ██\ █████\ \ \ ██\ ██\ \ ██\ \ \ \ ██\ \ \ \ \ \ |"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ ██\ ███\ ██\ ██\ \ \ ██\ \ \ \ ██\ \ \ \ ██\ \ \ \ \ \ ██\ \ \ ██\ \ \ \ \ \ \ \ \ \ ██\ ██\ \ \ \ ██\ ██\ \ \ \ \ \ ██\ \ \ \ \ \ ██\ \ \ \ \ \ \ \ ██\ \ \ \ \ \ \ \ ██\ \ ██\ \ ██\ ██\ \ \ ██\ ██\ \ ██\ ██\ ██\ \ \ ██\ ██\ \ \ \ ██\ ██\ \ \ \ \ \ ██\ \ ██\ \ ██\ ██\ \ \ \ \ \ ██\ \ ██\ ██\ \ \ \ ██\ \ \ \ \ \ |"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ \ ███\ ███\ \ ██\ \ \ ██\ \ \ \ ██\ \ \ \ ███████\ ██\ \ \ ██\ \ \ \ \ ███████\ \ ██████\ \ ██\ \ \ \ \ \ ██\ \ \ \ \ \ ██████\ \ \ \ ██\ \ \ \ \ \ \ \ ██\ \ \ \ \ \ ██\ ██\ \ \ ██\ ██\ \ \ ████\ ██\ \ \ ██\ \ ██████\ \ ███████\ ██\ \ \ \ \ \ ██\ ███████\ ██\ \ \ ████\ \ \ \ ██\ \ \ \ \ \ |"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ "{}},}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/jlsmp/\+One\+Drive/\+Documentos/universidade/\+DA-\/\+Project1/src/Interface.\+h\item 
+C\+:/\+Users/jlsmp/\+One\+Drive/\+Documentos/universidade/\+DA-\/\+Project1/src/Interface.\+cpp\end{DoxyCompactItemize}

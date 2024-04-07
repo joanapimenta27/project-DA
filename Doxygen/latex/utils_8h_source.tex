@@ -1,0 +1,33 @@
+\doxysection{utils.\+h}
+\hypertarget{utils_8h_source}{}\label{utils_8h_source}\index{C:/Users/jlsmp/OneDrive/Documentos/universidade/DA-\/Project1/src/utils.h@{C:/Users/jlsmp/OneDrive/Documentos/universidade/DA-\/Project1/src/utils.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ joana\ on\ 05/04/24.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ PROJECT\_DA\_UTILS\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ PROJECT\_DA\_UTILS\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <codecvt>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <locale>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Graph.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{extern}\ std::wstring\_convert<std::codecvt\_utf8<wchar\_t>>\ converter1;}
+\DoxyCodeLine{00017\ \textcolor{keyword}{extern}\ std::wstring\_convert<std::codecvt\_utf8<wchar\_t>,\ \textcolor{keywordtype}{wchar\_t}>\ converter;}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}\ visitAndTest(std::queue<\mbox{\hyperlink{class_edge}{Vertex<std::string>}}*>\ \&\mbox{\hyperlink{class_edge}{q}},\mbox{\hyperlink{class_edge}{Edge<std::string>}}\ *\mbox{\hyperlink{class_edge}{e}},\mbox{\hyperlink{class_edge}{Vertex<std::string>}}\ *\mbox{\hyperlink{class_edge}{d}},\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_edge}{spare}});}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{bool}\ augmentationPathFinder(\mbox{\hyperlink{class_edge}{Graph<std::string>}}\ *\mbox{\hyperlink{class_edge}{g}}\ ,\mbox{\hyperlink{class_edge}{Vertex<std::string>}}\ *\mbox{\hyperlink{class_edge}{source}},\mbox{\hyperlink{class_edge}{Vertex<std::string>}}\ *\mbox{\hyperlink{class_edge}{sink}});}
+\DoxyCodeLine{00020\ std::string\ key(\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_edge}{i}},\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_edge}{j}});}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{double}\ findMin(\textcolor{keyword}{const}\ std::vector<double>\&\ \mbox{\hyperlink{class_edge}{values}});}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{double}\ calcPathMin(\textcolor{keyword}{const}\ std::vector<std::vector<std::string>>\ \&path);}
+\DoxyCodeLine{00023\ \mbox{\hyperlink{class_edge}{Graph<std::string>}}\ createGraphCopy(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_edge}{Graph<std::string>}}\&\ \mbox{\hyperlink{class_edge}{og\_graph}});}
+\DoxyCodeLine{00024\ std::string\ stringDivider(\textcolor{keyword}{const}\ std::wstring\&\ \mbox{\hyperlink{class_edge}{s}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{i}},\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{class_edge}{loc}});}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROJECT\_DA\_UTILS\_H}}
+
+\end{DoxyCode}

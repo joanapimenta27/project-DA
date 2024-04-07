@@ -1,0 +1,267 @@
+\doxysection{Interface.\+h}
+\hypertarget{_interface_8h_source}{}\label{_interface_8h_source}\index{C:/Users/jlsmp/OneDrive/Documentos/universidade/DA-\/Project1/src/Interface.h@{C:/Users/jlsmp/OneDrive/Documentos/universidade/DA-\/Project1/src/Interface.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PROJECT\_DA\_INTERFACE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PROJECT\_DA\_INTERFACE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <codecvt>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <termios.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <locale>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stack>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Management.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}utils.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_interface}{Interface}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_interface_a4406d74c75bdfe150bf72be1f1cda8b1}{Interface}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_interface_a090a950300a463d91f8f361d3b333906}{run}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ COLOR\ SCHEMES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\///}}
+\DoxyCodeLine{00036\ \ \ \ \ std::wstring\ bg\_light\_red\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)x1b[101m"{}};}
+\DoxyCodeLine{00037\ \ \ \ \ std::wstring\ end\_bg\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)x1b[0m"{}};}
+\DoxyCodeLine{00038\ \ \ \ \ std::wstring\ italic\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)x1b[3m"{}};}
+\DoxyCodeLine{00039\ \ \ \ \ std::wstring\ end\_italic\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)x1b[0m"{}};}
+\DoxyCodeLine{00040\ \ \ \ \ std::wstring\ red\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)033[31m"{}};}
+\DoxyCodeLine{00041\ \ \ \ \ std::wstring\ blue\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)033[34m"{}};}
+\DoxyCodeLine{00042\ \ \ \ \ std::wstring\ bold\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)033[1m"{}};}
+\DoxyCodeLine{00043\ \ \ \ \ std::wstring\ underline\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)033[4m"{}};;}
+\DoxyCodeLine{00044\ \ \ \ \ std::wstring\ end\_effect\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)033[0m"{}};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\///}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ std::shared\_ptr<Management>\ man;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ std::thread\ manThread;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ location\ =\ 0;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ page\ =\ 0;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ elements\_per\_page\ =\ 10;}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ selected\ =\ 0;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ selected\_in\_page\ =\ 0;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ user\_input\ =\ 0;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ write\_mode\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ table\_mode\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_done\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ std::string\ city\_analised;}
+\DoxyCodeLine{00065\ \ \ \ \ std::string\ city\_analised\_code;}
+\DoxyCodeLine{00066\ \ \ \ \ std::wstring\ reservoir\_analised\_code;}
+\DoxyCodeLine{00067\ \ \ \ \ std::wstring\ directory;}
+\DoxyCodeLine{00068\ \ \ \ \ std::vector<std::wstring>\ directories;}
+\DoxyCodeLine{00069\ \ \ \ \ std::wstring\ write;}
+\DoxyCodeLine{00070\ \ \ \ \ std::wstring\ write\_default\ =\ \ italic\ +\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ You\ can\ write\ here\ \ "{}}\ +\ end\_italic;}
+\DoxyCodeLine{00071\ \ \ \ \ std::wstring\ selected\_dataSet\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}none"{}};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ std::stack<int>\ earlier\_locations;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ std::vector<std::wstring>\ filteredStringVector;}
+\DoxyCodeLine{00076\ \ \ \ \ std::unordered\_map<std::string,\ std::string>\ filteredWstringPairsVector;}
+\DoxyCodeLine{00077\ \ \ \ \ std::unordered\_map<std::string,\ std::string>\ citiesStringMap;}
+\DoxyCodeLine{00078\ \ \ \ \ std::unordered\_map<std::string,\ std::string>\ citiesWaterDeliveredMap;}
+\DoxyCodeLine{00079\ \ \ \ \ std::unordered\_map<std::string,\ std::string>\ citiesWaterDeliveredMapWithChanges;}
+\DoxyCodeLine{00080\ \ \ \ \ std::vector<std::wstring>\ reservoirCodeVector;}
+\DoxyCodeLine{00081\ \ \ \ \ std::vector<std::wstring>\ stationCodeVector;}
+\DoxyCodeLine{00082\ \ \ \ \ std::vector<std::wstring>\ pipeCodeVector;}
+\DoxyCodeLine{00083\ \ \ \ \ std::vector<std::wstring>\ selectedReservoirCode;}
+\DoxyCodeLine{00084\ \ \ \ \ std::vector<std::wstring>\ selectedPumpingCode;}
+\DoxyCodeLine{00085\ \ \ \ \ std::vector<std::wstring>\ selectedPipeCode;}
+\DoxyCodeLine{00086\ \ \ \ \ std::unordered\_map<int,\ int>\ locationHasTable\ =\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \{7,\ 1\},\ \{12,\ 1\},\ \{14,\ 1\},\ \{16,\ 1\}}
+\DoxyCodeLine{00088\ \ \ \ \ \};}
+\DoxyCodeLine{00089\ \ \ \ \ std::unordered\_map<int,\ int>\ capOfWrite\ =\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \{7,\ 30\},\ \{12,\ 4\},\ \{14,\ 5\},\ \{16,\ 10\}}
+\DoxyCodeLine{00091\ \ \ \ \ \};}
+\DoxyCodeLine{00092\ \ \ \ \ std::unordered\_map<int,\ int>\ locationOfCitySearch\ =\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \{7,\ 1\}}
+\DoxyCodeLine{00094\ \ \ \ \ \};}
+\DoxyCodeLine{00095\ \ \ \ \ std::unordered\_map<int,\ int>\ locationOfReservoirSearch\ =\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{12,\ 1\}}
+\DoxyCodeLine{00097\ \ \ \ \ \};}
+\DoxyCodeLine{00098\ \ \ \ \ std::unordered\_map<int,\ int>\ locationOfStationSearch\ =\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{14,\ 1\}}
+\DoxyCodeLine{00100\ \ \ \ \ \};}
+\DoxyCodeLine{00101\ \ \ \ \ std::unordered\_map<int,\ int>\ locationOfPipeSearch\ =\ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \{16,\ 1\}}
+\DoxyCodeLine{00103\ \ \ \ \ \};}
+\DoxyCodeLine{00104\ \ \ \ \ std::unordered\_map<int,\ int>\ locationWithTable\ =\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \{7,\ 0\},\ \{12,\ 1\},\ \{14,\ 2\},\ \{16,\ 3\}}
+\DoxyCodeLine{00106\ \ \ \ \ \};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ std::vector<std::vector<std::string>>\ water\_needs;}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ std::vector<std::vector<std::wstring>>\ options\{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Choose\ DataSet"{}},}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Credits"{}},}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Quit"{}}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Change\ Name"{}},}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Portugal\ DataSet"{}},}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Madeira\ DataSet"{}},}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Portugal\ DataSet\ "{}}\ +\ bold\ +\ blue\ +\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ <-\/\ ACTIVE"{}}\ +\ end\_effect,}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Madeira\ DataSet"{}},}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Proceed"{}}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Portugal\ DataSet"{}},}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Madeira\ DataSet\ "{}}\ +\ bold\ +\ blue\ +\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ <-\/\ ACTIVE"{}}\ +\ end\_effect,}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Proceed"{}}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Basic\ Service\ Metrics"{}},}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Reliability\ and\ Sensitivity\ to\ Failures"{}},}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Choose\ DataSet"{}},}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Quit"{}}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Max\ Amount\ of\ Water"{}},}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Cities\ in\ Deficit"{}},}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Balance\ Difference"{}},}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Search\ for\ a\ City"{}},}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Total"{}},}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Back"{}},}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Back"{}},}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Back"{}},}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Back"{}},}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Reservoir\ Out\ of\ Commission"{}},}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Pumping\ Stations\ in\ Maintenance"{}},}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Pipeline\ Failures"{}},}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Search\ for\ a\ Reservoir"{}},}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Back"{}},}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Add\ One\ More\ Reservoir"{}},}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Back"{}},}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Search\ for\ a\ Pumping\ Station"{}},}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Back"{}},}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Add\ One\ More\ Pumping\ Station"{}},}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Back"{}},}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Search\ for\ a\ Pipe"{}},}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Back"{}},}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Add\ One\ More\ Pipe"{}},}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Back"{}},}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}Main\ Menu"{}}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00201\ \ \ \ \ \};}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ std::vector<std::wstring>\ helpers\{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ You\ can\ use\ 'up\ arrow',\ 'down\ arrow',\ and\ 'ENTER'\ to\ select\ the\ options"{}},}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ You\ can\ use\ 'tab'\ to\ change\ to\ the\ table,\ and\ 'ENTER'\ to\ select\ one"{}},}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ You\ can\ use\ 'n'\ and\ 'p'\ to\ go\ to\ the\ next\ and\ previous\ page\ of\ the\ table\ respectively"{}},}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ Choose\ your\ DataSet"{}},}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ You\ selected\ Portugal\ DataSet"{}},}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ You\ selected\ Madeira\ DataSet"{}}}
+\DoxyCodeLine{00210\ \ \ \ \ \};}
+\DoxyCodeLine{00211\ }
+\DoxyCodeLine{00212\ \ \ \ \ std::vector<std::wstring>\ waterSupplyManagement\ =\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ "{}},}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ ██\ \ \ \ \ ██\ \ █████\ \ ████████\ ███████\ ██████\ \ \ \ \ \ ███████\ ██\ \ \ \ ██\ ██████\ \ ██████\ \ ██\ \ \ \ \ ██\ \ \ \ ██\ \ \ \ \ ███\ \ \ \ ███\ \ █████\ \ ███\ \ \ \ ██\ \ █████\ \ \ ██████\ \ ███████\ ███\ \ \ \ ███\ ███████\ ███\ \ \ \ ██\ ████████\ \ \ |"{}},}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ ██\ \ \ \ \ ██\ ██\ \ \ ██\ \ \ \ ██\ \ \ \ ██\ \ \ \ \ \ ██\ \ \ ██\ \ \ \ \ ██\ \ \ \ \ \ ██\ \ \ \ ██\ ██\ \ \ ██\ ██\ \ \ ██\ ██\ \ \ \ \ \ ██\ \ ██\ \ \ \ \ \ ████\ \ ████\ ██\ \ \ ██\ ████\ \ \ ██\ ██\ \ \ ██\ ██\ \ \ \ \ \ \ ██\ \ \ \ \ \ ████\ \ ████\ ██\ \ \ \ \ \ ████\ \ \ ██\ \ \ \ ██\ \ \ \ \ \ |"{}},}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ ██\ \ █\ \ ██\ ███████\ \ \ \ ██\ \ \ \ █████\ \ \ ██████\ \ \ \ \ \ ███████\ ██\ \ \ \ ██\ ██████\ \ ██████\ \ ██\ \ \ \ \ \ \ ████\ \ \ \ \ \ \ ██\ ████\ ██\ ███████\ ██\ ██\ \ ██\ ███████\ ██\ \ \ ███\ █████\ \ \ ██\ ████\ ██\ █████\ \ \ ██\ ██\ \ ██\ \ \ \ ██\ \ \ \ \ \ |"{}},}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ ██\ ███\ ██\ ██\ \ \ ██\ \ \ \ ██\ \ \ \ ██\ \ \ \ \ \ ██\ \ \ ██\ \ \ \ \ \ \ \ \ \ ██\ ██\ \ \ \ ██\ ██\ \ \ \ \ \ ██\ \ \ \ \ \ ██\ \ \ \ \ \ \ \ ██\ \ \ \ \ \ \ \ ██\ \ ██\ \ ██\ ██\ \ \ ██\ ██\ \ ██\ ██\ ██\ \ \ ██\ ██\ \ \ \ ██\ ██\ \ \ \ \ \ ██\ \ ██\ \ ██\ ██\ \ \ \ \ \ ██\ \ ██\ ██\ \ \ \ ██\ \ \ \ \ \ |"{}},}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ \ ███\ ███\ \ ██\ \ \ ██\ \ \ \ ██\ \ \ \ ███████\ ██\ \ \ ██\ \ \ \ \ ███████\ \ ██████\ \ ██\ \ \ \ \ \ ██\ \ \ \ \ \ ██████\ \ \ \ ██\ \ \ \ \ \ \ \ ██\ \ \ \ \ \ ██\ ██\ \ \ ██\ ██\ \ \ ████\ ██\ \ \ ██\ \ ██████\ \ ███████\ ██\ \ \ \ \ \ ██\ ███████\ ██\ \ \ ████\ \ \ \ ██\ \ \ \ \ \ |"{}},}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ "{}},}
+\DoxyCodeLine{00220\ \ \ \ \ \};}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordtype}{void}\ inputer();}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keywordtype}{void}\ basicInputResponse(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{user\_in}});}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keywordtype}{void}\ inputResponseInWriteMode(\textcolor{keywordtype}{wchar\_t}\ \mbox{\hyperlink{class_edge}{user\_in}});}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordtype}{void}\ refreshDirectories();}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ stackClear(std::stack<int>\ \&\mbox{\hyperlink{class_edge}{s}});}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordtype}{void}\ enterInputHandler(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{loc}},\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_edge}{sel}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_edge}{back}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_edge}{main\_menu}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_edge}{main\_menu2}});}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordtype}{void}\ writeOptionDefaulterCity();}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ std::unordered\_map<std::string,\ std::string>\ filterCitySearch(\textcolor{keyword}{const}\ std::unordered\_map<std::string,\ std::string>\ \&\mbox{\hyperlink{class_edge}{um}});}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keyword}{static}\ std::unordered\_map<std::string,\ std::string>}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \ \ \ \ stringifyUMStringClass(\textcolor{keyword}{const}\ std::unordered\_map<std::string,\ City>\ \&\mbox{\hyperlink{class_edge}{um}});}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keyword}{static}\ std::wstring\ smooth\_string(\textcolor{keyword}{const}\ std::wstring\ \&\mbox{\hyperlink{class_edge}{w}});}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{void}\ initializeTable();}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keywordtype}{void}\ tableModeCleaner(std::unordered\_map<std::string,\ std::string>\ \mbox{\hyperlink{class_edge}{um}});}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::wstring>\ getCodeVector(\textcolor{keyword}{const}\ std::unordered\_map<std::string,\ Reservoir>\ \&\mbox{\hyperlink{class_edge}{um}});}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ \textcolor{keywordtype}{void}\ writeOptionDefaulterReservoir();}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ std::vector<std::wstring>\ filterReservoirSearch(\textcolor{keyword}{const}\ std::vector<std::wstring>\ \&\mbox{\hyperlink{class_edge}{um}});}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordtype}{void}\ tableModeCleaner2(std::vector<std::wstring>\ \mbox{\hyperlink{class_edge}{um}});}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::wstring>\ getCodeStation(\textcolor{keyword}{const}\ std::unordered\_map<std::string,\ Station>\ \&\mbox{\hyperlink{class_edge}{um}});}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordtype}{void}\ writeOptionDefaulterStation();}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{void}\ writeOptionDefaulterPipe();}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ \ \ std::vector<std::wstring>\ getCodePipes(\textcolor{keyword}{const}\ std::unordered\_map<std::string,\ std::string>\ \&\mbox{\hyperlink{class_edge}{um}});}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ std::vector<std::wstring>\ filterStationSearch(\textcolor{keyword}{const}\ std::vector<std::wstring>\ \&\mbox{\hyperlink{class_edge}{um}});}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ std::vector<std::wstring>\ filterPipeSearch(\textcolor{keyword}{const}\ std::vector<std::wstring>\ \&\mbox{\hyperlink{class_edge}{um}});}
+\DoxyCodeLine{00268\ \};}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROJECT\_DA\_INTERFACE\_H}}
+
+\end{DoxyCode}

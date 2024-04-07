@@ -96,6 +96,7 @@ protected:
 template <class T>
 class Graph {
 public:
+
     ~Graph();
     /*
     * Auxiliary function to find a vertex with a given the content.
@@ -128,6 +129,7 @@ public:
     bool isDAG() const;
     bool dfsIsDAG(Vertex<T> *v) const;
     std::vector<T> topsort() const;
+
 protected:
     std::vector<Vertex<T> *> vertexSet;    // vertex set
 
@@ -446,6 +448,8 @@ bool Graph<T>::addBidirectionalEdge(const T &sourc, const T &dest, double w) {
     e2->setReverse(e1);
     return true;
 }
+
+
 
 /****************** DFS ********************/
 

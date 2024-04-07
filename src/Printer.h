@@ -7,8 +7,7 @@
 #include <locale>
 #include <codecvt>
 #include "Management.h"
-
-std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
+#include "utils.h"
 
 //----------------- COLOR SCHEMES --------------------//
 std::wstring bg_light_red = L"\x1b[101m";
@@ -99,7 +98,7 @@ std::wstring centerUp(const std::wstring& txtToCenter){
 
 std::wstring centerUpAndLineUp(const std::wstring& txtToCenter, int lineUp){
     if (getTerminalWidth() / 2 - lineUp > 0){
-        return std::wstring(getTerminalWidth() / 2 - lineUp, L' ') + txtToCenter;
+        return std::wstring(getTerminalWidth() / 2 - lineUp - 20, L' ') + txtToCenter;
 
     }
     return txtToCenter;
@@ -184,12 +183,13 @@ void printListCodeValue(const std::vector<std::vector<std::string>>& info){
     std::wcout << L"     " << centerUp(red + wigly_underline + end_effect) << L"\n" << std::endl;
 
     for (const auto& p : info){
-        std::wstring wstr = L"->" + underline + converter.from_bytes(p[2]);
+        std::wstring wstr = L"-> " + underline + converter.from_bytes(p[2]);
+        wstr.append(end_effect);
         wstr.append(L", with the code " + underline + converter.from_bytes(p[0]));
         wstr.append(end_effect);
-        wstr.append(L" has a demand of " + underline + converter.from_bytes(std::to_string(std::stoi(p[1]) - std::stoi(p[3]))));
+        wstr.append(L" has a demand of " + underline + converter.from_bytes(p[3]));
         wstr.append(end_effect);
-        wstr.append(L", but only is delivered " + underline + converter.from_bytes(p[3]));
+        wstr.append(L", but only is delivered " + underline + converter.from_bytes(std::to_string(std::stoi(p[3]) - std::stoi(p[1]))));
         wstr.append(end_effect);
         wstr.append(L" which causes a deficit of " + underline + converter.from_bytes(p[1]));
         wstr.append(end_effect);
@@ -226,6 +226,60 @@ void printDoubleTable(const std::unordered_map<std::string, std::string>& wstrin
                << bold << page + 1 << L"/" << wstring_list.size()/elements_per_page + 1 << end_effect << L" |" << std::endl;
     std::wcout << L' ' << bold << std::wstring(40, L'-') << end_effect << std::endl;
     std::wcout << italic << L"\n Total Number : " << end_italic << bold<< wstring_list.size() << end_effect << std::endl;
+}
+
+void printTable(const std::vector<std::wstring>& wstring_list, int page, int elements_per_page, unsigned long selected_in_page, bool table_mode){
+    std::wcout << L"\n\n" << bold << L" -------------------------------------------------------------- " << end_effect << L"\n";
+    int count = 0;
+    int count_for_selected = 0;
+    for (const std::wstring& wstr : wstring_list){
+        if (count >= page * elements_per_page && count < page * elements_per_page + elements_per_page){
+            if (count_for_selected == selected_in_page && table_mode){
+                std::wcout << L"| " << bg_light_red << italic << underline << bold
+                           << wstr << std::wstring(60 - wstr.size(), L' ') << end_italic << end_bg
+                           << end_effect << L" |" << std::endl;
+            }
+            else{
+                std::wcout << L"| " << wstr << std::wstring(60 - wstr.size(), L' ') << L" |" << std::endl;
+            }
+            count_for_selected ++;
+        }
+        count ++;
+    }
+    if (wstring_list.empty()){std::wcout << "|" << italic << L"  No results                                                  " << end_effect << "|" << std::endl;}
+    std::wcout << L"|" << bold << L"--------------------------------------------------------------" << end_effect << L"|\n";
+    std::wcout << L"|" << italic << L" <('p')                                                ('n')> " << end_italic << L"|" << std::endl;
+    std::wcout << L"|" << std::wstring(60 - std::to_string(page + 1).size() - std::to_string(wstring_list.size()/elements_per_page + 1).size(), ' ')
+               << bold << page + 1 << L"/" << wstring_list.size()/elements_per_page + 1 << end_effect << L" |" << std::endl;
+    std::wcout << bold << L" -------------------------------------------------------------- " << end_effect << std::endl;
+    std::wcout << italic << L"\n Total Number : " << end_italic << bold<< wstring_list.size() << end_effect << std::endl;
+}
+
+void printListCompareValues(std::unordered_map<std::string, std::string> um1, std::unordered_map<std::string, std::string>um2, std::unordered_map<std::string, std::string> cityName){
+
+    std::wstring wigly_underline;
+    std::wcout << L"\n\n\n" << std::endl;
+    std::wstring topper = L"The Cities that cannot be supplied by the desired water level are :";
+    std::wcout << bold << centerUp(topper) << end_effect << std::endl;
+    for (wchar_t c : topper){
+        wigly_underline.push_back(L'~');
+    }
+
+    std::wcout << L"     " << centerUp(red + wigly_underline + end_effect) << L"\n" << std::endl;
+
+    for (const auto& p : um1){
+        if (um2[p.first] > p.second){
+            std::wstring wstr = L"-> " + underline + converter.from_bytes(p.first);
+            wstr.append(end_effect);
+            wstr.append(L", the city of " + underline + converter.from_bytes(cityName[p.first]));
+            wstr.append(end_effect);
+            wstr.append(L" had a old flow of " + underline + converter.from_bytes(um2[p.first]));
+            wstr.append(end_effect);
+            wstr.append(L" and has now a flow of " + underline + converter.from_bytes(p.second));
+            wstr.append(end_effect);
+            std::wcout << centerUpAndLineUp(wstr, 20) << std::endl;
+        }
+    }
 }
 
 #endif //AED_PROJ_2_PRINTER_H

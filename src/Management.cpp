@@ -54,12 +54,30 @@ Management::Management(int dataSet) : reservoirs_(std::make_unique<std::unordere
     }
 }
 
+
+
 const std::unordered_map<std::string, City> &Management::getCities(){
     return *cities_;
 }
 
+const std::unique_ptr<std::unordered_map<std::string, Reservoir>> &Management::getReservoirs() const {
+    return reservoirs_;
+}
+
 const std::unique_ptr<Graph<std::string>> &Management::getWaterNetwork() const {
     return waterNetwork_;
+}
+
+const std::vector<std::vector<std::vector<std::string>>> &Management::getFlowPaths() const {
+    return flowPaths_;
+}
+
+const std::unordered_map<std::string, std::string> &Management::getEdgesFlow() const {
+    return edgesFlow_;
+}
+
+const std::unique_ptr<std::unordered_map<std::string, Station>> &Management::getStations() const {
+    return stations_;
 }
 
 Reservoir Management::getReservoirByCode(const std::string &code){
@@ -81,7 +99,10 @@ City Management::getCityByCode(const std::string &code){
 }
 
 
-double Management::maxFlow(const Graph<std::string>& g, std::string code){
+double Management::maxFlow(const Graph<std::string>& g, const std::string& code){
+
+    std::vector<std::vector<std::string>> vector_of_paths;
+
     Graph<std::string> max_flow=g;
 
     max_flow.addVertex("sink");
@@ -116,6 +137,8 @@ double Management::maxFlow(const Graph<std::string>& g, std::string code){
     }
 
     while(augmentationPathFinder(&max_flow,source,sink)){
+        std::vector<double> val;
+        std::vector<std::vector<std::string>> path;
         double mini=INF;
 
         for(Vertex<std::string> *v=sink; v!=source;){
@@ -130,17 +153,32 @@ double Management::maxFlow(const Graph<std::string>& g, std::string code){
             }
         }
         for(Vertex<std::string> *v=sink; v!=source;){
+            std::vector<std::string> step;
             Edge<std::string> *e=v->getPath();
             double flow=e->getFlow();
             if(v==e->getDest()){
                 e->setFlow(flow+mini);
                 v=e->getOrig();
-
+                step.push_back(e->getDest()->getInfo());
+                step.push_back(e->getOrig()->getInfo());
             }
             else{
                 e->setFlow(flow-mini);
                 v=e->getDest();
+                step.push_back(e->getOrig()->getInfo());
+                step.push_back(e->getDest()->getInfo());
             }
+
+            step.push_back(std::to_string(e->getFlow()));
+            path.push_back(step);
+        }
+        flowPaths_.push_back(path);
+    }
+
+    for (auto v : waterNetwork_->getVertexSet()){
+        for (auto e : v->getAdj()){
+            Vertex<std::string> *dest = e->getDest();
+            edgesFlow_.insert({key(v->getInfo(), dest->getInfo()), std::to_string(e->getFlow())});
         }
     }
 
@@ -157,11 +195,14 @@ std::vector<std::vector<std::string>> Management::checkWaterNeeds() {
     for (const auto& city : *cities_) {
         float waterNeeded = city.second.getDemand();
         double waterDelivered = 0;
-        for (const auto& edge : waterNetwork_->findVertex(city.first)->getAdj()) {
-            waterDelivered += edge->getWeight();
-        }
-        if (waterDelivered < waterNeeded) {
 
+        for (auto e : waterNetwork_->findVertex(city.first)->getIncoming()){
+            waterDelivered += std::stod(edgesFlow_[key(e->getOrig()->getInfo(), e->getDest()->getInfo())]);
+        }
+
+        std::cout << city.first << " " << waterDelivered << std::endl;
+
+        if (waterDelivered < waterNeeded) {
             std::vector<std::string> v;
             v.emplace_back(city.first);
             v.emplace_back(std::to_string(waterNeeded - waterDelivered));
@@ -174,11 +215,46 @@ std::vector<std::vector<std::string>> Management::checkWaterNeeds() {
     return result;
 }
 
-//3.3
-//Sometimes, pipeline failures can occur. For each city, determine which pipelines, if
-//ruptured, i.e., with a null flow capacity, would make it impossible to deliver the desired amount of water
-//to a given city. For each examined pipeline, list the affected cities displaying their codes and water
-//supply in deficit.
+
+std::unordered_map<std::string, std::string> Management::checkWaterNeedsReservoir(const std::vector<std::wstring>& reservoirs){
+
+    std::unordered_map<std::string, std::string> res;
+
+    Graph<std::string> g = createGraphCopy(*waterNetwork_);
+
+    for (const auto& ws : reservoirs){
+        g.removeVertex(converter1.to_bytes(ws));
+    }
+    maxFlow(g, "sink");
+    for (const auto& city : *cities_){
+        double val = 0;
+        for(Edge<std::string> *e: g.findVertex(city.first)->getIncoming()){
+            val += e->getFlow();
+        }
+        res.insert({city.first, std::to_string(val)});
+    }
+    return res;
+}
+
+std::unordered_map<std::string, std::string> Management::checkWaterNeedsPumps(const std::vector<std::wstring>& pumps){
+
+    std::unordered_map<std::string, std::string> res;
+
+    Graph<std::string> g = createGraphCopy(*waterNetwork_);
+
+    for (const auto& ws : pumps){
+        g.removeVertex(converter1.to_bytes(ws));
+    }
+    maxFlow(g, "sink");
+    for (const auto& city : *cities_){
+        double val = 0;
+        for(Edge<std::string> *e: g.findVertex(city.first)->getIncoming()){
+            val += e->getFlow();
+        }
+        res.insert({city.first, std::to_string(val)});
+    }
+    return res;
+}
 
 std::vector<std::pair<std::string, std::vector<std::pair<std::string, int>>>> Management::checkWaterNeedsWithFailures() {
     std::vector<std::pair<std::string, std::vector<std::pair<std::string, int>>>> result;

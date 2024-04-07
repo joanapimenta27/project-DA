@@ -1,3 +1,0 @@
-/home/joana/Documents/project-DA/cmake-build-debug/CMakeFiles/project_DA.dir
-/home/joana/Documents/project-DA/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/joana/Documents/project-DA/cmake-build-debug/CMakeFiles/rebuild_cache.dir

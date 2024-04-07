@@ -47,7 +47,7 @@ void Interface::refreshDirectories() {
             res_prep.append(L" and " + selectedPumpingCode[i]);
         }
     }
-    directories.emplace_back(L"Reliability and Sensitivity to Failures > Pumping Stations" + res_prep + L"in Maintenance");
+    directories.emplace_back(L"Reliability and Sensitivity to Failures > Pumping Stations" + res_prep + L" in Maintenance");
     directories.emplace_back(L"Reliability and Sensitivity to Failures > Pipeline Failures");
     res_prep.clear();
     for (int i = 0; i < selectedPipeCode.size(); i ++){
@@ -323,7 +323,7 @@ void Interface::writeOptionDefaulterPipe(){
 void Interface::enterInputHandler(int loc, unsigned long sel, bool back, bool main_menu, bool main_menu2){
     refreshDirectories();
     if (back){
-        if(location == 0){
+        if(loc == 0){
             location = earlier_locations.top();
         }
         else{
@@ -481,12 +481,12 @@ void Interface::basicInputResponse(unsigned int user_in) {
         }
         if (user_in == 'B') {
             selected_in_page ++;
-            if (page == filteredWstringPairsVector.size()/elements_per_page && locationHasTable[location] == 0){
+            if (page == filteredWstringPairsVector.size()/elements_per_page && locationWithTable[location] == 0){
                 if (selected_in_page > filteredWstringPairsVector.size()%elements_per_page - 1){
                     selected_in_page = 0;
                 }
             }
-            else if (page == filteredStringVector.size()/elements_per_page && locationHasTable[location] != 0){
+            else if (page == filteredStringVector.size()/elements_per_page && locationWithTable[location] != 0){
                 if (selected_in_page > filteredStringVector.size()%elements_per_page - 1){
                     selected_in_page = 0;
                 }
@@ -630,8 +630,8 @@ void Interface::basicInputResponse(unsigned int user_in) {
                 else{
                     auto it = filteredWstringPairsVector.begin();
                     std::advance(it, page * elements_per_page + selected_in_page);
-                    city_analised = it->first;
-                    city_analised_code = it->second;
+                    city_analised = it->second;
+                    city_analised_code = it->first;
                     enterInputHandler(9, 0, false, false, false);
                     tableModeCleaner(citiesStringMap);
                 }

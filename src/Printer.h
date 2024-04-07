@@ -268,7 +268,7 @@ void printListCompareValues(std::unordered_map<std::string, std::string> um1, st
     std::wcout << L"     " << centerUp(red + wigly_underline + end_effect) << L"\n" << std::endl;
 
     for (const auto& p : um1){
-        if (um2[p.first] > p.second){
+        if (std::stod(um2[p.first]) > std::stod(p.second)){
             std::wstring wstr = L"-> " + underline + converter.from_bytes(p.first);
             wstr.append(end_effect);
             wstr.append(L", the city of " + underline + converter.from_bytes(cityName[p.first]));

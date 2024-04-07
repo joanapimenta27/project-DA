@@ -14,6 +14,7 @@
 #include <climits>
 #include <codecvt>
 #include <locale>
+#include <unordered_set>
 #include "utils.h"
 #include "FileReader.h"
 #include "Reservoir.h"
@@ -42,6 +43,7 @@ private:
     std::unique_ptr<Graph<std::string>> waterNetwork_;
     std::vector<std::vector<std::vector<std::string>>> flowPaths_;
     std::unordered_map<std::string , std::string> edgesFlow_;
+    std::unordered_map<std::string, double> pipes_;
 
 public:
     Management(int dataSet);
@@ -73,6 +75,10 @@ public:
     const std::unique_ptr<std::unordered_map<std::string, Station>> &getStations() const;
 
     std::unordered_map<std::string, std::string> checkWaterNeedsPipes(const std::vector<std::wstring> &pumps);
+
+    void balanceBasicMetrics(const Graph<std::string>& g);
+
+    Graph<std::string> balance(const Graph<std::string> &g);
 };
 
 

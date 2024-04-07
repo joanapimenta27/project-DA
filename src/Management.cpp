@@ -1,3 +1,4 @@
+
 #include "Management.h"
 
 /**
@@ -71,6 +72,8 @@ Management::Management(int dataSet) : reservoirs_(std::make_unique<std::unordere
         else{
             waterNetwork_->addBidirectionalEdge(pointA, pointB, capacity);
         }
+
+        pipes_.insert({key(pointA, pointB), capacity});
     }
 }
 
@@ -353,6 +356,7 @@ std::unordered_map<std::string, std::string> Management::checkWaterNeedsReservoi
         }
         res.insert({city.first, std::to_string(val)});
     }
+    std::cout << res["C_4"];
     return res;
 }
 
@@ -424,6 +428,43 @@ std::unordered_map<std::string, std::string> Management::checkWaterNeedsPipes(co
         res.insert({city.first, std::to_string(val)});
     }
     return res;
+}
+
+void Management::balanceBasicMetrics (const Graph<std::string>& g){
+    double sum_diff = 0.0;
+    double sum_diff_squared = 0.0;
+    double max_diff = 0.0;
+    std::string d;
+    std::string o;
+
+    for (const auto& pair : pipes_) {
+        o = stringDivider(converter.from_bytes(pair.first), 0, '|');
+        d = stringDivider(converter.from_bytes(pair.first), 1, '|');
+        for (auto e : g.findVertex(o)->getAdj()){
+            if (e->getDest()->getInfo() == d){
+                double diff = pair.second - e->getFlow();
+                sum_diff += diff;
+                sum_diff_squared += diff * diff;
+                max_diff = std::max(max_diff, std::abs(diff));
+            }
+        }
+
+    }
+
+    double average_diff = sum_diff / pipes_.size();
+    double variance_diff = sum_diff_squared / pipes_.size() - (average_diff * average_diff);
+
+    std::wcout << L"Initial Metrics:" << std::endl;
+    std::wcout << L"Average Difference: " << average_diff << std::endl;
+    std::wcout << L"Variance of Difference: " << variance_diff << std::endl;
+    std::wcout << L"Maximum Difference: " << max_diff << std::endl;
+}
+
+Graph<std::string> Management::balance(const Graph<std::string>& g){
+    Graph<std::string> a = createGraphCopy(g);
+    maxFlow(a, "source");
+    //Logica que procura as bifurcaçoes, analiza a que tem mais espaço e redireciona mais agua
+    return a;
 }
 
 

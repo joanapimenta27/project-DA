@@ -23,5 +23,4 @@ double calcPathMin(const std::vector<std::vector<std::string>> &path);
 Graph<std::string> createGraphCopy(const Graph<std::string>& og_graph);
 std::string stringDivider(const std::wstring& s, int i, char loc);
 
-
 #endif //PROJECT_DA_UTILS_H

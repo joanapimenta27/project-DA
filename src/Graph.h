@@ -7,7 +7,7 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
-#include "../data_structures/MutablePriorityQueue.h"
+#include "MutablePriorityQueue.h"
 
 template <class T>
 class Edge;
@@ -16,6 +16,15 @@ class Edge;
 
 /************************* Vertex  **************************/
 
+/**
+ * @brief Represents a vertex in a graph.
+ *
+ * This class defines a vertex in a graph data structure. It stores information about
+ * the vertex itself, its outgoing edges, and auxiliary fields for algorithms like DFS,
+ * BFS, Prim, etc.
+ *
+ * @tparam T The type of data stored in the vertex.
+ */
 template <class T>
 class Vertex {
 public:
@@ -62,6 +71,14 @@ protected:
 
 /********************** Edge  ****************************/
 
+/**
+ * @brief Represents an edge in a graph.
+ *
+ * This class defines an edge in a graph data structure. It stores information about
+ * the source and destination vertices, edge weight, and auxiliary fields.
+ *
+ * @tparam T The type of data stored in the vertices.
+ */
 template <class T>
 class Edge {
 public:
@@ -93,6 +110,15 @@ protected:
 
 /********************** Graph  ****************************/
 
+/**
+ * @brief Represents a graph.
+ *
+ * This class represents a graph data structure. It includes methods to add and remove vertices and edges,
+ * perform DFS and BFS traversals, check if the graph is a Directed Acyclic Graph (DAG), perform topological sorting,
+ * and other auxiliary functions.
+ *
+ * @tparam T The type of data stored in the vertices.
+ */
 template <class T>
 class Graph {
 public:

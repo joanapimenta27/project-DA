@@ -13,10 +13,20 @@
 #include "Management.h"
 #include "utils.h"
 
+/**
+ * @brief Class representing the user interface.
+ */
 class Interface {
 public:
+
+    /**
+     * @brief Constructor for the Interface class.
+     */
     explicit Interface();
 
+    /**
+     * @brief Function to start running the interface.
+     */
     void run();
 
 

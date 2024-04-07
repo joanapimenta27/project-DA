@@ -1,0 +1,85 @@
+\doxysection{Management.\+h}
+\hypertarget{_management_8h_source}{}\label{_management_8h_source}\index{C:/Users/jlsmp/OneDrive/Documentos/universidade/DA-\/Project1/src/Management.h@{C:/Users/jlsmp/OneDrive/Documentos/universidade/DA-\/Project1/src/Management.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ PROJECT\_DA\_MANAGEMENT\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ PROJECT\_DA\_MANAGEMENT\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <variant>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <climits>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <codecvt>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <locale>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}utils.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}FileReader.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Reservoir.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}Station.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}City.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}Graph.h"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structpair__hash}{pair\_hash}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ T1,\ \textcolor{keyword}{class}\ T2>}
+\DoxyCodeLine{00027\ \ \ \ \ std::size\_t\ \mbox{\hyperlink{class_edge}{operator\ ()\ }}(\textcolor{keyword}{const}\ std::pair<T1,T2>\ \&\mbox{\hyperlink{class_edge}{p}})\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{class_edge}{h1}}\ =\ std::hash<T1>\{\}(\mbox{\hyperlink{class_edge}{p}}.first);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \mbox{\hyperlink{class_edge}{h2}}\ =\ std::hash<T2>\{\}(\mbox{\hyperlink{class_edge}{p}}.second);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_edge}{h1}}\ \string^\ \mbox{\hyperlink{class_edge}{h2}};}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_management}{Management}}\ \{}
+\DoxyCodeLine{00037\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ std::unique\_ptr<std::unordered\_map<std::string,\ Reservoir>>\ reservoirs\_;}
+\DoxyCodeLine{00040\ \ \ \ \ std::unique\_ptr<std::unordered\_map<std::string,\ Station>>\ stations\_;}
+\DoxyCodeLine{00041\ \ \ \ \ std::unique\_ptr<std::unordered\_map<std::string,\ City>>\ cities\_;}
+\DoxyCodeLine{00042\ \ \ \ \ std::unique\_ptr<Graph<std::string>>\ waterNetwork\_;}
+\DoxyCodeLine{00043\ \ \ \ \ std::vector<std::vector<std::vector<std::string>>>\ flowPaths\_;}
+\DoxyCodeLine{00044\ \ \ \ \ std::unordered\_map<std::string\ ,\ std::string>\ edgesFlow\_;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_management_a1de593d42994190df51afa6b1b967df6}{Management}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{dataSet}});}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_reservoir}{Reservoir}}\ \mbox{\hyperlink{class_management_aafe069890bfcf358f566c47de263c5e0}{getReservoirByCode}}(\textcolor{keyword}{const}\ std::string\ \&\mbox{\hyperlink{class_edge}{code}});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{class_station}{Station}}\ \mbox{\hyperlink{class_management_a136778b785e4755108429ef0d65a497c}{getStationByCode}}(\textcolor{keyword}{const}\ std::string\ \&\mbox{\hyperlink{class_edge}{code}});}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_city}{City}}\ \mbox{\hyperlink{class_management_ad275618d0a026680920f2866d253d59c}{getCityByCode}}(\textcolor{keyword}{const}\ std::string\ \&\mbox{\hyperlink{class_edge}{code}});}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ City>\ \&\mbox{\hyperlink{class_management_ae84d265dd3b85436e52c6166aa3b2841}{getCities}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ std::vector<std::vector<std::string>>\ \mbox{\hyperlink{class_management_aaeaee474c3242798ea5627a1a844cb2a}{checkWaterNeeds}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_management_aa59e2b63084e5143da2ba09a768c5c10}{maxFlow}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_edge}{Graph<std::string>}}\&\ \mbox{\hyperlink{class_edge}{g}},\ \textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_edge}{code}});}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{const}\ std::unique\_ptr<Graph<std::string>>\ \&\mbox{\hyperlink{class_management_a27a7346adead6b83dbbcd4c32dcfdbd7}{getWaterNetwork}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<std::string,\ std::string>\ \&\mbox{\hyperlink{class_management_ac80ceb14f8152acf07741f8c1f2d1ae2}{getEdgesFlow}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{const}\ std::unique\_ptr<std::unordered\_map<std::string,\ Reservoir>>\ \&\mbox{\hyperlink{class_management_a4fc60733362dc34c0bea599a70a7a383}{getReservoirs}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ std::unordered\_map<std::string,\ std::string>\ \mbox{\hyperlink{class_management_a128c88e0156e3ebb8e4ff53a1a4a6fbc}{checkWaterNeedsReservoir}}(\textcolor{keyword}{const}\ std::vector<std::wstring>\ \&\mbox{\hyperlink{class_edge}{reservoirs}});}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::vector<std::vector<std::string>>>\ \&\mbox{\hyperlink{class_management_ae92e06178b706bd477bb92c0d45ee699}{getFlowPaths}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ std::unordered\_map<std::string,\ std::string>\ \mbox{\hyperlink{class_management_aecdd1112f45ce89a89e26eb484cfe49e}{checkWaterNeedsPumps}}(\textcolor{keyword}{const}\ std::vector<std::wstring>\ \&\mbox{\hyperlink{class_edge}{pumps}});}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{const}\ std::unique\_ptr<std::unordered\_map<std::string,\ Station>>\ \&\mbox{\hyperlink{class_management_aace220c758836f17571e955f4cef50d8}{getStations}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ std::unordered\_map<std::string,\ std::string>\ \mbox{\hyperlink{class_management_aff8dc9d407049b1d85aa8996b37d8967}{checkWaterNeedsPipes}}(\textcolor{keyword}{const}\ std::vector<std::wstring>\ \&\mbox{\hyperlink{class_edge}{pumps}});}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//PROJECT\_DA\_MANAGEMENT\_H}}
+
+\end{DoxyCode}

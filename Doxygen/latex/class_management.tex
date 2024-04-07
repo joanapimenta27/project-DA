@@ -1,0 +1,328 @@
+\doxysection{Management Class Reference}
+\hypertarget{class_management}{}\label{class_management}\index{Management@{Management}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_management_a1de593d42994190df51afa6b1b967df6}{Management}} (\mbox{\hyperlink{class_edge}{int}} \mbox{\hyperlink{class_edge}{data\+Set}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_management}{Management} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_reservoir}{Reservoir}} \mbox{\hyperlink{class_management_aafe069890bfcf358f566c47de263c5e0}{get\+Reservoir\+By\+Code}} (\mbox{\hyperlink{class_edge}{const}} std\+::string \&\mbox{\hyperlink{class_edge}{code}})
+\begin{DoxyCompactList}\small\item\em Get the reservoir object by its code. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_station}{Station}} \mbox{\hyperlink{class_management_a136778b785e4755108429ef0d65a497c}{get\+Station\+By\+Code}} (\mbox{\hyperlink{class_edge}{const}} std\+::string \&\mbox{\hyperlink{class_edge}{code}})
+\begin{DoxyCompactList}\small\item\em Get the station object by its code. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_city}{City}} \mbox{\hyperlink{class_management_ad275618d0a026680920f2866d253d59c}{get\+City\+By\+Code}} (\mbox{\hyperlink{class_edge}{const}} std\+::string \&\mbox{\hyperlink{class_edge}{code}})
+\begin{DoxyCompactList}\small\item\em Get the city object by its code. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_city}{City}} $>$ \& \mbox{\hyperlink{class_management_ae84d265dd3b85436e52c6166aa3b2841}{get\+Cities}} ()
+\begin{DoxyCompactList}\small\item\em Get a reference to the cities map. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{class_management_aaeaee474c3242798ea5627a1a844cb2a}{check\+Water\+Needs}} ()
+\begin{DoxyCompactList}\small\item\em Checks water needs for all cities and computes any deficits. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{double}} \mbox{\hyperlink{class_management_aa59e2b63084e5143da2ba09a768c5c10}{max\+Flow}} (\mbox{\hyperlink{class_edge}{const}} \mbox{\hyperlink{class_graph}{Graph}}$<$ std\+::string $>$ \&\mbox{\hyperlink{class_edge}{g}}, \mbox{\hyperlink{class_edge}{const}} std\+::string \&\mbox{\hyperlink{class_edge}{code}})
+\begin{DoxyCompactList}\small\item\em Computes the maximum flow in the water network graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{const}} std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_graph}{Graph}}$<$ std\+::string $>$ $>$ \& \mbox{\hyperlink{class_management_a27a7346adead6b83dbbcd4c32dcfdbd7}{get\+Water\+Network}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get a constant reference to the water network graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \& \mbox{\hyperlink{class_management_ac80ceb14f8152acf07741f8c1f2d1ae2}{get\+Edges\+Flow}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get a constant reference to the edges flow. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{const}} std\+::unique\+\_\+ptr$<$ std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_reservoir}{Reservoir}} $>$ $>$ \& \mbox{\hyperlink{class_management_a4fc60733362dc34c0bea599a70a7a383}{get\+Reservoirs}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get a constant reference to the reservoirs map. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{class_management_a128c88e0156e3ebb8e4ff53a1a4a6fbc}{check\+Water\+Needs\+Reservoir}} (\mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::wstring $>$ \&\mbox{\hyperlink{class_edge}{reservoirs}})
+\begin{DoxyCompactList}\small\item\em Checks water needs for cities after removing certain reservoirs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ $>$ \& \mbox{\hyperlink{class_management_ae92e06178b706bd477bb92c0d45ee699}{get\+Flow\+Paths}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get a constant reference to the flow paths. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{class_management_aecdd1112f45ce89a89e26eb484cfe49e}{check\+Water\+Needs\+Pumps}} (\mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::wstring $>$ \&\mbox{\hyperlink{class_edge}{pumps}})
+\begin{DoxyCompactList}\small\item\em Checks water needs for cities after removing certain pumps. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{const}} std\+::unique\+\_\+ptr$<$ std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_station}{Station}} $>$ $>$ \& \mbox{\hyperlink{class_management_aace220c758836f17571e955f4cef50d8}{get\+Stations}} () \mbox{\hyperlink{class_edge}{const}}
+\begin{DoxyCompactList}\small\item\em Get a constant reference to the stations map. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{class_management_aff8dc9d407049b1d85aa8996b37d8967}{check\+Water\+Needs\+Pipes}} (\mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::wstring $>$ \&\mbox{\hyperlink{class_edge}{pumps}})
+\begin{DoxyCompactList}\small\item\em Checks water needs for cities after removing certain pipes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_management_afedf36224ae487906f170b11bf618817}\label{class_management_afedf36224ae487906f170b11bf618817} 
+std\+::unique\+\_\+ptr$<$ std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_reservoir}{Reservoir}} $>$ $>$ {\bfseries reservoirs\+\_\+}
+\item 
+\Hypertarget{class_management_a3322cde239aab66e8b55115263e5e90c}\label{class_management_a3322cde239aab66e8b55115263e5e90c} 
+std\+::unique\+\_\+ptr$<$ std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_station}{Station}} $>$ $>$ {\bfseries stations\+\_\+}
+\item 
+\Hypertarget{class_management_ab9b4f9a7474c1770227b83e1ae29b491}\label{class_management_ab9b4f9a7474c1770227b83e1ae29b491} 
+std\+::unique\+\_\+ptr$<$ std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_city}{City}} $>$ $>$ {\bfseries cities\+\_\+}
+\item 
+\Hypertarget{class_management_aef0026c98db0b915cb73607e7a2f44b3}\label{class_management_aef0026c98db0b915cb73607e7a2f44b3} 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_graph}{Graph}}$<$ std\+::string $>$ $>$ {\bfseries water\+Network\+\_\+}
+\item 
+\Hypertarget{class_management_ac24b693dfa08466147f5c80a58e3d749}\label{class_management_ac24b693dfa08466147f5c80a58e3d749} 
+std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ $>$ {\bfseries flow\+Paths\+\_\+}
+\item 
+\Hypertarget{class_management_a5043321e81b69fd3843387a2342fc489}\label{class_management_a5043321e81b69fd3843387a2342fc489} 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries edges\+Flow\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_management_a1de593d42994190df51afa6b1b967df6}\label{class_management_a1de593d42994190df51afa6b1b967df6} 
+\index{Management@{Management}!Management@{Management}}
+\index{Management@{Management}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{Management()}{Management()}}
+{\footnotesize\ttfamily Management\+::\+Management (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{int}}}]{data\+Set }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_management}{Management} class. 
+
+This constructor initializes a \doxylink{class_management}{Management} object based on the specified dataset.
+
+The time complexity of this constructor depends on the size of the dataset\+: \begin{DoxyVerb}     - For the small dataset:
+
+       - If there are n reservoirs, m stations, and k cities, the time complexity is O(n + m + k).
+       - If there are p pipes, the time complexity of adding edges to the graph is O(p).
+     - For the big dataset:
+       - If there are n reservoirs, m stations, and k cities, the time complexity is O(n + m + k).
+       - If there are p pipes, the time complexity of adding edges to the graph is O(p).
+\end{DoxyVerb}
+ 
+\begin{DoxyParams}{Parameters}
+{\em data\+Set} & Flag indicating whether the dataset used is small or big. If 0, small dataset is used, otherwise big dataset is used. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_management_aaeaee474c3242798ea5627a1a844cb2a}\label{class_management_aaeaee474c3242798ea5627a1a844cb2a} 
+\index{Management@{Management}!checkWaterNeeds@{checkWaterNeeds}}
+\index{checkWaterNeeds@{checkWaterNeeds}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{checkWaterNeeds()}{checkWaterNeeds()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ Management\+::check\+Water\+Needs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks water needs for all cities and computes any deficits. 
+
+This function calculates the water needs for all cities in the water network and computes any deficits. It iterates through each city, retrieves its demand, calculates the total water delivered to the city from incoming edges in the water network graph, and compares it with the demand. If the delivered water is less than the demand, information about the city with the deficit is added to the result vector.
+
+\begin{DoxyReturn}{Returns}
+A vector containing information about cities with water deficits.
+\end{DoxyReturn}
+@complexity O(N + E), where N is the number of vertices (cities) and E is the number of edges (pipes) \Hypertarget{class_management_aff8dc9d407049b1d85aa8996b37d8967}\label{class_management_aff8dc9d407049b1d85aa8996b37d8967} 
+\index{Management@{Management}!checkWaterNeedsPipes@{checkWaterNeedsPipes}}
+\index{checkWaterNeedsPipes@{checkWaterNeedsPipes}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{checkWaterNeedsPipes()}{checkWaterNeedsPipes()}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ Management\+::check\+Water\+Needs\+Pipes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::wstring $>$ \&}]{pumps }\end{DoxyParamCaption})}
+
+
+
+Checks water needs for cities after removing certain pipes. 
+
+This function calculates the water needs for cities after removing specified pipes from the water network. It creates a copy of the water network graph, removes the specified pipes, calculates the maximum flow in the modified graph, and then computes the water needs for each city based on the incoming flow to their corresponding vertices in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipes} & Vector containing the pipes to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Map containing the cities and their water needs after pipe removal.
+\end{DoxyReturn}
+@complexity O(N + E), where N is the number of vertices (cities) and E is the number of edges (pipes) \Hypertarget{class_management_aecdd1112f45ce89a89e26eb484cfe49e}\label{class_management_aecdd1112f45ce89a89e26eb484cfe49e} 
+\index{Management@{Management}!checkWaterNeedsPumps@{checkWaterNeedsPumps}}
+\index{checkWaterNeedsPumps@{checkWaterNeedsPumps}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{checkWaterNeedsPumps()}{checkWaterNeedsPumps()}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ Management\+::check\+Water\+Needs\+Pumps (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::wstring $>$ \&}]{pumps }\end{DoxyParamCaption})}
+
+
+
+Checks water needs for cities after removing certain pumps. 
+
+This function calculates the water needs for cities after removing specified pumps from the water network. It creates a copy of the water network graph, removes the specified pumps, calculates the maximum flow in the modified graph, and then computes the water needs for each city based on the incoming flow to their corresponding vertices in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pumps} & Vector containing the pumps to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Map containing the cities and their water needs after pump removal.
+\end{DoxyReturn}
+@complexity O(N + E), where N is the number of vertices (cities) and E is the number of edges (pipes) \Hypertarget{class_management_a128c88e0156e3ebb8e4ff53a1a4a6fbc}\label{class_management_a128c88e0156e3ebb8e4ff53a1a4a6fbc} 
+\index{Management@{Management}!checkWaterNeedsReservoir@{checkWaterNeedsReservoir}}
+\index{checkWaterNeedsReservoir@{checkWaterNeedsReservoir}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{checkWaterNeedsReservoir()}{checkWaterNeedsReservoir()}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ Management\+::check\+Water\+Needs\+Reservoir (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::wstring $>$ \&}]{reservoirs }\end{DoxyParamCaption})}
+
+
+
+Checks water needs for cities after removing certain reservoirs. 
+
+This function calculates the water needs for cities after removing specified reservoirs from the water network. It creates a copy of the water network graph, removes the specified reservoirs, calculates the maximum flow in the modified graph, and then computes the water needs for each city based on the incoming flow to their corresponding vertices in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reservoirs} & Vector containing the reservoirs to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Map containing the cities and their water needs after reservoir removal.
+\end{DoxyReturn}
+@complexity O(N + E), where N is the number of vertices (cities) and E is the number of edges (pipes) \Hypertarget{class_management_ae84d265dd3b85436e52c6166aa3b2841}\label{class_management_ae84d265dd3b85436e52c6166aa3b2841} 
+\index{Management@{Management}!getCities@{getCities}}
+\index{getCities@{getCities}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{getCities()}{getCities()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_city}{City}} $>$ \& Management\+::get\+Cities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get a reference to the cities map. 
+
+\begin{DoxyReturn}{Returns}
+Reference to the cities map. 
+\end{DoxyReturn}
+\Hypertarget{class_management_ad275618d0a026680920f2866d253d59c}\label{class_management_ad275618d0a026680920f2866d253d59c} 
+\index{Management@{Management}!getCityByCode@{getCityByCode}}
+\index{getCityByCode@{getCityByCode}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{getCityByCode()}{getCityByCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_city}{City}} Management\+::get\+City\+By\+Code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} std\+::string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Get the city object by its code. 
+
+This function retrieves the city object associated with the given code from the map of cities. If the code is not found in the map, it returns an empty object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the city. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_city}{City} object corresponding to the code, or an empty object if not found.
+\end{DoxyReturn}
+@complexity O(1) on average for a hash map lookup. \Hypertarget{class_management_ac80ceb14f8152acf07741f8c1f2d1ae2}\label{class_management_ac80ceb14f8152acf07741f8c1f2d1ae2} 
+\index{Management@{Management}!getEdgesFlow@{getEdgesFlow}}
+\index{getEdgesFlow@{getEdgesFlow}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{getEdgesFlow()}{getEdgesFlow()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{const}} std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \& Management\+::get\+Edges\+Flow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get a constant reference to the edges flow. 
+
+\begin{DoxyReturn}{Returns}
+Constant reference to the edges flow. 
+\end{DoxyReturn}
+\Hypertarget{class_management_ae92e06178b706bd477bb92c0d45ee699}\label{class_management_ae92e06178b706bd477bb92c0d45ee699} 
+\index{Management@{Management}!getFlowPaths@{getFlowPaths}}
+\index{getFlowPaths@{getFlowPaths}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{getFlowPaths()}{getFlowPaths()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ $>$ \& Management\+::get\+Flow\+Paths (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get a constant reference to the flow paths. 
+
+\begin{DoxyReturn}{Returns}
+Constant reference to the flow paths. 
+\end{DoxyReturn}
+\Hypertarget{class_management_aafe069890bfcf358f566c47de263c5e0}\label{class_management_aafe069890bfcf358f566c47de263c5e0} 
+\index{Management@{Management}!getReservoirByCode@{getReservoirByCode}}
+\index{getReservoirByCode@{getReservoirByCode}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{getReservoirByCode()}{getReservoirByCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_reservoir}{Reservoir}} Management\+::get\+Reservoir\+By\+Code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} std\+::string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Get the reservoir object by its code. 
+
+This function retrieves the reservoir object associated with the given code from the map of reservoirs. If the code is not found in the map, it returns an empty object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the reservoir. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_reservoir}{Reservoir} object corresponding to the code, or an empty object if not found.
+\end{DoxyReturn}
+@complexity O(1) on average for a hash map lookup. \Hypertarget{class_management_a4fc60733362dc34c0bea599a70a7a383}\label{class_management_a4fc60733362dc34c0bea599a70a7a383} 
+\index{Management@{Management}!getReservoirs@{getReservoirs}}
+\index{getReservoirs@{getReservoirs}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{getReservoirs()}{getReservoirs()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{const}} std\+::unique\+\_\+ptr$<$ std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_reservoir}{Reservoir}} $>$ $>$ \& Management\+::get\+Reservoirs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get a constant reference to the reservoirs map. 
+
+\begin{DoxyReturn}{Returns}
+Constant reference to the reservoirs map. 
+\end{DoxyReturn}
+\Hypertarget{class_management_a136778b785e4755108429ef0d65a497c}\label{class_management_a136778b785e4755108429ef0d65a497c} 
+\index{Management@{Management}!getStationByCode@{getStationByCode}}
+\index{getStationByCode@{getStationByCode}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{getStationByCode()}{getStationByCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_station}{Station}} Management\+::get\+Station\+By\+Code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} std\+::string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Get the station object by its code. 
+
+This function retrieves the station object associated with the given code from the map of stations. If the code is not found in the map, it returns an empty object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & The code of the station. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{class_station}{Station} object corresponding to the code, or an empty object if not found.
+\end{DoxyReturn}
+@complexity O(1) on average for a hash map lookup. \Hypertarget{class_management_aace220c758836f17571e955f4cef50d8}\label{class_management_aace220c758836f17571e955f4cef50d8} 
+\index{Management@{Management}!getStations@{getStations}}
+\index{getStations@{getStations}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{getStations()}{getStations()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{const}} std\+::unique\+\_\+ptr$<$ std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_station}{Station}} $>$ $>$ \& Management\+::get\+Stations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get a constant reference to the stations map. 
+
+\begin{DoxyReturn}{Returns}
+Constant reference to the stations map. 
+\end{DoxyReturn}
+\Hypertarget{class_management_a27a7346adead6b83dbbcd4c32dcfdbd7}\label{class_management_a27a7346adead6b83dbbcd4c32dcfdbd7} 
+\index{Management@{Management}!getWaterNetwork@{getWaterNetwork}}
+\index{getWaterNetwork@{getWaterNetwork}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{getWaterNetwork()}{getWaterNetwork()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{const}} std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_graph}{Graph}}$<$ std\+::string $>$ $>$ \& Management\+::get\+Water\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get a constant reference to the water network graph. 
+
+\begin{DoxyReturn}{Returns}
+Constant reference to the water network graph. 
+\end{DoxyReturn}
+\Hypertarget{class_management_aa59e2b63084e5143da2ba09a768c5c10}\label{class_management_aa59e2b63084e5143da2ba09a768c5c10} 
+\index{Management@{Management}!maxFlow@{maxFlow}}
+\index{maxFlow@{maxFlow}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{maxFlow()}{maxFlow()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{double}} Management\+::max\+Flow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} \mbox{\hyperlink{class_graph}{Graph}}$<$ std\+::string $>$ \&}]{g,  }\item[{\mbox{\hyperlink{class_edge}{const}} std\+::string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Computes the maximum flow in the water network graph. 
+
+This function calculates the maximum flow in the given water network graph using the Edmonds-\/\+Karp algorithm . It adds a source and a sink vertex to the graph and connects them to the reservoirs and cities, respectively. Then, it iteratively finds augmentation paths from the source to the sink using BFS until no more paths can be found. During each iteration, it updates the flow along the found paths. Finally, it retrieves the maximum flow value from the incoming edges of the target vertex specified by the code.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The water network graph. \\
+\hline
+{\em code} & The code representing the target of the maximum flow computation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The maximum flow value.
+\end{DoxyReturn}
+@complexity O(\+V \texorpdfstring{$\ast$}{*} E\texorpdfstring{$^\wedge$}{\string^}2), where V is the number of vertices in the graph and E is the number of edges. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/jlsmp/\+One\+Drive/\+Documentos/universidade/\+DA-\/\+Project1/src/Management.\+h\item 
+C\+:/\+Users/jlsmp/\+One\+Drive/\+Documentos/universidade/\+DA-\/\+Project1/src/Management.\+cpp\end{DoxyCompactItemize}

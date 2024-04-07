@@ -1,0 +1,62 @@
+\doxysection{File\+Reader Class Reference}
+\hypertarget{class_file_reader}{}\label{class_file_reader}\index{FileReader@{FileReader}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_file_reader_a2624ff4a5c9489390250ecc52a37feca}{File\+Reader}} (\mbox{\hyperlink{class_edge}{const}} std\+::string \&\mbox{\hyperlink{class_edge}{f\+Name}})
+\begin{DoxyCompactList}\small\item\em Class for reading data from a file. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{class_file_reader_a5c7f0cf3adfe067e66d787444bdbcf32}{get\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Reads data from the file and returns it as a vector of vectors of strings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_file_reader_a059abbcb109474cdf78a679c8fb54028}\label{class_file_reader_a059abbcb109474cdf78a679c8fb54028} 
+std\+::ifstream {\bfseries file\+\_\+}
+\item 
+\Hypertarget{class_file_reader_a9a7fae4bb7a14818adb194e5a6ab92a7}\label{class_file_reader_a9a7fae4bb7a14818adb194e5a6ab92a7} 
+std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ {\bfseries data\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_file_reader_a2624ff4a5c9489390250ecc52a37feca}\label{class_file_reader_a2624ff4a5c9489390250ecc52a37feca} 
+\index{FileReader@{FileReader}!FileReader@{FileReader}}
+\index{FileReader@{FileReader}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{FileReader()}{FileReader()}}
+{\footnotesize\ttfamily File\+Reader\+::\+File\+Reader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} std\+::string \&}]{f\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Class for reading data from a file. 
+
+Constructor for the \doxylink{class_file_reader}{File\+Reader} class.
+
+
+\begin{DoxyParams}{Parameters}
+{\em f\+Name} & File name or path to be opened.\\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_file_reader_a5c7f0cf3adfe067e66d787444bdbcf32}\label{class_file_reader_a5c7f0cf3adfe067e66d787444bdbcf32} 
+\index{FileReader@{FileReader}!getData@{getData}}
+\index{getData@{getData}!FileReader@{FileReader}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ File\+Reader\+::get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads data from the file and returns it as a vector of vectors of strings. 
+
+Each inner vector represents a line from the file, and each string represents a field separated by commas. Whitespaces at the beginning and end are removed from each field.
+
+\begin{DoxyReturn}{Returns}
+Parsed data from the file.
+\end{DoxyReturn}
+@complexity The time complexity of this function is O(n\texorpdfstring{$\ast$}{*}m), where n is the number of lines in the file and m is the average number of fields per line. Each line is read from the file, split into fields, and trimmed to remove whitespaces. Therefore, the overall time complexity is proportional to the total number of characters read from the file. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/jlsmp/\+One\+Drive/\+Documentos/universidade/\+DA-\/\+Project1/src/File\+Reader.\+h\item 
+C\+:/\+Users/jlsmp/\+One\+Drive/\+Documentos/universidade/\+DA-\/\+Project1/src/File\+Reader.\+cpp\end{DoxyCompactItemize}

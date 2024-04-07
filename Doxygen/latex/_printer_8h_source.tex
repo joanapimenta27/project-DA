@@ -1,0 +1,291 @@
+\doxysection{Printer.\+h}
+\hypertarget{_printer_8h_source}{}\label{_printer_8h_source}\index{C:/Users/jlsmp/OneDrive/Documentos/universidade/DA-\/Project1/src/Printer.h@{C:/Users/jlsmp/OneDrive/Documentos/universidade/DA-\/Project1/src/Printer.h}}
+\mbox{\hyperlink{_printer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ AED\_PROJ\_2\_PRINTER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ AED\_PROJ\_2\_PRINTER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <sys/ioctl.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <locale>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <codecvt>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Management.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}utils.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ COLOR\ SCHEMES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\///}}
+\DoxyCodeLine{00023\ std::wstring\ bg\_light\_red\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)x1b[101m"{}};}
+\DoxyCodeLine{00024\ std::wstring\ end\_bg\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)x1b[0m"{}};}
+\DoxyCodeLine{00025\ std::wstring\ italic\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)x1b[3m"{}};}
+\DoxyCodeLine{00026\ std::wstring\ end\_italic\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)x1b[0m"{}};}
+\DoxyCodeLine{00027\ std::wstring\ red\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)033[31m"{}};}
+\DoxyCodeLine{00028\ std::wstring\ bold\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)033[1m"{}};}
+\DoxyCodeLine{00029\ std::wstring\ underline\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)033[4m"{}};;}
+\DoxyCodeLine{00030\ std::wstring\ end\_effect\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)033[0m"{}};}
+\DoxyCodeLine{00031\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\///}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ std::vector<std::vector<std::wstring>>\ loadingDataAnimation\ =\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ ████\ \ ██\ \ ███\ \ ███\ ██\ \ █\ \ ████\ \ \ \ ███\ \ \ ██\ \ ███\ \ ██\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ █\ \ █\ █\_\_█\ █\ \ █\ \ █\ \ █\ █\ █\ \ █\ \ \_\ \ \ \ █\ \ █\ █\_\_█\ \ █\ \ █\_\_█\ \ \ █\ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}███\ ████\ █\ \ █\ ███\ \ ███\ █\ \ ██\ \ ████\ \ \ \ ███\ \ █\ \ █\ \ █\ \ █\ \ █\ \ \ \ \ \ █\ \ █\ \ █"{}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ ████\ \ ██\ \ ███\ \ ███\ ██\ \ █\ \ ████\ \ \ \ ███\ \ \ ██\ \ ███\ \ ██\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ █\ \ █\ █\_\_█\ █\ \ █\ \ █\ \ █\ █\ █\ \ █\ \ \_\ \ \ \ █\ \ █\ █\_\_█\ \ █\ \ █\_\_█\ \ \ \ \ \ █\ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}███\ ████\ █\ \ █\ ███\ \ ███\ █\ \ ██\ \ ████\ \ \ \ ███\ \ █\ \ █\ \ █\ \ █\ \ █\ \ \ █\ \ \ \ \ █\ \ █"{}},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ ████\ \ ██\ \ ███\ \ ███\ ██\ \ █\ \ ████\ \ \ \ ███\ \ \ ██\ \ ███\ \ ██\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ █\ \ █\ █\_\_█\ █\ \ █\ \ █\ \ █\ █\ █\ \ █\ \ \_\ \ \ \ █\ \ █\ █\_\_█\ \ █\ \ █\_\_█\ \ \ \ \ \ \ \ \ █\ \ \ "{}},}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}███\ ████\ █\ \ █\ ███\ \ ███\ █\ \ ██\ \ ████\ \ \ \ ███\ \ █\ \ █\ \ █\ \ █\ \ █\ \ \ █\ \ █\ \ \ \ \ █"{}},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ ████\ \ ██\ \ ███\ \ ███\ ██\ \ █\ \ ████\ \ \ \ ███\ \ \ ██\ \ ███\ \ ██\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ █\ \ █\ █\_\_█\ █\ \ █\ \ █\ \ █\ █\ █\ \ █\ \ \_\ \ \ \ █\ \ █\ █\_\_█\ \ █\ \ █\_\_█\ \ \ \ \ \ \ \ \ \ \ \ █"{}},}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}███\ ████\ █\ \ █\ ███\ \ ███\ █\ \ ██\ \ ████\ \ \ \ ███\ \ █\ \ █\ \ █\ \ █\ \ █\ \ \ █\ \ █\ \ █\ \ \ "{}},}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ ████\ \ ██\ \ ███\ \ ███\ ██\ \ █\ \ ████\ \ \ \ ███\ \ \ ██\ \ ███\ \ ██\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ █\ \ █\ █\_\_█\ █\ \ █\ \ █\ \ █\ █\ █\ \ █\ \ \_\ \ \ \ █\ \ █\ █\_\_█\ \ █\ \ █\_\_█\ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}███\ ████\ █\ \ █\ ███\ \ ███\ █\ \ ██\ \ ████\ \ \ \ ███\ \ █\ \ █\ \ █\ \ █\ \ █\ \ \ █\ \ █\ \ █\ \ █"{}},}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ ████\ \ ██\ \ ███\ \ ███\ ██\ \ █\ \ ████\ \ \ \ ███\ \ \ ██\ \ ███\ \ ██\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ █\ \ █\ █\_\_█\ █\ \ █\ \ █\ \ █\ █\ █\ \ █\ \ \_\ \ \ \ █\ \ █\ █\_\_█\ \ █\ \ █\_\_█\ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}███\ ████\ █\ \ █\ ███\ \ ███\ █\ \ ██\ \ ████\ \ \ \ ███\ \ █\ \ █\ \ █\ \ █\ \ █\ \ \ █\ \ █\ \ █\ \ █"{}},}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ ████\ \ ██\ \ ███\ \ ███\ ██\ \ █\ \ ████\ \ \ \ ███\ \ \ ██\ \ ███\ \ ██\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ █\ \ █\ █\_\_█\ █\ \ █\ \ █\ \ █\ █\ █\ \ █\ \ \_\ \ \ \ █\ \ █\ █\_\_█\ \ █\ \ █\_\_█\ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}███\ ████\ █\ \ █\ ███\ \ ███\ █\ \ ██\ \ ████\ \ \ \ ███\ \ █\ \ █\ \ █\ \ █\ \ █\ \ \ █\ \ █\ \ █\ \ █"{}},}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ ████\ \ ██\ \ ███\ \ ███\ ██\ \ █\ \ ████\ \ \ \ ███\ \ \ ██\ \ ███\ \ ██\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ █\ \ █\ █\_\_█\ █\ \ █\ \ █\ \ █\ █\ █\ \ █\ \ \_\ \ \ \ █\ \ █\ █\_\_█\ \ █\ \ █\_\_█\ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}███\ ████\ █\ \ █\ ███\ \ ███\ █\ \ ██\ \ ████\ \ \ \ ███\ \ █\ \ █\ \ █\ \ █\ \ █\ \ \ █\ \ █\ \ █\ \ █"{}},}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ ████\ \ ██\ \ ███\ \ ███\ ██\ \ █\ \ ████\ \ \ \ ███\ \ \ ██\ \ ███\ \ ██\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}█\ \ \ █\ \ █\ █\_\_█\ █\ \ █\ \ █\ \ █\ █\ █\ \ █\ \ \_\ \ \ \ █\ \ █\ █\_\_█\ \ █\ \ █\_\_█\ \ \ \ \ \ \ \ \ \ \ \ \ "{}},}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}███\ ████\ █\ \ █\ ███\ \ ███\ █\ \ ██\ \ ████\ \ \ \ ███\ \ █\ \ █\ \ █\ \ █\ \ █\ \ \ █\ \ █\ \ █\ \ █"{}},}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keywordtype}{int}\ frame\ =\ 0;}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{int}\ getPunct(\textcolor{keyword}{const}\ std::string\&\ \mbox{\hyperlink{class_edge}{s}})\{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{count}}\ =\ 0;}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{count2}}\ =\ 0;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ \mbox{\hyperlink{class_edge}{c}}\ :\ \mbox{\hyperlink{class_edge}{s}})\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!((64\ <\ \mbox{\hyperlink{class_edge}{c}}\ \&\&\ \mbox{\hyperlink{class_edge}{c}}\ <\ 123)\ ||\ \mbox{\hyperlink{class_edge}{c}}\ ==\ 32))\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{count}}++;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{count2}}++;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_edge}{count}}\ -\/\ \mbox{\hyperlink{class_edge}{count2}}/2;}
+\DoxyCodeLine{00093\ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{int}\ getTerminalWidth()\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{class_edge}{winsize}}\ \mbox{\hyperlink{class_edge}{w}}\{\};}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{class_edge}{ioctl}}(\mbox{\hyperlink{class_edge}{STDOUT\_FILENO}},\ \mbox{\hyperlink{class_edge}{TIOCGWINSZ}},\ \&\mbox{\hyperlink{class_edge}{w}});}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_edge}{w}}.ws\_col;}
+\DoxyCodeLine{00099\ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ std::wstring\ centerUp(\textcolor{keyword}{const}\ std::wstring\&\ \mbox{\hyperlink{class_edge}{txtToCenter}})\{}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordflow}{if}\ (getTerminalWidth()\ /\ 2\ -\/\ \mbox{\hyperlink{class_edge}{txtToCenter}}.size()\ /\ 2\ >\ 0)\{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::wstring(getTerminalWidth()\ /\ 2\ -\/\ \mbox{\hyperlink{class_edge}{txtToCenter}}.size()\ /\ 2,\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\ '})\ +\ \mbox{\hyperlink{class_edge}{txtToCenter}};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_edge}{txtToCenter}};}
+\DoxyCodeLine{00107\ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ std::wstring\ centerUpAndLineUp(\textcolor{keyword}{const}\ std::wstring\&\ \mbox{\hyperlink{class_edge}{txtToCenter}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{lineUp}})\{}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordflow}{if}\ (getTerminalWidth()\ /\ 2\ -\/\ \mbox{\hyperlink{class_edge}{lineUp}}\ >\ 0)\{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::wstring(getTerminalWidth()\ /\ 2\ -\/\ \mbox{\hyperlink{class_edge}{lineUp}}\ -\/\ 20,\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\ '})\ +\ \mbox{\hyperlink{class_edge}{txtToCenter}};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_edge}{txtToCenter}};}
+\DoxyCodeLine{00115\ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{keywordtype}{void}\ printCenteredTitle(\textcolor{keyword}{const}\ std::vector<std::wstring>\&\ \mbox{\hyperlink{class_edge}{title}})\{}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ std::wstring\&\ \mbox{\hyperlink{class_edge}{title\_segment}}\ :\ \mbox{\hyperlink{class_edge}{title}})\{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ std::wcout\ <<\ bold\ <<\ centerUp(\mbox{\hyperlink{class_edge}{title\_segment}})\ <<\ end\_effect\ <<\ std::endl;}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \}}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{keywordtype}{void}\ printTextLoadingData()\{}
+\DoxyCodeLine{00124\ \ \ \ \ \mbox{\hyperlink{class_edge}{system}}(\textcolor{stringliteral}{"{}clear"{}});}
+\DoxyCodeLine{00125\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n\(\backslash\)n"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00126\ \ \ \ \ printCenteredTitle(loadingDataAnimation[frame]);}
+\DoxyCodeLine{00127\ \ \ \ \ frame\ ++;}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{if}\ (frame\ >\ loadingDataAnimation.size()\ -\/\ 1)\{frame\ =\ 0;\}}
+\DoxyCodeLine{00129\ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(100));}
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{class_edge}{system}}(\textcolor{stringliteral}{"{}clear"{}});}
+\DoxyCodeLine{00131\ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{void}\ printBoldTitle(\textcolor{keyword}{const}\ std::vector<std::wstring>\&\ \mbox{\hyperlink{class_edge}{title}})\{}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ std::wstring\&\ \mbox{\hyperlink{class_edge}{title\_segment}}\ :\ \mbox{\hyperlink{class_edge}{title}})\{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ std::wcout\ <<\ bold\ <<\ \mbox{\hyperlink{class_edge}{title\_segment}}\ <<\ end\_effect\ <<\ std::endl;}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{keywordtype}{void}\ printOptions(\textcolor{keyword}{const}\ std::vector<std::wstring>\&\ options,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ selected,\ \textcolor{keywordtype}{bool}\ table\_mode)\{}
+\DoxyCodeLine{00140\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keyword}{const}\ std::wstring\&\ \mbox{\hyperlink{class_edge}{s}}\ :\ options)\{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_edge}{s}}\ ==\ options[selected]\ \&\&\ !table\_mode)\{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ std::wcout\ <<\ \textcolor{stringliteral}{"{}<\ "{}}\ <<\ underline\ <<\ bold\ <<\ red\ <<\ \mbox{\hyperlink{class_edge}{s}}\ <<\ end\_effect\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ >"{}}\ <<\ std::endl\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ std::wcout\ <<\ bold\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ "{}}\ <<\ \mbox{\hyperlink{class_edge}{s}}\ <<\ end\_effect\ <<\ std::endl\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{keywordtype}{void}\ printDirectory(\textcolor{keyword}{const}\ std::wstring\&\ directory)\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ std::wcout\ <<\ bold\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ -\/-\/"{}};}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{wchar\_t}\ \mbox{\hyperlink{class_edge}{c}}\ :\ directory)\{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}-\/"{}};}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n|\ "{}}\ <<\ directory\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ |"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00157\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ -\/-\/"{}};}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{wchar\_t}\ \mbox{\hyperlink{class_edge}{c}}\ :\ directory)\{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}-\/"{}};}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ std::wcout\ <<\ end\_effect\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n\(\backslash\)n"{}};}
+\DoxyCodeLine{00162\ \}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \textcolor{keywordtype}{void}\ printHelper(std::vector<std::wstring>\ helpers,\ \textcolor{keyword}{const}\ std::vector<int>\&\ \mbox{\hyperlink{class_edge}{selections}})\{}
+\DoxyCodeLine{00165\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{selection}}\ :\ \mbox{\hyperlink{class_edge}{selections}})\{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ std::wcout\ <<\ italic\ <<\ helpers[\mbox{\hyperlink{class_edge}{selection}}]\ <<\ end\_italic\ <<\ std::endl;}
+\DoxyCodeLine{00168\ \ \ \ \ \}}
+\DoxyCodeLine{00169\ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \textcolor{keywordtype}{void}\ printMonoInfo(\textcolor{keyword}{const}\ std::wstring\&\ \mbox{\hyperlink{class_edge}{wstr}})\{}
+\DoxyCodeLine{00172\ \ \ \ \ std::wstring\ \mbox{\hyperlink{class_edge}{wigly\_underline}};}
+\DoxyCodeLine{00173\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n\(\backslash\)n"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00174\ \ \ \ \ std::wcout\ <<\ centerUp(\mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}-\/>\ "{}}\ \ +\ \mbox{\hyperlink{class_edge}{wstr}}\ +\ \ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ <-\/"{}})\ <<\ std::endl;}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{wchar\_t}\ \mbox{\hyperlink{class_edge}{c}}\ :\ \mbox{\hyperlink{class_edge}{wstr}})\{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wigly\_underline}}.push\_back(\mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\string~'});}
+\DoxyCodeLine{00177\ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{i}}\ =\ 0;\ \mbox{\hyperlink{class_edge}{i}}\ <\ 6;\ \mbox{\hyperlink{class_edge}{i}}++)\{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wigly\_underline}}.push\_back(\mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\string~'});}
+\DoxyCodeLine{00180\ \ \ \ \ \}}
+\DoxyCodeLine{00181\ \ \ \ \ std::wcout\ <<\ centerUp(red\ +\ \mbox{\hyperlink{class_edge}{wigly\_underline}}\ +\ end\_effect)\ <<\ std::endl;}
+\DoxyCodeLine{00182\ \}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \textcolor{keywordtype}{void}\ printListCodeValue(\textcolor{keyword}{const}\ std::vector<std::vector<std::string>>\&\ info)\{}
+\DoxyCodeLine{00185\ \ \ \ \ std::wstring\ \mbox{\hyperlink{class_edge}{wigly\_underline}};}
+\DoxyCodeLine{00186\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n\(\backslash\)n"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00187\ \ \ \ \ std::wstring\ \mbox{\hyperlink{class_edge}{topper}}\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}The\ Cities\ that\ cannot\ be\ supplied\ by\ the\ desired\ water\ level\ are\ :"{}};}
+\DoxyCodeLine{00188\ \ \ \ \ std::wcout\ <<\ bold\ <<\ centerUp(\mbox{\hyperlink{class_edge}{topper}})\ <<\ end\_effect\ <<\ std::endl;}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{wchar\_t}\ \mbox{\hyperlink{class_edge}{c}}\ :\ \mbox{\hyperlink{class_edge}{topper}})\{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wigly\_underline}}.push\_back(\mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\string~'});}
+\DoxyCodeLine{00191\ \ \ \ \ \}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ \ \ \ "{}}\ <<\ centerUp(red\ +\ \mbox{\hyperlink{class_edge}{wigly\_underline}}\ +\ end\_effect)\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ \mbox{\hyperlink{class_edge}{p}}\ :\ info)\{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ std::wstring\ \mbox{\hyperlink{class_edge}{wstr}}\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}-\/>\ "{}}\ +\ underline\ +\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{p}}[2]);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(end\_effect);}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(\mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{},\ with\ the\ code\ "{}}\ +\ underline\ +\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{p}}[0]));}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(end\_effect);}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(\mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ has\ a\ demand\ of\ "{}}\ +\ underline\ +\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{p}}[3]));}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(end\_effect);}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(\mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{},\ but\ only\ is\ delivered\ "{}}\ +\ underline\ +\ converter.from\_bytes(std::to\_string(std::stoi(\mbox{\hyperlink{class_edge}{p}}[3])\ -\/\ std::stoi(\mbox{\hyperlink{class_edge}{p}}[1]))));}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(end\_effect);}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(\mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ which\ causes\ a\ deficit\ of\ "{}}\ +\ underline\ +\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{p}}[1]));}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(end\_effect);}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ std::wcout\ <<\ centerUpAndLineUp(\mbox{\hyperlink{class_edge}{wstr}},\ 40)\ <<\ std::endl;}
+\DoxyCodeLine{00207\ \ \ \ \ \}}
+\DoxyCodeLine{00208\ \}}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \textcolor{keywordtype}{void}\ printDoubleTable(\textcolor{keyword}{const}\ std::unordered\_map<std::string,\ std::string>\&\ \mbox{\hyperlink{class_edge}{wstring\_list}},\ \textcolor{keywordtype}{int}\ page,\ \textcolor{keywordtype}{int}\ elements\_per\_page,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ selected\_in\_page,\ \textcolor{keywordtype}{bool}\ table\_mode)\{}
+\DoxyCodeLine{00211\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n\ "{}}\ <<\ bold\ <<\ std::wstring(40,\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'-\/'})\ <<\ end\_effect\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{count}}\ =\ 0;}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{count\_for\_selected}}\ =\ 0;}
+\DoxyCodeLine{00214\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ \mbox{\hyperlink{class_edge}{wstr}}\ :\ \mbox{\hyperlink{class_edge}{wstring\_list}})\{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_edge}{count}}\ >=\ page\ *\ elements\_per\_page\ \&\&\ \mbox{\hyperlink{class_edge}{count}}\ <\ page\ *\ elements\_per\_page\ +\ elements\_per\_page)\{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_edge}{count\_for\_selected}}\ ==\ selected\_in\_page\ \&\&\ table\_mode)\{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ "{}}\ <<\ bg\_light\_red\ <<\ underline\ <<\ bold}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{wstr}}.second)\ <<\ std::wstring(30\ -\/\ \mbox{\hyperlink{class_edge}{wstr}}.second.size()\ +\ getPunct(\mbox{\hyperlink{class_edge}{wstr}}.second),\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\ '})}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ end\_italic\ <<\ bg\_light\_red\ <<\ underline\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ "{}}\ \ <<\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{wstr}}.first)}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::wstring(6\ -\/\ \mbox{\hyperlink{class_edge}{wstr}}.first.size(),\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\ '})}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ end\_italic\ <<\ end\_bg\ <<\ end\_effect\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ |"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ "{}}\ <<\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{wstr}}.second)\ <<\ std::wstring(30\ -\/\ \mbox{\hyperlink{class_edge}{wstr}}.second.size()\ +\ getPunct(\mbox{\hyperlink{class_edge}{wstr}}.second),\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\ '})}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ "{}}\ <<\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{wstr}}.first)\ <<\ std::wstring(6\ -\/\ \mbox{\hyperlink{class_edge}{wstr}}.first.size(),\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\ '})}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ |"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{count\_for\_selected}}\ ++;}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{count}}\ ++;}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_edge}{wstring\_list}}.empty())\{std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|"{}}\ <<\ italic\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ No\ results\ "{}}\ <<\ std::wstring(27,\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\ '})\ <<\ end\_effect\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|"{}}\ <<\ std::endl;\}}
+\DoxyCodeLine{00233\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|"{}}\ <<\ bold\ <<\ std::wstring(40,\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'-\/'})\ <<\ end\_effect\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\(\backslash\)n"{}};}
+\DoxyCodeLine{00234\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|"{}}\ <<\ italic\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ <('p')"{}}\ <<\ std::wstring(26,\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\ '})\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}('n')>\ "{}}\ <<\ end\_italic\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00235\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|"{}}\ <<\ std::wstring(38\ -\/\ std::to\_string(page\ +\ 1).\mbox{\hyperlink{class_edge}{size}}()\ -\/\ std::to\_string(\mbox{\hyperlink{class_edge}{wstring\_list}}.size()/elements\_per\_page\ +\ 1).size(),\ \textcolor{charliteral}{'\ '})}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ bold\ <<\ page\ +\ 1\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}/"{}}\ <<\ \mbox{\hyperlink{class_edge}{wstring\_list}}.size()/elements\_per\_page\ +\ 1\ <<\ end\_effect\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ |"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00237\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\ '}\ <<\ bold\ <<\ std::wstring(40,\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'-\/'})\ <<\ end\_effect\ <<\ std::endl;}
+\DoxyCodeLine{00238\ \ \ \ \ std::wcout\ <<\ italic\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n\ Total\ Number\ :\ "{}}\ <<\ end\_italic\ <<\ bold<<\ \mbox{\hyperlink{class_edge}{wstring\_list}}.size()\ <<\ end\_effect\ <<\ std::endl;}
+\DoxyCodeLine{00239\ \}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \textcolor{keywordtype}{void}\ printTable(\textcolor{keyword}{const}\ std::vector<std::wstring>\&\ \mbox{\hyperlink{class_edge}{wstring\_list}},\ \textcolor{keywordtype}{int}\ page,\ \textcolor{keywordtype}{int}\ elements\_per\_page,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ selected\_in\_page,\ \textcolor{keywordtype}{bool}\ table\_mode)\{}
+\DoxyCodeLine{00242\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n"{}}\ <<\ bold\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ "{}}\ <<\ end\_effect\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{count}}\ =\ 0;}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_edge}{count\_for\_selected}}\ =\ 0;}
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ std::wstring\&\ \mbox{\hyperlink{class_edge}{wstr}}\ :\ \mbox{\hyperlink{class_edge}{wstring\_list}})\{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_edge}{count}}\ >=\ page\ *\ elements\_per\_page\ \&\&\ \mbox{\hyperlink{class_edge}{count}}\ <\ page\ *\ elements\_per\_page\ +\ elements\_per\_page)\{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_edge}{count\_for\_selected}}\ ==\ selected\_in\_page\ \&\&\ table\_mode)\{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ "{}}\ <<\ bg\_light\_red\ <<\ italic\ <<\ underline\ <<\ bold}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \mbox{\hyperlink{class_edge}{wstr}}\ <<\ std::wstring(60\ -\/\ \mbox{\hyperlink{class_edge}{wstr}}.size(),\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\ '})\ <<\ end\_italic\ <<\ end\_bg}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ end\_effect\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ |"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\ "{}}\ <<\ \mbox{\hyperlink{class_edge}{wstr}}\ <<\ std::wstring(60\ -\/\ \mbox{\hyperlink{class_edge}{wstr}}.size(),\ \mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\ '})\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ |"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{count\_for\_selected}}\ ++;}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{count}}\ ++;}
+\DoxyCodeLine{00258\ \ \ \ \ \}}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_edge}{wstring\_list}}.empty())\{std::wcout\ <<\ \textcolor{stringliteral}{"{}|"{}}\ <<\ italic\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ No\ results\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}}\ <<\ end\_effect\ <<\ \textcolor{stringliteral}{"{}|"{}}\ <<\ std::endl;\}}
+\DoxyCodeLine{00260\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|"{}}\ <<\ bold\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}}\ <<\ end\_effect\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|\(\backslash\)n"{}};}
+\DoxyCodeLine{00261\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|"{}}\ <<\ italic\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ <('p')\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ('n')>\ "{}}\ <<\ end\_italic\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00262\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}|"{}}\ <<\ std::wstring(60\ -\/\ std::to\_string(page\ +\ 1).\mbox{\hyperlink{class_edge}{size}}()\ -\/\ std::to\_string(\mbox{\hyperlink{class_edge}{wstring\_list}}.size()/elements\_per\_page\ +\ 1).size(),\ \textcolor{charliteral}{'\ '})}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ bold\ <<\ page\ +\ 1\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}/"{}}\ <<\ \mbox{\hyperlink{class_edge}{wstring\_list}}.size()/elements\_per\_page\ +\ 1\ <<\ end\_effect\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ |"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00264\ \ \ \ \ std::wcout\ <<\ bold\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ "{}}\ <<\ end\_effect\ <<\ std::endl;}
+\DoxyCodeLine{00265\ \ \ \ \ std::wcout\ <<\ italic\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n\ Total\ Number\ :\ "{}}\ <<\ end\_italic\ <<\ bold<<\ \mbox{\hyperlink{class_edge}{wstring\_list}}.size()\ <<\ end\_effect\ <<\ std::endl;}
+\DoxyCodeLine{00266\ \}}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \textcolor{keywordtype}{void}\ printListCompareValues(std::unordered\_map<std::string,\ std::string>\ \mbox{\hyperlink{class_edge}{um1}},\ std::unordered\_map<std::string,\ std::string>\mbox{\hyperlink{class_edge}{um2}},\ std::unordered\_map<std::string,\ std::string>\ \mbox{\hyperlink{class_edge}{cityName}})\{}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00270\ \ \ \ \ std::wstring\ \mbox{\hyperlink{class_edge}{wigly\_underline}};}
+\DoxyCodeLine{00271\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n\(\backslash\)n"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00272\ \ \ \ \ std::wstring\ \mbox{\hyperlink{class_edge}{topper}}\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}The\ Cities\ that\ cannot\ be\ supplied\ by\ the\ desired\ water\ level\ are\ :"{}};}
+\DoxyCodeLine{00273\ \ \ \ \ std::wcout\ <<\ bold\ <<\ centerUp(\mbox{\hyperlink{class_edge}{topper}})\ <<\ end\_effect\ <<\ std::endl;}
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{wchar\_t}\ \mbox{\hyperlink{class_edge}{c}}\ :\ \mbox{\hyperlink{class_edge}{topper}})\{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wigly\_underline}}.push\_back(\mbox{\hyperlink{class_edge}{L}}\textcolor{charliteral}{'\string~'});}
+\DoxyCodeLine{00276\ \ \ \ \ \}}
+\DoxyCodeLine{00277\ }
+\DoxyCodeLine{00278\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ \ \ \ "{}}\ <<\ centerUp(red\ +\ \mbox{\hyperlink{class_edge}{wigly\_underline}}\ +\ end\_effect)\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ \mbox{\hyperlink{class_edge}{p}}\ :\ \mbox{\hyperlink{class_edge}{um1}})\{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_edge}{um2}}[\mbox{\hyperlink{class_edge}{p}}.first]\ >\ \mbox{\hyperlink{class_edge}{p}}.second)\{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ std::wstring\ \mbox{\hyperlink{class_edge}{wstr}}\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}-\/>\ "{}}\ +\ underline\ +\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{p}}.first);}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(end\_effect);}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(\mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{},\ the\ city\ of\ "{}}\ +\ underline\ +\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{cityName}}[\mbox{\hyperlink{class_edge}{p}}.first]));}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(end\_effect);}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(\mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ had\ a\ old\ flow\ of\ "{}}\ +\ underline\ +\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{um2}}[\mbox{\hyperlink{class_edge}{p}}.first]));}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(end\_effect);}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(\mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ and\ has\ now\ a\ flow\ of\ "{}}\ +\ underline\ +\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{p}}.second));}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(end\_effect);}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ std::wcout\ <<\ centerUpAndLineUp(\mbox{\hyperlink{class_edge}{wstr}},\ 20)\ <<\ std::endl;}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00292\ \ \ \ \ \}}
+\DoxyCodeLine{00293\ \}}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//AED\_PROJ\_2\_PRINTER\_H}}
+
+\end{DoxyCode}

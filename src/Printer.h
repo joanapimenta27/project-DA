@@ -9,6 +9,16 @@
 #include "Management.h"
 #include "utils.h"
 
+/**
+ * @file Printer.h
+ * @brief Header file containing functions for printing formatted output to the console.
+ *
+ * This header file defines functions for printing various types of formatted output to the console,
+ * including loading animations, titles, options, directories, helper messages, information in a monospaced font,
+ * lists of code values, tables with double values, regular tables, and lists of compared values.
+ * It also includes color schemes and utility functions for centering text and getting terminal width.
+ */
+
 //----------------- COLOR SCHEMES --------------------//
 std::wstring bg_light_red = L"\x1b[101m";
 std::wstring end_bg = L"\x1b[0m";

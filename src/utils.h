@@ -10,7 +10,7 @@
 #include <codecvt>
 #include <locale>
 #include <unordered_map>
-#include "../data_structures/Graph.h"
+#include "Graph.h"
 
 
 extern std::wstring_convert<std::codecvt_utf8<wchar_t>> converter1;

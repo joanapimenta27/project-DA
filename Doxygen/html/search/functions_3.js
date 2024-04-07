@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['getcities_0',['getCities',['../class_management.html#ae84d265dd3b85436e52c6166aa3b2841',1,'Management']]],
+  ['getcitybycode_1',['getCityByCode',['../class_management.html#ad275618d0a026680920f2866d253d59c',1,'Management']]],
+  ['getcode_2',['getCode',['../class_city.html#a16825c4047ba8d1d516e7c537a472dd4',1,'City::getCode()'],['../class_reservoir.html#ac643ed1efe410c6fb2478cc79c315dfe',1,'Reservoir::getCode()'],['../class_station.html#acfc25745a46db3a0726db3826f0ff769',1,'Station::getCode()']]],
+  ['getdata_3',['getData',['../class_file_reader.html#a5c7f0cf3adfe067e66d787444bdbcf32',1,'FileReader']]],
+  ['getdemand_4',['getDemand',['../class_city.html#afe09db984da8278e771a727e6f586444',1,'City']]],
+  ['getedgesflow_5',['getEdgesFlow',['../class_management.html#ac80ceb14f8152acf07741f8c1f2d1ae2',1,'Management']]],
+  ['getflowpaths_6',['getFlowPaths',['../class_management.html#ae92e06178b706bd477bb92c0d45ee699',1,'Management']]],
+  ['getid_7',['getId',['../class_city.html#aadddbdeac6ac07e34acc9044fe5d7dad',1,'City::getId()'],['../class_reservoir.html#ac21b92a61120d5f6b2930a567ebace91',1,'Reservoir::getId()'],['../class_station.html#a26dca388822d7551e9457b9715773b1b',1,'Station::getId()']]],
+  ['getmaxdelivery_8',['getMaxDelivery',['../class_reservoir.html#a59a17dd56e7ed41778007f0b5e64e69d',1,'Reservoir']]],
+  ['getmunicipality_9',['getMunicipality',['../class_reservoir.html#aab42f6b72216f982871870fb1ac12671',1,'Reservoir']]],
+  ['getname_10',['getName',['../class_city.html#a79ba022573d8174291b5dac268ee5ec0',1,'City::getName()'],['../class_reservoir.html#a686a4522a8f83514a0304b7a8a3ab75e',1,'Reservoir::getName()']]],
+  ['getpopulation_11',['getPopulation',['../class_city.html#a23be6779c2ba1f5ee0f303b9a160216d',1,'City']]],
+  ['getreservoirbycode_12',['getReservoirByCode',['../class_management.html#aafe069890bfcf358f566c47de263c5e0',1,'Management']]],
+  ['getreservoirs_13',['getReservoirs',['../class_management.html#a4fc60733362dc34c0bea599a70a7a383',1,'Management']]],
+  ['getstationbycode_14',['getStationByCode',['../class_management.html#a136778b785e4755108429ef0d65a497c',1,'Management']]],
+  ['getstations_15',['getStations',['../class_management.html#aace220c758836f17571e955f4cef50d8',1,'Management']]],
+  ['getwaternetwork_16',['getWaterNetwork',['../class_management.html#a27a7346adead6b83dbbcd4c32dcfdbd7',1,'Management']]]
+];

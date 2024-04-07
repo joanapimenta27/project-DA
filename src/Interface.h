@@ -52,7 +52,7 @@ private:
 
     std::string city_analised;
     std::string city_analised_code;
-
+    std::wstring reservoir_analised_code;
     std::wstring directory;
     std::vector<std::wstring> directories;
     std::wstring write;
@@ -61,23 +61,35 @@ private:
 
     std::stack<int> earlier_locations;
 
-    std::vector<std::wstring> filteredWstringVector;
+    std::vector<std::wstring> filteredStringVector;
     std::unordered_map<std::string, std::string> filteredWstringPairsVector;
     std::unordered_map<std::string, std::string> citiesStringMap;
+    std::unordered_map<std::string, std::string> citiesWaterDeliveredMap;
+    std::unordered_map<std::string, std::string> citiesWaterDeliveredMapWithChanges;
+    std::vector<std::wstring> reservoirCodeVector;
+    std::vector<std::wstring> stationCodeVector;
+    std::vector<std::wstring> selectedReservoirCode;
+    std::vector<std::wstring> selectedPumpingCode;
     std::unordered_map<int, int> locationHasTable = {
-            {7, 1}
+            {7, 1}, {12, 1}, {14, 1}
     };
     std::unordered_map<int, int> capOfWrite = {
-            {7, 30}
+            {7, 30}, {12, 4}, {14, 5}
     };
     std::unordered_map<int, int> locationOfCitySearch = {
             {7, 1}
     };
+    std::unordered_map<int, int> locationOfReservoirSearch = {
+            {12, 1}
+    };
+    std::unordered_map<int, int> locationOfStationSearch = {
+            {14, 1}
+    };
     std::unordered_map<int, int> locationWithTable = {
-            {7, 0}
+            {7, 0}, {12, 1}, {14, 2}
     };
 
-    std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
+    std::vector<std::vector<std::string>> water_needs;
 
     std::vector<std::vector<std::wstring>> options{
             {
@@ -131,9 +143,35 @@ private:
                 L"Main Menu"
             },
             {
-                    L"Back",
-                    L"Main Menu"
-            }
+                L"Back",
+                L"Main Menu"
+            },
+            {
+                L"Reservoir Out of Commission",
+                L"Pumping Stations in Maintenance",
+                L"Pipeline Failures",
+                L"Main Menu"
+            },
+            {
+                L"Search for a Reservoir",
+                L"Back",
+                L"Main Menu"
+            },
+            {
+                L"Add One More Reservoir",
+                L"Back",
+                L"Main Menu"
+            },
+            {
+                L"Search for a Pumping Station",
+                L"Back",
+                L"Main Menu"
+            },
+            {
+                L"Add One More Pumping Station",
+                L"Back",
+                L"Main Menu"
+            },
     };
 
     std::vector<std::wstring> helpers{
@@ -181,6 +219,18 @@ private:
 
 
     void tableModeCleaner(std::unordered_map<std::string, std::string> um);
+
+    static std::vector<std::wstring> getCodeVector(const std::unordered_map<std::string, Reservoir> &um);
+
+    void writeOptionDefaulterReservoir();
+
+    std::vector<std::wstring> filterReservoirSearch(const std::vector<std::wstring> &um);
+
+    void tableModeCleaner2(std::vector<std::wstring> um);
+
+    static std::vector<std::wstring> getCodeStation(const std::unordered_map<std::string, Station> &um);
+
+    void writeOptionDefaulterStation();
 };
 
 #endif //PROJECT_DA_INTERFACE_H

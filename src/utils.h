@@ -4,15 +4,25 @@
 
 #ifndef PROJECT_DA_UTILS_H
 #define PROJECT_DA_UTILS_H
+
 #include <queue>
 #include <string>
-#include "FileReader.h"
-#include "Reservoir.h"
-#include "Station.h"
-#include "City.h"
+#include <codecvt>
+#include <locale>
+#include <unordered_map>
 #include "../data_structures/Graph.h"
 
+
+extern std::wstring_convert<std::codecvt_utf8<wchar_t>> converter1;
+extern std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
 void visitAndTest(std::queue<Vertex<std::string>*> &q,Edge<std::string> *e,Vertex<std::string> *d, double spare);
 bool augmentationPathFinder(Graph<std::string> *g ,Vertex<std::string> *source,Vertex<std::string> *sink);
+std::vector<std::vector<std::vector<std::string>>> flowDataLineRemover (std::vector<std::wstring> codes, std::vector<std::vector<std::vector<std::string>>> flowData_);
+std::string key(const std::string& i,const std::string& j);
+double findMin(const std::vector<double>& values);
+std::string getCityFlow (const std::string& code, const std::vector<std::vector<std::vector<std::string>>> &flowData_);
+double calcPathMin(const std::vector<std::vector<std::string>> &path);
+Graph<std::string> createGraphCopy(const Graph<std::string>& og_graph);
+
 
 #endif //PROJECT_DA_UTILS_H

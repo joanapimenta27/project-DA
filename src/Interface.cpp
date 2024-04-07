@@ -62,6 +62,7 @@ void Interface::refreshDirectories() {
         }
     }
     directories.emplace_back(L"Reliability and Sensitivity to Failures > Pipe " + res_prep + L" Failures");
+    directories.emplace_back(L"Basic Service Metrics > balance");
 }
 
 void Interface::stackClear(std::stack<int> &s){
@@ -603,7 +604,7 @@ void Interface::basicInputResponse(unsigned int user_in) {
                         enterInputHandler(10, 0, false, false, false);
                         break;
                     case 2:
-                        enterInputHandler(0, 0, true, false, false);
+                        enterInputHandler(18, 0, true, false, false);
                         break;
                     case 3:
                         enterInputHandler(0, 0, false, false, true);
@@ -796,6 +797,16 @@ void Interface::basicInputResponse(unsigned int user_in) {
                         break;
                 }
                 break;
+            case 18:
+                switch (selected){
+                    case 0:
+                        enterInputHandler(6, 2, true, false, false);
+                        break;
+                    case 1:
+                        enterInputHandler(0, 0, false, false, true);
+                        break;
+                }
+                break;
         }
     }
 }
@@ -977,6 +988,13 @@ void Interface::run(){
                 printDirectory(directory);
                 printOptions(options[location], selected, table_mode);
                 printListCompareValues(citiesWaterDeliveredMapWithChanges, citiesWaterDeliveredMap, citiesStringMap);
+                printHelper(helpers, {0});
+                inputer();
+                break;
+            case 18:
+                printDirectory(directory);
+                printOptions(options[location], selected, table_mode);
+                man->balanceBasicMetrics(*man->getWaterNetwork());
                 printHelper(helpers, {0});
                 inputer();
                 break;

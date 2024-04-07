@@ -454,10 +454,10 @@ void Management::balanceBasicMetrics (const Graph<std::string>& g){
     double average_diff = sum_diff / pipes_.size();
     double variance_diff = sum_diff_squared / pipes_.size() - (average_diff * average_diff);
 
-    std::cout << "Initial Metrics:" << std::endl;
-    std::cout << "Average Difference: " << average_diff << std::endl;
-    std::cout << "Variance of Difference: " << variance_diff << std::endl;
-    std::cout << "Maximum Difference: " << max_diff << std::endl;
+    std::wcout << L"Initial Metrics:" << std::endl;
+    std::wcout << L"Average Difference: " << average_diff << std::endl;
+    std::wcout << L"Variance of Difference: " << variance_diff << std::endl;
+    std::wcout << L"Maximum Difference: " << max_diff << std::endl;
 }
 
 Graph<std::string> Management::balance(const Graph<std::string>& g){

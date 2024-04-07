@@ -197,6 +197,10 @@ private:
                 L"Add One More Pipe",
                 L"Back",
                 L"Main Menu"
+            },
+            {
+                L"Back",
+                L"Main Menu"
             }
     };
 

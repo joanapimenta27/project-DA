@@ -256,31 +256,28 @@ std::unordered_map<std::string, std::string> Management::checkWaterNeedsPumps(co
     return res;
 }
 
-std::vector<std::pair<std::string, std::vector<std::pair<std::string, int>>>> Management::checkWaterNeedsWithFailures() {
-    std::vector<std::pair<std::string, std::vector<std::pair<std::string, int>>>> result;
-    for (const auto& city : *cities_) {
-        int waterNeeded = city.second.getDemand();
-        int waterDelivered = 0;
-        for (const auto& edge : waterNetwork_->findVertex(city.first)->getAdj()) {
-            waterDelivered += edge->getWeight();
-        }
-        if (waterDelivered < waterNeeded) {
-            std::vector<std::pair<std::string, int>> affectedCities;
-            for (const auto& edge : waterNetwork_->findVertex(city.first)->getAdj()) {
-                if (edge->getWeight() > 0) {  // Check for pipelines currently carrying water
-                    waterDelivered -= edge->getWeight();  // Simulate failure by subtracting the pipeline's flow capacity
-                    if (waterDelivered < waterNeeded) {
-                        affectedCities.emplace_back(edge->getDest()->getInfo(), waterNeeded - waterDelivered);
-                    }
-                    waterDelivered += edge->getWeight();  // Restore waterDelivered for the next iteration
-                }
-            }
-            result.emplace_back(city.first, affectedCities);
+std::unordered_map<std::string, std::string> Management::checkWaterNeedsPipes(const std::vector<std::wstring>& pumps){
 
-        }
+    std::unordered_map<std::string, std::string> res;
+
+    Graph<std::string> g = createGraphCopy(*waterNetwork_);
+
+    for (const auto& ws : pumps){
+        std::string dest = stringDivider(ws, 0, '|');
+        std::string orig = stringDivider(ws, 1, '|');
+        g.removeEdge(orig, dest);
     }
-    return result;
+    maxFlow(g, "sink");
+    for (const auto& city : *cities_){
+        double val = 0;
+        for(Edge<std::string> *e: g.findVertex(city.first)->getIncoming()){
+            val += e->getFlow();
+        }
+        res.insert({city.first, std::to_string(val)});
+    }
+    return res;
 }
+
 
 
 

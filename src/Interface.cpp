@@ -35,8 +35,8 @@ void Interface::refreshDirectories() {
     }
     directories.emplace_back(L"Reliability and Sensitivity to Failures > Reservoir " + res_prep + L" Out of Commission");
     directories.emplace_back(L"Reliability and Sensitivity to Failures > Pumping Stations in Maintenance");
+    res_prep.clear();
     for (int i = 0; i < selectedPumpingCode.size(); i ++){
-        res_prep.clear();
         if (i == 0){
             res_prep.append(selectedPumpingCode[i]);
         }
@@ -48,6 +48,20 @@ void Interface::refreshDirectories() {
         }
     }
     directories.emplace_back(L"Reliability and Sensitivity to Failures > Pumping Stations" + res_prep + L"in Maintenance");
+    directories.emplace_back(L"Reliability and Sensitivity to Failures > Pipeline Failures");
+    res_prep.clear();
+    for (int i = 0; i < selectedPipeCode.size(); i ++){
+        if (i == 0){
+            res_prep.append(selectedPipeCode[i]);
+        }
+        else if (i != selectedPipeCode.size() - 1){
+            res_prep.append(L", " + selectedPipeCode[i]);
+        }
+        else{
+            res_prep.append(L" and " + selectedPipeCode[i]);
+        }
+    }
+    directories.emplace_back(L"Reliability and Sensitivity to Failures > Pipe " + res_prep + L" Failures");
 }
 
 void Interface::stackClear(std::stack<int> &s){
@@ -144,13 +158,17 @@ void Interface::initializeTable(){
             break;
         case 2:
             filteredStringVector = stationCodeVector;
+            break;
+        case 3:
+            filteredStringVector = pipeCodeVector;
+            break;
     }
 }
 
 std::unordered_map<std::string, std::string> Interface::stringifyUMStringClass(const std::unordered_map<std::string, City>& um){
     std::unordered_map<std::string, std::string> res;
     for (const auto& p : um){
-        res[p.second.getName()] = p.first;
+        res[p.first] = p.second.getName();
     }
     return res;
 }
@@ -167,6 +185,18 @@ std::vector<std::wstring> Interface::getCodeStation(const std::unordered_map<std
     std::vector<std::wstring> res;
     for (const auto& p : um){
         res.push_back(converter.from_bytes(p.first));
+    }
+    return res;
+}
+
+std::vector<std::wstring> Interface::getCodePipes(const std::unordered_map<std::string, std::string>& um){
+    std::vector<std::wstring> res;
+    for (const auto& p : um){
+        std::string o = stringDivider(converter.from_bytes(p.first), 0, '|');
+        std::string d = stringDivider(converter.from_bytes(p.first), 1, '|');
+        if (d != "source" && o !="sink"){
+            res.push_back(converter.from_bytes(p.first));
+        }
     }
     return res;
 }
@@ -191,6 +221,32 @@ std::vector<std::wstring> Interface::filterReservoirSearch(const std::vector<std
     std::vector<std::wstring> res;
     if (write.empty() || write == write_default){
         res = reservoirCodeVector;
+    }
+    for (const auto& p : um){
+        if (smooth_string(p).substr(0, smooth_string(write).size()) == smooth_string(write)){
+            res.push_back(p);
+        }
+    }
+    return res;
+}
+
+std::vector<std::wstring> Interface::filterStationSearch(const std::vector<std::wstring>& um){
+    std::vector<std::wstring> res;
+    if (write.empty() || write == write_default){
+        res = stationCodeVector;
+    }
+    for (const auto& p : um){
+        if (smooth_string(p).substr(0, smooth_string(write).size()) == smooth_string(write)){
+            res.push_back(p);
+        }
+    }
+    return res;
+}
+
+std::vector<std::wstring> Interface::filterPipeSearch(const std::vector<std::wstring>& um){
+    std::vector<std::wstring> res;
+    if (write.empty() || write == write_default){
+        res = pipeCodeVector;
     }
     for (const auto& p : um){
         if (smooth_string(p).substr(0, smooth_string(write).size()) == smooth_string(write)){
@@ -244,6 +300,22 @@ void Interface::writeOptionDefaulterStation(){
     }
     else if (selected == 0 && !table_mode){
         options[location][0] = underline + bold + red + L"Search for a Pumping Station -> " + end_effect + L"  " + write;
+        write_mode = true;
+    }
+}
+
+void Interface::writeOptionDefaulterPipe(){
+    if (!write.empty() && write != write_default) {
+        options[location][0] = L"Searching for: " + bold + write + end_effect;
+    } else {
+        options[location][0] = L"Search for a Pipe";
+    }
+    if (selected == 0 && write.empty() && !table_mode){
+        options[location][0] = underline + bold + red + L"Search for a Pipe -> " + end_effect + L"  " + italic + write_default + end_italic;
+        write_mode = true;
+    }
+    else if (selected == 0 && !table_mode){
+        options[location][0] = underline + bold + red + L"Search for a Pipe -> " + end_effect + L"  " + write;
         write_mode = true;
     }
 }
@@ -306,7 +378,11 @@ void Interface::inputResponseInWriteMode(wchar_t user_in){
         page = 0;
     }
     if (locationOfStationSearch[location]){
-        filteredStringVector = filterReservoirSearch(stationCodeVector);
+        filteredStringVector = filterStationSearch(stationCodeVector);
+        page = 0;
+    }
+    if (locationOfPipeSearch[location]){
+        filteredStringVector = filterPipeSearch(pipeCodeVector);
         page = 0;
     }
 }
@@ -527,6 +603,7 @@ void Interface::basicInputResponse(unsigned int user_in) {
                         enterInputHandler(10, 0, false, false, false);
                         break;
                     case 2:
+                        enterInputHandler(0, 0, true, false, false);
                         break;
                     case 3:
                         enterInputHandler(0, 0, false, false, true);
@@ -600,6 +677,8 @@ void Interface::basicInputResponse(unsigned int user_in) {
                         initializeTable();
                         break;
                     case 2:
+                        enterInputHandler(16, 0, false, false, false);
+                        initializeTable();
                         break;
                     case 3:
                         enterInputHandler(0, 0, false, false, true);
@@ -664,6 +743,59 @@ void Interface::basicInputResponse(unsigned int user_in) {
                     citiesWaterDeliveredMapWithChanges = man->checkWaterNeedsPumps(selectedPumpingCode);
                 }
                 break;
+            case 15:
+                switch (selected){
+                    case 0:
+                        enterInputHandler(14, 0, false, false, false);
+                        initializeTable();
+                        break;
+                    case 1:
+                        enterInputHandler(14, 0, true, false, false);
+                        selectedPumpingCode.clear();
+                        break;
+                    case 2:
+                        enterInputHandler(0, 0, false, false, true);
+                        selectedPumpingCode.clear();
+                        break;
+                }
+                break;
+            case 16:
+                if (!table_mode) {
+                    switch (selected) {
+                        case 0:
+                            break;
+                        case 1:
+                            enterInputHandler(11, 0, true, false, false);
+                            break;
+                        case 2:
+                            enterInputHandler(0, 0, false, false, true);
+                            break;
+                    }
+                    break;
+                }
+                else{
+                    selectedPipeCode.push_back(filteredStringVector[page * elements_per_page + selected_in_page]);
+                    enterInputHandler(17, 0, false, false, false);
+                    tableModeCleaner2(pipeCodeVector);
+                    citiesWaterDeliveredMapWithChanges = man->checkWaterNeedsPipes(selectedPipeCode);
+                }
+                break;
+            case 17:
+                switch (selected){
+                    case 0:
+                        enterInputHandler(16, 0, false, false, false);
+                        initializeTable();
+                        break;
+                    case 1:
+                        enterInputHandler(16, 0, true, false, false);
+                        selectedPipeCode.clear();
+                        break;
+                    case 2:
+                        enterInputHandler(0, 0, false, false, true);
+                        selectedPipeCode.clear();
+                        break;
+                }
+                break;
         }
     }
 }
@@ -714,6 +846,8 @@ void Interface::run(){
                     for (const auto& city : man->getCities()){
                         citiesWaterDeliveredMap.insert({city.first, std::to_string(man->maxFlow(*man->getWaterNetwork(),city.first))});                    }
                     reservoirCodeVector = getCodeVector(*man->getReservoirs());
+                    stationCodeVector = getCodeStation(*man->getStations());
+                    pipeCodeVector = getCodePipes(man->getEdgesFlow());
                     is_done = true;
                 }
 
@@ -732,6 +866,7 @@ void Interface::run(){
                     }
                     reservoirCodeVector = getCodeVector(*man->getReservoirs());
                     stationCodeVector = getCodeStation(*man->getStations());
+                    pipeCodeVector = getCodePipes(man->getEdgesFlow());
                     is_done = true;
                 }
 
@@ -822,6 +957,23 @@ void Interface::run(){
                 break;
 
             case 15:
+                printDirectory(directory);
+                printOptions(options[location], selected, table_mode);
+                printListCompareValues(citiesWaterDeliveredMapWithChanges, citiesWaterDeliveredMap, citiesStringMap);
+                printHelper(helpers, {0});
+                inputer();
+                break;
+
+            case 16:
+                writeOptionDefaulterPipe();
+                printDirectory(directory);
+                printOptions(options[location], selected, table_mode);
+                printTable(filteredStringVector, page, elements_per_page, selected_in_page, table_mode);
+                printHelper(helpers, {1, 2});
+                inputer();
+                break;
+
+            case 17:
                 printDirectory(directory);
                 printOptions(options[location], selected, table_mode);
                 printListCompareValues(citiesWaterDeliveredMapWithChanges, citiesWaterDeliveredMap, citiesStringMap);

@@ -11,6 +11,7 @@
 #include <thread>
 #include <stack>
 #include "Management.h"
+#include "utils.h"
 
 class Interface {
 public:
@@ -68,13 +69,15 @@ private:
     std::unordered_map<std::string, std::string> citiesWaterDeliveredMapWithChanges;
     std::vector<std::wstring> reservoirCodeVector;
     std::vector<std::wstring> stationCodeVector;
+    std::vector<std::wstring> pipeCodeVector;
     std::vector<std::wstring> selectedReservoirCode;
     std::vector<std::wstring> selectedPumpingCode;
+    std::vector<std::wstring> selectedPipeCode;
     std::unordered_map<int, int> locationHasTable = {
-            {7, 1}, {12, 1}, {14, 1}
+            {7, 1}, {12, 1}, {14, 1}, {16, 1}
     };
     std::unordered_map<int, int> capOfWrite = {
-            {7, 30}, {12, 4}, {14, 5}
+            {7, 30}, {12, 4}, {14, 5}, {16, 10}
     };
     std::unordered_map<int, int> locationOfCitySearch = {
             {7, 1}
@@ -85,8 +88,11 @@ private:
     std::unordered_map<int, int> locationOfStationSearch = {
             {14, 1}
     };
+    std::unordered_map<int, int> locationOfPipeSearch = {
+            {16, 1}
+    };
     std::unordered_map<int, int> locationWithTable = {
-            {7, 0}, {12, 1}, {14, 2}
+            {7, 0}, {12, 1}, {14, 2}, {16, 3}
     };
 
     std::vector<std::vector<std::string>> water_needs;
@@ -125,7 +131,7 @@ private:
             {
                 L"Max Amount of Water",
                 L"Cities in Deficit",
-                L"Dummy2",
+                L"Balance Difference",
                 L"Main Menu"
             },
             {
@@ -172,6 +178,16 @@ private:
                 L"Back",
                 L"Main Menu"
             },
+            {
+                L"Search for a Pipe",
+                L"Back",
+                L"Main Menu"
+            },
+            {
+                L"Add One More Pipe",
+                L"Back",
+                L"Main Menu"
+            }
     };
 
     std::vector<std::wstring> helpers{
@@ -231,6 +247,14 @@ private:
     static std::vector<std::wstring> getCodeStation(const std::unordered_map<std::string, Station> &um);
 
     void writeOptionDefaulterStation();
+
+    void writeOptionDefaulterPipe();
+
+    std::vector<std::wstring> getCodePipes(const std::unordered_map<std::string, std::string> &um);
+
+    std::vector<std::wstring> filterStationSearch(const std::vector<std::wstring> &um);
+
+    std::vector<std::wstring> filterPipeSearch(const std::vector<std::wstring> &um);
 };
 
 #endif //PROJECT_DA_INTERFACE_H

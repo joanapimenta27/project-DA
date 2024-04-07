@@ -20,7 +20,33 @@ Graph<std::string> createGraphCopy(const Graph<std::string>& og_graph){
     return copyOfGraph;
 }
 
-std::string key(const std::string& i,const std::string& j) {return i + j;}
+std::string stringDivider(const std::wstring& ws, int i, char loc){
+    std::string s = converter1.to_bytes(ws);
+    std::string o;
+    std::string d;
+    bool a = true;
+    for (auto c : s){
+        if (c == loc){
+            a = false;
+            continue;
+        }
+        if (a){
+            d.push_back(c);
+        }
+        else{
+            o.push_back(c);
+        }
+    }
+    if (i) {
+        return d;
+    }
+    else{
+        return o;
+    }
+
+}
+
+std::string key(const std::string& i,const std::string& j) {return i + "|" + j;}
 
 double findMin(const std::vector<double>& values) {
     if (values.empty()) {
@@ -73,60 +99,4 @@ bool augmentationPathFinder(Graph<std::string> *g ,Vertex<std::string> *source,V
     }
 
     return sink->isVisited();
-}
-
-std::vector<std::vector<std::vector<std::string>>> flowDataLineRemover (std::vector<std::wstring> codes, std::vector<std::vector<std::vector<std::string>>> flowData_){
-
-    std::vector<std::vector<std::vector<std::string>>> res;
-    std::unordered_map<std::string, std::string> info;
-
-    for (int idx = 0; idx < flowData_.size(); idx ++) {
-        std::vector<std::vector<std::string>> path = flowData_[idx];
-        for (const auto&  step: path) {
-            if (std::find(codes.begin(), codes.end(), converter.from_bytes(step[0])) != codes.end() ||
-                std::find(codes.begin(), codes.end(), converter.from_bytes(step[1])) != codes.end()) {
-                double n = calcPathMin(path);
-                info.insert({std::to_string(idx), std::to_string(n)});
-                break;
-            }
-        }
-    }
-    for (int idx = 0; idx < flowData_.size(); idx++) {
-        if (info.find(std::to_string(idx)) != info.end()) {
-            double min_capacity = calcPathMin(flowData_[idx]);
-            for (auto& step : flowData_[idx]) {
-                for (int idx2 = 0; idx2 < flowData_.size(); idx2++) {
-                    if (idx != idx2) {
-                        for (auto& step2 : flowData_[idx2]) {
-                            if (step2[0] == step[0] && step2[1] == step[1]) {
-                                double new_capacity = std::stod(step2[2]) - min_capacity;
-                                step2[2] = std::to_string(new_capacity);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    for (int idx = 0; idx < flowData_.size(); idx ++){
-        std::vector<std::vector<std::string>> path = flowData_[idx];
-        if (info.find(std::to_string(idx)) == info.end()){
-            res.push_back(path);
-        }
-    }
-
-    return res;
-}
-
-std::string getCityFlow (const std::string& code, const std::vector<std::vector<std::vector<std::string>>> &flowData_){
-    double res = 0;
-
-    for (const auto& path : flowData_){
-        for (auto step : path)
-        if (code == step[0] || code == step[1]){
-            res += calcPathMin(path);
-        }
-    }
-
-    return std::to_string(res);
 }

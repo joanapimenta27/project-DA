@@ -204,15 +204,15 @@ void printDoubleTable(const std::unordered_map<std::string, std::string>& wstrin
     for (const auto& wstr : wstring_list){
         if (count >= page * elements_per_page && count < page * elements_per_page + elements_per_page){
             if (count_for_selected == selected_in_page && table_mode){
-                std::wcout << L"| " << bg_light_red << italic << underline << bold
-                           << converter.from_bytes(wstr.first) << std::wstring(30 - wstr.first.size() + getPunct(wstr.first), L' ')
-                           << end_italic << bg_light_red << underline << L"| " << italic << converter.from_bytes(wstr.second)
-                           << std::wstring(6 - wstr.second.size(), L' ')
+                std::wcout << L"| " << bg_light_red << underline << bold
+                           << converter.from_bytes(wstr.second) << std::wstring(30 - wstr.second.size() + getPunct(wstr.second), L' ')
+                           << end_italic << bg_light_red << underline << L"| "  << converter.from_bytes(wstr.first)
+                           << std::wstring(6 - wstr.first.size(), L' ')
                            << end_italic << end_bg << end_effect << L" |" << std::endl;
             }
             else{
-                std::wcout << L"| " << converter.from_bytes(wstr.first) << std::wstring(30 - wstr.first.size() + getPunct(wstr.first), L' ')
-                << L"| " << converter.from_bytes(wstr.second) << std::wstring(6 - wstr.second.size(), L' ')
+                std::wcout << L"| " << converter.from_bytes(wstr.second) << std::wstring(30 - wstr.second.size() + getPunct(wstr.second), L' ')
+                << L"| " << converter.from_bytes(wstr.first) << std::wstring(6 - wstr.first.size(), L' ')
                 << L" |" << std::endl;
             }
             count_for_selected ++;

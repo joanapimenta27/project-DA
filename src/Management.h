@@ -60,8 +60,6 @@ public:
 
     const std::unique_ptr<Graph<std::string>> &getWaterNetwork() const;
 
-    std::vector<std::pair<std::string, std::vector<std::pair<std::string, int>>>> checkWaterNeedsWithFailures();
-
     const std::unordered_map<std::string, std::string> &getEdgesFlow() const;
 
     const std::unique_ptr<std::unordered_map<std::string, Reservoir>> &getReservoirs() const;
@@ -73,6 +71,8 @@ public:
     std::unordered_map<std::string, std::string> checkWaterNeedsPumps(const std::vector<std::wstring> &pumps);
 
     const std::unique_ptr<std::unordered_map<std::string, Station>> &getStations() const;
+
+    std::unordered_map<std::string, std::string> checkWaterNeedsPipes(const std::vector<std::wstring> &pumps);
 };
 
 

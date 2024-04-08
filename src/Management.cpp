@@ -430,6 +430,14 @@ std::unordered_map<std::string, std::string> Management::checkWaterNeedsPipes(co
     return res;
 }
 
+/**
+ * @brief Computes basic metrics related to the balance of flow in the water network.
+ *
+ * This method calculates metrics such as the average difference, variance of difference,
+ * and maximum difference between the expected flow in each pipe and the actual flow computed in the graph.
+ *
+ * @param g The water network graph to analyze.
+ */
 void Management::balanceBasicMetrics (const Graph<std::string>& g){
     double sum_diff = 0.0;
     double sum_diff_squared = 0.0;

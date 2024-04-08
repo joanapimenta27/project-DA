@@ -32,7 +32,12 @@ std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{c
 \mbox{\hyperlink{class_edge}{const}} std\+::unique\+\_\+ptr$<$ std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_station}{Station}} $>$ $>$ \& \mbox{\hyperlink{class_management_aace220c758836f17571e955f4cef50d8}{get\+Stations}} () \mbox{\hyperlink{class_edge}{const}}
 \begin{DoxyCompactList}\small\item\em Get a constant reference to the stations map. \end{DoxyCompactList}\item 
 std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{class_management_aff8dc9d407049b1d85aa8996b37d8967}{check\+Water\+Needs\+Pipes}} (\mbox{\hyperlink{class_edge}{const}} std\+::vector$<$ std\+::wstring $>$ \&\mbox{\hyperlink{class_edge}{pumps}})
-\begin{DoxyCompactList}\small\item\em Checks water needs for cities after removing certain pipes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Checks water needs for cities after removing certain pipes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_edge}{void}} \mbox{\hyperlink{class_management_a4c88854c95127f4865addfde70e6c3c2}{balance\+Basic\+Metrics}} (\mbox{\hyperlink{class_edge}{const}} \mbox{\hyperlink{class_graph}{Graph}}$<$ std\+::string $>$ \&\mbox{\hyperlink{class_edge}{g}})
+\begin{DoxyCompactList}\small\item\em Computes basic metrics related to the balance of flow in the water network. \end{DoxyCompactList}\item 
+\Hypertarget{class_management_a3e129a9a7c6256e5a470fb044628574f}\label{class_management_a3e129a9a7c6256e5a470fb044628574f} 
+\mbox{\hyperlink{class_graph}{Graph}}$<$ std\+::string $>$ {\bfseries balance} (\mbox{\hyperlink{class_edge}{const}} \mbox{\hyperlink{class_graph}{Graph}}$<$ std\+::string $>$ \&\mbox{\hyperlink{class_edge}{g}})
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -53,6 +58,9 @@ std\+::vector$<$ std\+::vector$<$ std\+::vector$<$ std\+::string $>$ $>$ $>$ {\b
 \item 
 \Hypertarget{class_management_a5043321e81b69fd3843387a2342fc489}\label{class_management_a5043321e81b69fd3843387a2342fc489} 
 std\+::unordered\+\_\+map$<$ std\+::string, std\+::string $>$ {\bfseries edges\+Flow\+\_\+}
+\item 
+\Hypertarget{class_management_ae2333e4d264f96d7b6da2b6c607becfe}\label{class_management_ae2333e4d264f96d7b6da2b6c607becfe} 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{class_edge}{double}} $>$ {\bfseries pipes\+\_\+}
 \end{DoxyCompactItemize}
 
 
@@ -85,6 +93,23 @@ The time complexity of this constructor depends on the size of the dataset\+: \b
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{class_management_a4c88854c95127f4865addfde70e6c3c2}\label{class_management_a4c88854c95127f4865addfde70e6c3c2} 
+\index{Management@{Management}!balanceBasicMetrics@{balanceBasicMetrics}}
+\index{balanceBasicMetrics@{balanceBasicMetrics}!Management@{Management}}
+\doxysubsubsection{\texorpdfstring{balanceBasicMetrics()}{balanceBasicMetrics()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_edge}{void}} Management\+::balance\+Basic\+Metrics (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_edge}{const}} \mbox{\hyperlink{class_graph}{Graph}}$<$ std\+::string $>$ \&}]{g }\end{DoxyParamCaption})}
+
+
+
+Computes basic metrics related to the balance of flow in the water network. 
+
+This method calculates metrics such as the average difference, variance of difference, and maximum difference between the expected flow in each pipe and the actual flow computed in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & The water network graph to analyze. \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_management_aaeaee474c3242798ea5627a1a844cb2a}\label{class_management_aaeaee474c3242798ea5627a1a844cb2a} 
 \index{Management@{Management}!checkWaterNeeds@{checkWaterNeeds}}
 \index{checkWaterNeeds@{checkWaterNeeds}!Management@{Management}}

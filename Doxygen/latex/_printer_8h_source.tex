@@ -272,7 +272,7 @@
 \DoxyCodeLine{00278\ \ \ \ \ std::wcout\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\ \ \ \ \ "{}}\ <<\ centerUp(red\ +\ \mbox{\hyperlink{class_edge}{wigly\_underline}}\ +\ end\_effect)\ <<\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ <<\ std::endl;}
 \DoxyCodeLine{00279\ }
 \DoxyCodeLine{00280\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ \mbox{\hyperlink{class_edge}{p}}\ :\ \mbox{\hyperlink{class_edge}{um1}})\{}
-\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_edge}{um2}}[\mbox{\hyperlink{class_edge}{p}}.first]\ >\ \mbox{\hyperlink{class_edge}{p}}.second)\{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::stod(\mbox{\hyperlink{class_edge}{um2}}[\mbox{\hyperlink{class_edge}{p}}.first])\ >\ std::stod(\mbox{\hyperlink{class_edge}{p}}.second))\{}
 \DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ std::wstring\ \mbox{\hyperlink{class_edge}{wstr}}\ =\ \mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{}-\/>\ "{}}\ +\ underline\ +\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{p}}.first);}
 \DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(end\_effect);}
 \DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_edge}{wstr}}.append(\mbox{\hyperlink{class_edge}{L}}\textcolor{stringliteral}{"{},\ the\ city\ of\ "{}}\ +\ underline\ +\ converter.from\_bytes(\mbox{\hyperlink{class_edge}{cityName}}[\mbox{\hyperlink{class_edge}{p}}.first]));}

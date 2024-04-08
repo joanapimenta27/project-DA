@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>project_DA: C:/Users/jlsmp/OneDrive/Documentos/universidade/DA-Project1/src/Printer.h Source File</title>
+<title>My Project: C:/Users/jlsmp/OneDrive/Documentos/universidade/DA-Project1/src/Printer.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,8 +23,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">project_DA
+   <div id="projectname">My Project
    </div>
+   <div id="projectbrief">Project_DA</div>
   </td>
  </tr>
  </tbody>
@@ -76,7 +77,7 @@ $(function() { codefold.init(0); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_9289b055571948cbb7ae86ed6790f856.html">universidade</a></li><li class="navelem"><a class="el" href="dir_8f178b905af3380f2ccbdd380ac88718.html">DA-Project1</a></li><li class="navelem"><a class="el" href="dir_9f5f4923d68899f1a3fb9e4885f8458f.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_604b42804e9e28800c23134df2463477.html">DA-Project1</a></li><li class="navelem"><a class="el" href="dir_69bae9fe5a62dca2f16ae986fffb1fdb.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -353,7 +354,7 @@ $(function() { codefold.init(0); });
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>    std::wcout &lt;&lt; <a class="code hl_class" href="class_edge.html">L</a><span class="stringliteral">&quot;     &quot;</span> &lt;&lt; centerUp(red + <a class="code hl_class" href="class_edge.html">wigly_underline</a> + end_effect) &lt;&lt; <a class="code hl_class" href="class_edge.html">L</a><span class="stringliteral">&quot;\n&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; <a class="code hl_class" href="class_edge.html">p</a> : <a class="code hl_class" href="class_edge.html">um1</a>){</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="class_edge.html">um2</a>[<a class="code hl_class" href="class_edge.html">p</a>.first] &gt; <a class="code hl_class" href="class_edge.html">p</a>.second){</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="keywordflow">if</span> (std::stod(<a class="code hl_class" href="class_edge.html">um2</a>[<a class="code hl_class" href="class_edge.html">p</a>.first]) &gt; std::stod(<a class="code hl_class" href="class_edge.html">p</a>.second)){</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>            std::wstring <a class="code hl_class" href="class_edge.html">wstr</a> = <a class="code hl_class" href="class_edge.html">L</a><span class="stringliteral">&quot;-&gt; &quot;</span> + underline + converter.from_bytes(<a class="code hl_class" href="class_edge.html">p</a>.first);</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>            <a class="code hl_class" href="class_edge.html">wstr</a>.append(end_effect);</div>
 <div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>            <a class="code hl_class" href="class_edge.html">wstr</a>.append(<a class="code hl_class" href="class_edge.html">L</a><span class="stringliteral">&quot;, the city of &quot;</span> + underline + converter.from_bytes(<a class="code hl_class" href="class_edge.html">cityName</a>[<a class="code hl_class" href="class_edge.html">p</a>.first]));</div>

@@ -21,8 +21,8 @@ void Interface::refreshDirectories() {
     directories.emplace_back(L"Reliability and Sensitivity to Failures");
     directories.emplace_back(L"Reliability and Sensitivity to Failures > Reservoir Out of Commission");
     std::wstring res_prep;
+    res_prep.clear();
     for (int i = 0; i < selectedReservoirCode.size(); i ++){
-        res_prep.clear();
         if (i == 0){
             res_prep.append(selectedReservoirCode[i]);
         }
@@ -326,11 +326,12 @@ void Interface::enterInputHandler(int loc, unsigned long sel, bool back, bool ma
     if (back){
         if(loc == 0){
             location = earlier_locations.top();
+            earlier_locations.pop();
         }
         else{
             location = loc;
         }
-        earlier_locations.pop();
+
     }
     else if (main_menu){
         location = 0;
